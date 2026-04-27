@@ -56,20 +56,8 @@ export function fromB64u(s: string): Uint8Array {
   return new Uint8Array(Buffer.from(s, "base64url"));
 }
 
-export async function fetchDidDocument(origin: string): Promise<DidDocument> {
-  const url = new URL("/.well-known/did.json", origin).toString();
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`did.json fetch failed: ${res.status}`);
-  return (await res.json()) as DidDocument;
-}
-
-export function publicKeyFromDid(
-  doc: DidDocument,
-  signerId?: string,
-): Uint8Array {
-  const vm = signerId
-    ? doc.verificationMethod.find((m) => m.id === signerId)
-    : doc.verificationMethod[0];
+export function publicKeyFromDid(doc: DidDocument): Uint8Array {
+  const vm = doc.verificationMethod[0];
   if (!vm) throw new Error("verificationMethod not found");
   const mb = vm.publicKeyMultibase;
   if (!mb.startsWith("u"))

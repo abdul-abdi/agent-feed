@@ -21,7 +21,6 @@ export interface Entry {
   type: EntryType;
   updated: string;
   payload: Record<string, unknown>;
-  signerId?: string;
 }
 
 export interface BuildFeedInput {
@@ -32,7 +31,6 @@ export interface BuildFeedInput {
   specVersion: number;
   entries: Entry[];
   keypair: Keypair;
-  signerId?: string;
   migratedTo?: string;
 }
 
@@ -47,7 +45,7 @@ export async function buildFeed(input: BuildFeedInput): Promise<string> {
         input.keypair.privateKey,
         new TextEncoder().encode(canonical),
       );
-      const entry: Record<string, unknown> = {
+      return {
         id: e.id,
         title: e.type,
         updated: e.updated,
@@ -55,10 +53,6 @@ export async function buildFeed(input: BuildFeedInput): Promise<string> {
         content: { "@_type": "application/json", "#text": canonical },
         "af:sig": { "@_type": "ed25519", "#text": b64u(sig) },
       };
-      if (e.signerId ?? input.signerId) {
-        entry["af:signer"] = e.signerId ?? input.signerId;
-      }
-      return entry;
     }),
   );
 
@@ -133,20 +127,16 @@ export async function parseFeed(
           ? sigField
           : String((sigField as any)["#text"] ?? "");
 
-      const signerId = e["af:signer"] ? String(e["af:signer"]) : undefined;
-      const publicKey = publicKeyFromDid(opts.didDocument, signerId);
+      const publicKey = publicKeyFromDid(opts.didDocument);
       const verified = await verifyBytes(
         publicKey,
         new TextEncoder().encode(canonicalPayload),
         fromB64u(sigB64u),
       );
 
-      let payload: Record<string, unknown> = {};
-      try {
-        payload = JSON.parse(canonicalPayload);
-      } catch {
-        // leave empty; verified will be false because canonical bytes differ from anything sane
-      }
+      const payload: Record<string, unknown> = verified
+        ? JSON.parse(canonicalPayload)
+        : {};
 
       const entry: Entry = {
         id: String(e.id),
@@ -154,7 +144,6 @@ export async function parseFeed(
         updated: String(e.updated),
         payload,
       };
-      if (signerId) entry.signerId = signerId;
       return { entry, verified, canonicalPayload };
     }),
   );

@@ -53,21 +53,6 @@ test("did document round-trips through publicKeyFromDid", async () => {
   expect(Buffer.from(recovered).equals(Buffer.from(kp.publicKey))).toBe(true);
 });
 
-test("publicKeyFromDid selects by signer id when provided", async () => {
-  const kp = await generateKeypair();
-  const doc = didDocumentFromKeypair("https://example.com", kp);
-  const recovered = publicKeyFromDid(doc, "did:web:example.com#key-1");
-  expect(Buffer.from(recovered).equals(Buffer.from(kp.publicKey))).toBe(true);
-});
-
-test("publicKeyFromDid throws when signer id not found", async () => {
-  const kp = await generateKeypair();
-  const doc = didDocumentFromKeypair("https://example.com", kp);
-  expect(() =>
-    publicKeyFromDid(doc, "did:web:example.com#nonexistent"),
-  ).toThrow();
-});
-
 test("b64u roundtrip", () => {
   const bytes = new Uint8Array([0, 1, 2, 250, 251, 252, 253, 254, 255]);
   expect(fromB64u(b64u(bytes))).toEqual(bytes);

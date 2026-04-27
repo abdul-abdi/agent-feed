@@ -274,7 +274,6 @@ export class Reader {
     }
     if (!migration) return;
 
-    const present = new Set(Object.keys(input.body));
     const expectedButMissing: string[] = [];
     const observedButUnannounced: string[] = [];
 
@@ -294,8 +293,6 @@ export class Reader {
           observedButUnannounced.push(oldPath);
       }
     }
-
-    void present;
 
     if (expectedButMissing.length === 0 && observedButUnannounced.length === 0)
       return;
@@ -320,18 +317,11 @@ function isKnownEntryType(t: string): t is EntryType {
 }
 
 function isPathPresent(body: Record<string, unknown>, path: string): boolean {
-  // simplified: top-level field name check (sufficient for v0 demo);
-  // SPEC §5.3 references RFC 6901 JSON Pointer for deeper paths.
-  if (path.startsWith("/")) {
-    const parts = path.split("/").filter(Boolean);
-    let cur: any = body;
-    for (const p of parts) {
-      if (cur === null || cur === undefined || typeof cur !== "object")
-        return false;
-      if (!(p in cur)) return false;
-      cur = cur[p];
-    }
-    return true;
+  if (!path.startsWith("/")) return path in body;
+  let cur: any = body;
+  for (const p of path.split("/").filter(Boolean)) {
+    if (cur === null || typeof cur !== "object" || !(p in cur)) return false;
+    cur = cur[p];
   }
-  return path in body;
+  return true;
 }

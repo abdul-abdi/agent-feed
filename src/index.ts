@@ -4,14 +4,12 @@ export {
   signBytes,
   verifyBytes,
   didWebFromOrigin,
-  fetchDidDocument,
   publicKeyFromDid,
   didDocumentFromKeypair,
   b64u,
   fromB64u,
   type Keypair,
   type DidDocument,
-  type DidVerificationMethod,
 } from "./crypto.ts";
 export {
   buildFeed,
@@ -20,12 +18,5 @@ export {
   type EntryType,
   type FeedStatus,
   type ParsedFeed,
-  type VerifiedEntry,
-  type BuildFeedInput,
 } from "./feed.ts";
-export {
-  Reader,
-  type IngestInput,
-  type ReaderEvent,
-  type MismatchDetails,
-} from "./reader.ts";
+export { Reader, type MismatchDetails } from "./reader.ts";
