@@ -115,10 +115,15 @@ Implementation plan: [`docs/plans/2026-04-27-agent-feed-v0.md`](./docs/plans/202
 
 ## Roadmap
 
+See [ROADMAP.md](./ROADMAP.md) — four tiers from "close the loop" through "the temporal layer of the agentic web," every item carrying explicit kill-criteria.
+
+Quick orientation:
+
 - **v0** (this): spec + reference reader + signing CLI + fixture demo. Stable.
-- **v0.1:** WebSub push as opt-in extension; conformance tests for both poll and push.
-- **v0.2:** address [SPEC §10 open issues](./SPEC.md#10-open-issues): lying-publisher detection, multi-domain delegation, polling load on origins.
-- **v0.x:** propose into MCP via SEP as a complementary streaming layer once a real consumer commits to reading.
+- **v0.1:** snapshot artifact, WebSub push, did:web key rotation, conformance vectors.
+- **v0.2:** Next.js / FastAPI / Cloudflare Worker adapters, hosted conformance checker, hosted aggregator.
+- **v0.3:** IETF draft, MCP SEP, A2A extension, cross-language readers (Rust/Python/Go), formal model.
+- **v1.0+ ambitions:** the temporal layer of the agentic web; trust substrate for agent payments; cross-protocol convergence; public deprecation ledger; 404-killer; IDE + browser integration; time-travel debugging; ML training corpus; regulatory wedge; agentic-web archive.org.
 
 ## Stewardship
 
