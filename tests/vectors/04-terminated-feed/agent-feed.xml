@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:af="https://agent-feed.dev/ns/v0">
+  <id>did:web:vector.example</id>
+  <title>vector</title>
+  <updated>2026-04-27T12:00:00Z</updated>
+  <af:spec-version>0</af:spec-version>
+  <af:feed-status>terminated</af:feed-status>
+  <entry>
+    <id>urn:af:vector:1</id>
+    <title>endpoint-announcement</title>
+    <updated>2026-04-27T12:00:00Z</updated>
+    <af:type>endpoint-announcement</af:type>
+    <content type="application/json">{&quot;asserted-at&quot;:&quot;2026-04-27T12:00:00Z&quot;,&quot;endpoint&quot;:&quot;/api/orders&quot;,&quot;endpoint-id&quot;:&quot;orders-api&quot;,&quot;protocol&quot;:&quot;rest&quot;,&quot;version&quot;:&quot;1.0&quot;}</content>
+    <af:sig type="ed25519">zS1YZEK_GaPdxBwvbFAfnUcSwfi3WwqMfyF4tqBLJiFSf17W4FF55VXthQSJ9X9NBKXVW5N71d8QYignRHcAAw</af:sig>
+  </entry>
+</feed>

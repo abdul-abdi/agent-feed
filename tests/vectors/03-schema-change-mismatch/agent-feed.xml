@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:af="https://agent-feed.dev/ns/v0">
+  <id>did:web:vector.example</id>
+  <title>vector</title>
+  <updated>2026-04-27T13:00:00Z</updated>
+  <af:spec-version>0</af:spec-version>
+  <af:feed-status>active</af:feed-status>
+  <entry>
+    <id>urn:af:vector:1</id>
+    <title>endpoint-announcement</title>
+    <updated>2026-04-27T12:00:00Z</updated>
+    <af:type>endpoint-announcement</af:type>
+    <content type="application/json">{&quot;asserted-at&quot;:&quot;2026-04-27T12:00:00Z&quot;,&quot;endpoint&quot;:&quot;/api/orders&quot;,&quot;endpoint-id&quot;:&quot;orders-api&quot;,&quot;protocol&quot;:&quot;rest&quot;,&quot;version&quot;:&quot;1.0&quot;}</content>
+    <af:sig type="ed25519">Fc5Tuqwu7XfpDh2HNKH_6eCqvQKjQ-7_BEjiPOv0PI7OEmSMzpuPNXsZTgfwQZ6vDucyuORRlphPy7vPaa2SCQ</af:sig>
+  </entry>
+  <entry>
+    <id>urn:af:vector:2</id>
+    <title>schema-change</title>
+    <updated>2026-04-27T13:00:00Z</updated>
+    <af:type>schema-change</af:type>
+    <content type="application/json">{&quot;effective-at&quot;:&quot;2026-04-27T13:00:00Z&quot;,&quot;endpoint-id&quot;:&quot;orders-api&quot;,&quot;from-version&quot;:&quot;1.0&quot;,&quot;migration&quot;:{&quot;add&quot;:[&quot;currency&quot;]},&quot;to-version&quot;:&quot;1.1&quot;}</content>
+    <af:sig type="ed25519">IAuWvrxfAgBeU6jaaDpojTUqaCrqeylCzGIuXjkJB9ehTzRxwtvjQbu4AilP9sh5OTlt_kcbIIbvVB_LBHQqDg</af:sig>
+  </entry>
+</feed>

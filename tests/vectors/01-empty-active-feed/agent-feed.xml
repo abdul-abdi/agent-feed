@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:af="https://agent-feed.dev/ns/v0">
+  <id>did:web:vector.example</id>
+  <title>vector</title>
+  <updated>2026-04-27T12:00:00Z</updated>
+  <af:spec-version>0</af:spec-version>
+  <af:feed-status>active</af:feed-status>
+</feed>

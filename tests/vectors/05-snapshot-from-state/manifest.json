@@ -1,0 +1,5 @@
+{
+  "name": "05-snapshot-from-state",
+  "description": "Signed agent-card.json snapshot derived from a feed with one endpoint at v1.0.",
+  "kind": "snapshot"
+}

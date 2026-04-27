@@ -1,0 +1,9 @@
+{
+  "name": "01-empty-active-feed",
+  "description": "Empty feed with status active and no entries.",
+  "kind": "feed",
+  "expect": {
+    "feedStatus": "active",
+    "verifiedEntryCount": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "03-schema-change-mismatch",
+  "description": "Endpoint announced at v1.0, schema-change to v1.1 (add currency). Live response without currency MUST fire mismatch with fallback v1.0.",
+  "kind": "feed",
+  "expect": {
+    "feedStatus": "active",
+    "verifiedEntryCount": 2,
+    "schemaVersion": {
+      "endpointId": "orders-api",
+      "expected": "1.1"
+    },
+    "mismatchOnLiveResponse": {
+      "endpointId": "orders-api",
+      "body": {
+        "id": "ord",
+        "total": 100
+      },
+      "expectedFallback": "1.0"
+    }
+  }
+}

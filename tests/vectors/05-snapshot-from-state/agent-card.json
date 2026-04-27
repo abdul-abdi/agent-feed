@@ -1,0 +1,22 @@
+{
+  "id": "did:web:vector.example",
+  "spec-version": 0,
+  "generated-at": "2026-04-27T12:00:00Z",
+  "endpoints": [
+    {
+      "endpoint-id": "orders-api",
+      "endpoint": "/api/orders",
+      "protocol": "rest",
+      "version": "1.0",
+      "deprecated": null
+    }
+  ],
+  "by-protocol": {
+    "rest": "orders-api"
+  },
+  "feed-status": "active",
+  "signature": {
+    "algorithm": "ed25519",
+    "value": "Px_qaFBPR8vi4JT-eneyhETSLDZoUP2CsekZUTUHTSE3ulFt0qC6jvFUkVk5rmDk7diAGj-oJmC9V02VbK_6Dg"
+  }
+}

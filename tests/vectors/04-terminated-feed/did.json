@@ -1,0 +1,11 @@
+{
+  "id": "did:web:vector.example",
+  "verificationMethod": [
+    {
+      "id": "did:web:vector.example#key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:vector.example",
+      "publicKeyMultibase": "un--yb4lX6GWiES-k2ceSngVeg3EeAZXUn0trC0yz20M"
+    }
+  ]
+}

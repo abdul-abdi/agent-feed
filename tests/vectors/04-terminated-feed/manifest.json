@@ -1,0 +1,13 @@
+{
+  "name": "04-terminated-feed",
+  "description": "Feed with status terminated. Reader MUST drop trust; canonical endpoint lookup returns undefined.",
+  "kind": "feed",
+  "expect": {
+    "feedStatus": "terminated",
+    "verifiedEntryCount": 1,
+    "canonicalEndpoint": {
+      "protocol": "rest",
+      "expected": null
+    }
+  }
+}

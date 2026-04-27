@@ -1,0 +1,17 @@
+{
+  "name": "02-single-endpoint-announcement",
+  "description": "One endpoint-announcement entry. Reader resolves canonical endpoint.",
+  "kind": "feed",
+  "expect": {
+    "feedStatus": "active",
+    "verifiedEntryCount": 1,
+    "canonicalEndpoint": {
+      "protocol": "rest",
+      "expected": "/api/orders"
+    },
+    "schemaVersion": {
+      "endpointId": "orders-api",
+      "expected": "1.0"
+    }
+  }
+}
