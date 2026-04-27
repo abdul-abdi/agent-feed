@@ -2,7 +2,7 @@
 
 > A signed announcement plane for the agentic web. Sites publish at `/.well-known/agent-feed.xml`; agents stop breaking silently when schemas change.
 
-**Status:** v0 reference implementation. Spec, library, CLI, and end-to-end demo. Built in 2026-04 against the verdict of a roundtable (pg + carmack + taleb + hickey).
+**Status:** v0 reference implementation, three publisher adapters (Next.js, FastAPI, Cloudflare Worker), search-engine aggregator, IETF draft, MCP SEP. Built in 2026-04 against the verdict of a roundtable (pg + carmack + taleb + hickey).
 
 ## Why this exists
 
@@ -14,9 +14,16 @@ Agents in production break silently when sites change their API schema or move e
 
 ```bash
 bun install
-bun test                          # 31 conformance tests
+bun test                          # 55 tests across spec, crypto, feed, reader, snapshot, recovery, vectors, lint, aggregator
+bash scripts/full-demo.sh         # full end-to-end: schema-change survival → aggregator crawl → search → lint → stats
+```
+
+Or piecewise:
+
+```bash
 bun examples/publisher-fixture.ts &
-bun examples/consumer-demo.ts     # watch an agent survive a schema change
+bun examples/consumer-demo.ts                            # watch an agent survive a schema change
+PORT=4200 bun apps/aggregator/src/server.ts              # the search engine — open http://localhost:4200
 ```
 
 You should see:
@@ -115,15 +122,17 @@ Implementation plan: [`docs/plans/2026-04-27-agent-feed-v0.md`](./docs/plans/202
 
 ## Roadmap
 
-See [ROADMAP.md](./ROADMAP.md) — four tiers from "close the loop" through "the temporal layer of the agentic web," every item carrying explicit kill-criteria.
+See [ROADMAP.md](./ROADMAP.md) — four tiers, every item with explicit kill-criteria. Shipped items move to [CHANGELOG.md](./CHANGELOG.md) per the roadmap discipline.
 
-Quick orientation:
+**Shipped 2026-04-27:**
 
-- **v0** (this): spec + reference reader + signing CLI + fixture demo. Stable.
-- **v0.1:** snapshot artifact, WebSub push, did:web key rotation, conformance vectors.
-- **v0.2:** Next.js / FastAPI / Cloudflare Worker adapters, hosted conformance checker, hosted aggregator.
-- **v0.3:** IETF draft, MCP SEP, A2A extension, cross-language readers (Rust/Python/Go), formal model.
-- **v1.0+ ambitions:** the temporal layer of the agentic web; trust substrate for agent payments; cross-protocol convergence; public deprecation ledger; 404-killer; IDE + browser integration; time-travel debugging; ML training corpus; regulatory wedge; agentic-web archive.org.
+- v0 reference: spec + library + CLI + fixture demo
+- v0.1 partial: `agent-card.json` snapshot, conformance vectors, `agent-feed lint`
+- v0.2 partial: `@agent-feed/next` (44 LOC), `agent-feed-fastapi` (cross-language verified), `@agent-feed/cloudflare-worker`, **the search-engine aggregator** (SQLite + FTS5 + REST + Web UI)
+- v0.3 partial: IETF draft (`docs/IETF-DRAFT.md`, 2691 lines), MCP SEP (`docs/MCP-SEP-agent-feed.md`)
+- v1.0+ first bet: the 404-killer (`withFeedRecovery`)
+
+**Still ahead:** WebSub push, key rotation, the marketing-grade conformance checker site, A2A extension, Rust + Go ports, formal model, real-world feed corpus, and most of Tier 4 (which require the protocol to _exist in the wild_, not just in this repo).
 
 ## Stewardship
 
