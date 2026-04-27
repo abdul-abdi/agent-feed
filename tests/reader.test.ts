@@ -162,9 +162,9 @@ test("disagreement: live response missing announced field fires mismatch with fa
   });
 
   expect(events).toHaveLength(1);
-  expect(events[0].expectedVersion).toBe("1.1");
-  expect(events[0].fallbackVersion).toBe("1.0");
-  expect(events[0].observedDiscrepancy.expectedButMissing).toEqual([
+  expect(events[0]!.expectedVersion).toBe("1.1");
+  expect(events[0]!.fallbackVersion).toBe("1.0");
+  expect(events[0]!.observedDiscrepancy.expectedButMissing).toEqual([
     "currency",
   ]);
 });
