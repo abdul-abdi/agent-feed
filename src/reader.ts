@@ -260,6 +260,26 @@ export class Reader {
     return this.origins.get(origin)?.trusted ?? true;
   }
 
+  replacementFor(
+    origin: string,
+    url: string,
+    now: Date = new Date(),
+  ): string | undefined {
+    const s = this.origins.get(origin);
+    if (!s || !s.trusted) return undefined;
+    for (const ep of s.endpoints.values()) {
+      if (
+        ep.url === url &&
+        ep.deprecated &&
+        new Date(ep.deprecated.sunset) <= now
+      ) {
+        if (!ep.deprecated.replacement) return undefined;
+        return this.resolveEndpointUrl(s, ep.deprecated.replacement, now);
+      }
+    }
+    return undefined;
+  }
+
   snapshot(
     origin: string,
     opts: { id: string; generatedAt?: string },

@@ -35,8 +35,6 @@ class BuildFeedInput(NamedTuple):
 
 
 def canonicalize(v: Any) -> str:
-    """Canonical JSON per §6.2: sorted keys, no whitespace, reject non-finite."""
-
     def walk(x):
         if x is None or isinstance(x, bool):
             return x
@@ -46,9 +44,7 @@ def canonicalize(v: Any) -> str:
             return x
         if isinstance(x, list):
             return [walk(i) for i in x]
-        if isinstance(x, dict):
-            return {k: walk(x[k]) for k in sorted(x.keys())}
-        return x
+        return {k: walk(x[k]) for k in sorted(x.keys())} if isinstance(x, dict) else x
 
     return json.dumps(
         walk(v), separators=(",", ":"), sort_keys=True, ensure_ascii=False
@@ -108,7 +104,6 @@ def did_document_from_keypair(origin: str, keypair: Keypair) -> dict:
 
 
 def build_feed(inp: BuildFeedInput) -> str:
-    """Build a signed Atom feed per agent-feed §6."""
     ET.register_namespace("", ATOM_NS)
     ET.register_namespace("af", NS)
     feed = ET.Element("feed", xmlns=ATOM_NS)
@@ -145,3 +140,61 @@ def build_feed(inp: BuildFeedInput) -> str:
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(
         feed, encoding="unicode"
     )
+
+
+def mount(app, cfg):
+    from dataclasses import dataclass, field
+    from datetime import datetime, timezone
+    from fastapi import APIRouter
+    from fastapi.responses import Response
+
+    @dataclass
+    class AgentFeedConfig:
+        origin: str
+        entries: list[Entry]
+        keypair: Keypair
+        feed_status: FeedStatus = "active"
+        spec_version: int = 0
+        migrated_to: str | None = None
+        feed_id: str = field(default="")
+        title: str = field(default="")
+        updated: str = field(default="")
+
+        def __post_init__(self):
+            if not self.feed_id:
+                self.feed_id = f"urn:af:{self.origin}:feed"
+            if not self.title:
+                self.title = "Agent Feed"
+            if not self.updated:
+                self.updated = (
+                    self.entries[-1].updated
+                    if self.entries
+                    else datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+                )
+
+    router = APIRouter()
+    did_doc = did_document_from_keypair(cfg.origin, cfg.keypair)
+
+    @router.get("/.well-known/did.json")
+    async def did():
+        return did_doc
+
+    @router.get("/.well-known/agent-feed.xml")
+    async def feed():
+        return Response(
+            build_feed(
+                BuildFeedInput(
+                    cfg.feed_id,
+                    cfg.title,
+                    cfg.updated,
+                    cfg.feed_status,
+                    cfg.spec_version,
+                    cfg.entries,
+                    cfg.keypair,
+                    cfg.migrated_to,
+                )
+            ),
+            media_type="application/atom+xml",
+        )
+
+    app.include_router(router)

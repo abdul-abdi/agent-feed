@@ -25,3 +25,4 @@ export {
   type SignedSnapshot,
 } from "./feed.ts";
 export { Reader, type MismatchDetails } from "./reader.ts";
+export { withFeedRecovery } from "./recovery.ts";
