@@ -10,6 +10,9 @@ import {
   publicKeyFromDid,
   b64u,
   fromB64u,
+  buildSnapshot,
+  Reader,
+  lintRemote,
   type Entry,
   type EntryType,
   type DidDocument,
@@ -137,6 +140,72 @@ program
     console.log(`spec-version:   ${parsed.specVersion}`);
     console.log(`entries:        ${ok}/${parsed.entries.length} verified`);
     if (ok < parsed.entries.length) process.exit(2);
+  });
+
+program
+  .command("snapshot")
+  .description("Generate a signed agent-card.json from the current feed state")
+  .requiredOption(
+    "-d, --dir <path>",
+    "directory containing did.json + private.key + agent-feed.xml",
+  )
+  .requiredOption(
+    "-o, --origin <url>",
+    "origin URL the feed is published under",
+  )
+  .action(async (opts) => {
+    const didDoc: DidDocument = JSON.parse(
+      await readFile(join(opts.dir, "did.json"), "utf8"),
+    );
+    const privKey = fromB64u(
+      (await readFile(join(opts.dir, "private.key"), "utf8")).trim(),
+    );
+    const pubKey = publicKeyFromDid(didDoc);
+    const xml = await readFile(join(opts.dir, "agent-feed.xml"), "utf8");
+
+    const reader = new Reader();
+    await reader.ingest({ origin: opts.origin, xml, didDocument: didDoc });
+    const snap = reader.snapshot(opts.origin, { id: didDoc.id });
+    if (!snap) {
+      console.error(
+        `origin ${opts.origin} produced no snapshot — feed may have been terminated`,
+      );
+      process.exit(1);
+    }
+
+    const text = await buildSnapshot(snap, {
+      publicKey: pubKey,
+      privateKey: privKey,
+    });
+    await writeFile(join(opts.dir, "agent-card.json"), text);
+    console.log(
+      `Wrote ${join(opts.dir, "agent-card.json")} (${snap.endpoints.length} endpoints)`,
+    );
+  });
+
+program
+  .command("lint")
+  .description("Fetch a remote feed and report a graded conformance check")
+  .requiredOption("-o, --origin <url>", "origin URL")
+  .action(async (opts) => {
+    const report = await lintRemote(opts.origin);
+    console.log(`origin:           ${opts.origin}`);
+    console.log(`feed-status:      ${report.feedStatus}`);
+    console.log(`spec-version:     ${report.specVersion}`);
+    console.log(
+      `entries:          ${report.verifiedEntries}/${report.totalEntries} verified`,
+    );
+    if (report.errors.length) {
+      console.log(`errors (${report.errors.length}):`);
+      for (const e of report.errors) console.log(`  ✗ ${e.code}: ${e.detail}`);
+    }
+    if (report.warnings.length) {
+      console.log(`warnings (${report.warnings.length}):`);
+      for (const w of report.warnings)
+        console.log(`  ! ${w.code}: ${w.detail}`);
+    }
+    console.log(report.ok ? "✓ ok" : "✗ not conformant");
+    if (!report.ok) process.exit(1);
   });
 
 program.parse();

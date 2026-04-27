@@ -26,3 +26,9 @@ export {
 } from "./feed.ts";
 export { Reader, type MismatchDetails } from "./reader.ts";
 export { withFeedRecovery } from "./recovery.ts";
+export {
+  lintFeed,
+  lintRemote,
+  type LintReport,
+  type LintMessage,
+} from "./lint.ts";
