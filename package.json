@@ -1,0 +1,25 @@
+{
+  "name": "agent-feed",
+  "version": "0.0.0",
+  "description": "Signed announcement plane for the agentic web — RSS-for-agents.",
+  "type": "module",
+  "main": "src/index.ts",
+  "bin": {
+    "agent-feed": "src/cli.ts"
+  },
+  "scripts": {
+    "test": "bun test",
+    "demo": "bun examples/consumer-demo.ts",
+    "fixture": "bun examples/publisher-fixture.ts"
+  },
+  "dependencies": {
+    "@noble/ed25519": "^2.1.0",
+    "@noble/hashes": "^1.4.0",
+    "fast-xml-parser": "^4.4.0",
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.4.0"
+  }
+}
