@@ -1,0 +1,17 @@
+{
+  "name": "@agent-feed/next",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Next.js App Router adapter for agent-feed protocol",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "peerDependencies": {
+    "next": "^14 || ^15"
+  },
+  "dependencies": {
+    "agent-feed": "file:../.."
+  }
+}

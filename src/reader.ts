@@ -1,4 +1,11 @@
-import { parseFeed, type Entry, type EntryType } from "./feed.ts";
+import {
+  parseFeed,
+  type Entry,
+  type EntryType,
+  type FeedStatus,
+  type Snapshot,
+  type SnapshotEndpoint,
+} from "./feed.ts";
 import { type DidDocument } from "./crypto.ts";
 
 interface MigrationDelta {
@@ -251,6 +258,36 @@ export class Reader {
 
   isTrusted(origin: string): boolean {
     return this.origins.get(origin)?.trusted ?? true;
+  }
+
+  snapshot(
+    origin: string,
+    opts: { id: string; generatedAt?: string },
+  ): Snapshot | undefined {
+    const s = this.origins.get(origin);
+    if (!s) return undefined;
+    const endpoints: SnapshotEndpoint[] = [...s.endpoints.entries()].map(
+      ([id, ep]) => ({
+        "endpoint-id": id,
+        endpoint: ep.url,
+        protocol: ep.protocol,
+        version: ep.version,
+        deprecated: ep.deprecated ?? null,
+      }),
+    );
+    const status: FeedStatus = !s.trusted
+      ? s.migratedTo
+        ? "migrated"
+        : "terminated"
+      : "active";
+    return {
+      id: opts.id,
+      "spec-version": 0,
+      "generated-at": opts.generatedAt ?? new Date().toISOString(),
+      endpoints,
+      "by-protocol": Object.fromEntries(s.byProtocol),
+      "feed-status": status,
+    };
   }
 
   observeLiveResponse(input: {

@@ -1,0 +1,13 @@
+name = "agent-feed-worker"
+type = "service"
+account_id = ""
+workers_dev = true
+main = "src/worker.ts"
+
+[env.production]
+name = "agent-feed"
+
+[[kv_namespaces]]
+binding = "AGENT_FEED_KEYS"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

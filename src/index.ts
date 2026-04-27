@@ -14,9 +14,14 @@ export {
 export {
   buildFeed,
   parseFeed,
+  buildSnapshot,
+  parseSnapshot,
   type Entry,
   type EntryType,
   type FeedStatus,
   type ParsedFeed,
+  type Snapshot,
+  type SnapshotEndpoint,
+  type SignedSnapshot,
 } from "./feed.ts";
 export { Reader, type MismatchDetails } from "./reader.ts";

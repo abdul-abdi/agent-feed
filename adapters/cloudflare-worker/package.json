@@ -1,0 +1,16 @@
+{
+  "name": "@agent-feed/cloudflare-worker",
+  "version": "0.0.0",
+  "description": "Cloudflare Worker adapter for agent-feed",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "agent-feed": "file:../../"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

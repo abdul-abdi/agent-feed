@@ -78,6 +78,55 @@ export async function buildFeed(input: BuildFeedInput): Promise<string> {
   });
 }
 
+export interface SnapshotEndpoint {
+  "endpoint-id": string;
+  endpoint: string;
+  protocol: string;
+  version: string;
+  deprecated: { sunset: string; replacement?: string } | null;
+}
+
+export interface Snapshot {
+  id: string;
+  "spec-version": number;
+  "generated-at": string;
+  endpoints: SnapshotEndpoint[];
+  "by-protocol": Record<string, string>;
+  "feed-status": FeedStatus;
+}
+
+export interface SignedSnapshot extends Snapshot {
+  signature: { algorithm: "ed25519"; value: string };
+}
+
+export async function buildSnapshot(
+  snapshot: Snapshot,
+  keypair: Keypair,
+): Promise<string> {
+  const sig = await signBytes(
+    keypair.privateKey,
+    new TextEncoder().encode(canonicalize(snapshot)),
+  );
+  const signed: SignedSnapshot = {
+    ...snapshot,
+    signature: { algorithm: "ed25519", value: b64u(sig) },
+  };
+  return JSON.stringify(signed, null, 2);
+}
+
+export async function parseSnapshot(
+  text: string,
+  opts: { didDocument: DidDocument },
+): Promise<{ snapshot: Snapshot; verified: boolean }> {
+  const { signature, ...snapshot } = JSON.parse(text) as SignedSnapshot;
+  const verified = await verifyBytes(
+    publicKeyFromDid(opts.didDocument),
+    new TextEncoder().encode(canonicalize(snapshot)),
+    fromB64u(signature.value),
+  );
+  return { snapshot: snapshot as Snapshot, verified };
+}
+
 export interface VerifiedEntry {
   entry: Entry;
   verified: boolean;

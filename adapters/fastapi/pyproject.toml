@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-feed-fastapi"
+version = "0.0.0"
+description = "FastAPI adapter for agent-feed protocol v0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "cryptography>=42",
+]
