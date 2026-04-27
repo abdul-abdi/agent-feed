@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>agent-feed search</title>
+    <style>
+      :root {
+        --bg: #0b0d10;
+        --fg: #e6e6e6;
+        --muted: #888;
+        --accent: #7ee787;
+        --warn: #f0b232;
+        --bad: #ff6b6b;
+        --card: #14181d;
+        --border: #232a31;
+      }
+      * { box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font: 14px/1.5 ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+        margin: 0;
+        padding: 32px;
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      h1 { font-size: 18px; font-weight: 500; margin: 0 0 4px; }
+      h1 .accent { color: var(--accent); }
+      .sub { color: var(--muted); margin-bottom: 24px; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; }
+      input, select, button {
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        font-family: inherit;
+        font-size: 13px;
+        padding: 8px 10px;
+        border-radius: 4px;
+      }
+      input:focus, select:focus { outline: none; border-color: var(--accent); }
+      button { cursor: pointer; }
+      button:hover { background: #1a2026; }
+      .grow { flex: 1 1 200px; }
+      .card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 12px; margin-top: 8px; }
+      .pill { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 11px; margin-right: 6px; }
+      .pill-announce { background: #1f3a26; color: var(--accent); }
+      .pill-schema  { background: #3a2a14; color: var(--warn); }
+      .pill-deprec  { background: #3a1414; color: var(--bad); }
+      .meta { color: var(--muted); font-size: 12px; }
+      pre { background: #08090b; padding: 8px; border-radius: 3px; overflow-x: auto; margin: 8px 0 0; font-size: 12px; }
+      .tabs { display: flex; gap: 4px; margin: 24px 0 4px; border-bottom: 1px solid var(--border); }
+      .tab { padding: 8px 12px; cursor: pointer; border-bottom: 2px solid transparent; }
+      .tab.active { border-bottom-color: var(--accent); color: var(--accent); }
+      .empty { color: var(--muted); font-style: italic; padding: 16px; }
+    </style>
+  </head>
+  <body>
+    <h1><span class="accent">agent-feed</span> · search the agentic web</h1>
+    <div class="sub">Signed announcements from origins running agent-feed v0.</div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="search">Search</div>
+      <div class="tab" data-tab="origins">Origins</div>
+      <div class="tab" data-tab="lint">Lint</div>
+      <div class="tab" data-tab="crawl">Add origin</div>
+    </div>
+
+    <!-- Search -->
+    <section data-pane="search">
+      <div class="row" style="margin-top: 16px;">
+        <input id="q" class="grow" type="search" placeholder="full-text query (e.g. currency, /orders, schema)" />
+        <select id="type">
+          <option value="">any type</option>
+          <option value="endpoint-announcement">endpoint-announcement</option>
+          <option value="schema-change">schema-change</option>
+          <option value="deprecation">deprecation</option>
+        </select>
+        <input id="endpointId" placeholder="endpoint-id (optional)" style="width: 200px;" />
+        <button id="search-btn">search</button>
+      </div>
+      <div id="results"></div>
+    </section>
+
+    <!-- Origins -->
+    <section data-pane="origins" hidden>
+      <div class="row" style="margin-top: 16px;">
+        <button id="origins-refresh">refresh</button>
+      </div>
+      <div id="origins-list"></div>
+    </section>
+
+    <!-- Lint -->
+    <section data-pane="lint" hidden>
+      <div class="row" style="margin-top: 16px;">
+        <input id="lint-origin" class="grow" placeholder="https://example.com" />
+        <button id="lint-btn">lint</button>
+      </div>
+      <div id="lint-result"></div>
+    </section>
+
+    <!-- Crawl -->
+    <section data-pane="crawl" hidden>
+      <div class="row" style="margin-top: 16px;">
+        <input id="crawl-origin" class="grow" placeholder="https://example.com" />
+        <button id="crawl-btn">crawl now</button>
+      </div>
+      <div id="crawl-result"></div>
+    </section>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => [...document.querySelectorAll(s)];
+
+      // tabs
+      $$(".tab").forEach((t) =>
+        t.addEventListener("click", () => {
+          $$(".tab").forEach((x) => x.classList.toggle("active", x === t));
+          $$("section[data-pane]").forEach((s) => (s.hidden = s.dataset.pane !== t.dataset.tab));
+        }),
+      );
+
+      function pillClass(type) {
+        return type === "schema-change" ? "pill-schema" : type === "deprecation" ? "pill-deprec" : "pill-announce";
+      }
+
+      function renderHits(hits, target) {
+        if (!hits.length) {
+          target.innerHTML = '<div class="empty">no results</div>';
+          return;
+        }
+        target.innerHTML = hits
+          .map(
+            (h) => `
+          <div class="card">
+            <div><span class="pill ${pillClass(h.type)}">${h.type}</span><b>${h.origin}</b></div>
+            <div class="meta">${h.entryId} · ${h.updated}</div>
+            <pre>${escape(JSON.stringify(h.payload, null, 2))}</pre>
+          </div>`,
+          )
+          .join("");
+      }
+      function escape(s) {
+        return s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+      }
+
+      async function search() {
+        const params = new URLSearchParams();
+        const q = $("#q").value.trim();
+        if (q) params.set("q", q);
+        const t = $("#type").value;
+        if (t) params.set("type", t);
+        const e = $("#endpointId").value.trim();
+        if (e) params.set("endpointId", e);
+        const r = await fetch(`/api/search?${params}`);
+        const data = await r.json();
+        renderHits(data.hits || [], $("#results"));
+      }
+      $("#search-btn").addEventListener("click", search);
+      $("#q").addEventListener("keydown", (e) => e.key === "Enter" && search());
+
+      async function loadOrigins() {
+        const r = await fetch("/api/origins");
+        const { origins } = await r.json();
+        if (!origins.length) {
+          $("#origins-list").innerHTML = '<div class="empty">no origins indexed yet</div>';
+          return;
+        }
+        $("#origins-list").innerHTML = origins
+          .map(
+            (o) => `
+          <div class="card">
+            <div><b>${o.origin}</b> <span class="meta">spec-version=${o.specVersion} feed-status=${o.feedStatus}</span></div>
+            <div class="meta">last ingested ${new Date(o.lastIngested).toISOString()}</div>
+          </div>`,
+          )
+          .join("");
+      }
+      $("#origins-refresh").addEventListener("click", loadOrigins);
+
+      $("#lint-btn").addEventListener("click", async () => {
+        const origin = $("#lint-origin").value.trim();
+        if (!origin) return;
+        $("#lint-result").innerHTML = '<div class="empty">linting…</div>';
+        const r = await fetch(`/api/lint?origin=${encodeURIComponent(origin)}`);
+        const data = await r.json();
+        $("#lint-result").innerHTML = `<div class="card"><pre>${escape(JSON.stringify(data, null, 2))}</pre></div>`;
+      });
+
+      $("#crawl-btn").addEventListener("click", async () => {
+        const origin = $("#crawl-origin").value.trim();
+        if (!origin) return;
+        $("#crawl-result").innerHTML = '<div class="empty">crawling…</div>';
+        const r = await fetch("/api/crawl", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ origin }),
+        });
+        const data = await r.json();
+        $("#crawl-result").innerHTML = `<div class="card"><pre>${escape(JSON.stringify(data, null, 2))}</pre></div>`;
+      });
+
+      // Auto-load
+      search();
+      loadOrigins();
+    </script>
+  </body>
+</html>

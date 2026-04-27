@@ -1,0 +1,13 @@
+{
+  "name": "agent-feed-aggregator",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun src/server.ts",
+    "test": "bun test tests/"
+  },
+  "dependencies": {
+    "agent-feed": "file:../.."
+  }
+}
