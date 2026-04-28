@@ -2,7 +2,7 @@
 
 > A signed announcement plane for the agentic web. Sites publish at `/.well-known/agent-feed.xml`; agents stop breaking silently when schemas change.
 
-**Status:** v0 reference implementation, three publisher adapters (Next.js, FastAPI, Cloudflare Worker), search-engine aggregator, IETF draft, MCP SEP. Built in 2026-04 against the verdict of a roundtable (pg + carmack + taleb + hickey).
+**Status:** v0 reference implementation, three publisher adapters (Next.js, FastAPI, Cloudflare Worker), search-engine aggregator, IETF draft, MCP SEP, **agent-corpus** observatory (separate scraper-plane indexing 2,700+ live agent-metadata records from MCP registry / A2A registry / GitHub README catalogs with cross-source divergence detection). Built 2026-04 against two roundtables (pg+carmack+taleb+hickey for the protocol; hickey+carmack+taleb+karpathy for the corpus).
 
 ## Why this exists
 
