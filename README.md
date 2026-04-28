@@ -2,9 +2,12 @@
 
 > **The agentic web's git log.** A signed, append-only announcement layer at `/.well-known/agent-feed.xml`, plus a public observatory of how the existing ecosystem disagrees with itself.
 
+**[Live site → abdul-abdi.github.io/agent-feed](https://abdul-abdi.github.io/agent-feed/)** · [Drift dashboard](https://abdul-abdi.github.io/agent-feed/dashboard.html) · [SPEC.md](https://abdul-abdi.github.io/agent-feed/spec.html) · [IETF draft](https://abdul-abdi.github.io/agent-feed/ietf-draft.html) · [MCP SEP](https://abdul-abdi.github.io/agent-feed/mcp-sep.html)
+
+[![tests](https://github.com/abdul-abdi/agent-feed/actions/workflows/test.yml/badge.svg)](https://github.com/abdul-abdi/agent-feed/actions/workflows/test.yml)
+[![pages](https://github.com/abdul-abdi/agent-feed/actions/workflows/pages.yml/badge.svg)](https://github.com/abdul-abdi/agent-feed/actions/workflows/pages.yml)
 [![status: v0](https://img.shields.io/badge/status-v0-7ee787?style=flat-square)](./CHANGELOG.md)
 [![spec: 1190 lines](https://img.shields.io/badge/spec-1190%20lines-58a6ff?style=flat-square)](./SPEC.md)
-[![tests: 78/78](https://img.shields.io/badge/tests-78%2F78-7ee787?style=flat-square)](#)
 [![ietf: draft-00](https://img.shields.io/badge/ietf-draft--abdi--agent--feed--00-58a6ff?style=flat-square)](./docs/IETF-DRAFT.md)
 [![license: MIT](https://img.shields.io/badge/license-MIT-7d8590?style=flat-square)](./LICENSE)
 
@@ -15,6 +18,10 @@ Agent endpoints in 2026 are described across MCP server cards, A2A registries, a
 ---
 
 ## See it
+
+**Live**: <https://abdul-abdi.github.io/agent-feed/> — homepage, full SPEC viewer, IETF draft, MCP SEP, drift dashboard (in `[STATIC DEMO]` mode by default; configure a backend to make it live, see below).
+
+**Locally**, with a real backend:
 
 ```bash
 bun install
@@ -175,6 +182,23 @@ See [ROADMAP.md](./ROADMAP.md) — four tiers, every item has explicit kill-crit
 - **Not a status page.** Operational telemetry has different time-constants and consumers.
 - **Not a policy engine.** Pricing, rate limits, ToS belong in a separate slow-changing document.
 - **Not the agentic web.** It's a layer, not a runtime. The web doesn't live in DNS; this doesn't either.
+
+## Hosting your own backend
+
+The web app is fully static and lives on GitHub Pages. The drift dashboard's _live_ mode requires the corpus app reachable somewhere on the public internet. Two ready-to-go paths:
+
+```bash
+# Fly.io (recommended — Bun-native, persistent volume for SQLite)
+fly launch --no-deploy --copy-config        # uses apps/corpus/fly.toml
+fly volumes create corpus_data --size 1
+fly deploy
+
+# Or Docker anywhere
+docker build -f apps/corpus/Dockerfile -t agent-feed-corpus .
+docker run -p 4300:4300 -v $PWD/data:/data agent-feed-corpus
+```
+
+After deploy, point the dashboard at it by setting `window.__CORPUS_ORIGIN__ = "https://your-corpus-host"` in a `<script>` tag before the dashboard's existing inline script. The live `[STATIC DEMO]` banner disappears and the form starts hitting the real API.
 
 ## Stewardship
 
