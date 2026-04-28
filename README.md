@@ -1,54 +1,109 @@
 # agent-feed
 
-> A signed announcement plane for the agentic web. Sites publish at `/.well-known/agent-feed.xml`; agents stop breaking silently when schemas change.
+> **The agentic web's git log.** A signed, append-only announcement layer at `/.well-known/agent-feed.xml`, plus a public observatory of how the existing ecosystem disagrees with itself.
 
-**Status:** v0 reference implementation, three publisher adapters (Next.js, FastAPI, Cloudflare Worker), search-engine aggregator, IETF draft, MCP SEP, **agent-corpus** observatory (separate scraper-plane indexing 2,700+ live agent-metadata records from MCP registry / A2A registry / GitHub README catalogs with cross-source divergence detection). Built 2026-04 against two roundtables (pg+carmack+taleb+hickey for the protocol; hickey+carmack+taleb+karpathy for the corpus).
+[![status: v0](https://img.shields.io/badge/status-v0-7ee787?style=flat-square)](./CHANGELOG.md)
+[![spec: 1190 lines](https://img.shields.io/badge/spec-1190%20lines-58a6ff?style=flat-square)](./SPEC.md)
+[![tests: 78/78](https://img.shields.io/badge/tests-78%2F78-7ee787?style=flat-square)](#)
+[![ietf: draft-00](https://img.shields.io/badge/ietf-draft--abdi--agent--feed--00-58a6ff?style=flat-square)](./docs/IETF-DRAFT.md)
+[![license: MIT](https://img.shields.io/badge/license-MIT-7d8590?style=flat-square)](./LICENSE)
 
-## Why this exists
+Agent endpoints in 2026 are described across MCP server cards, A2A registries, agents.json, llms.txt, and a half-dozen GitHub catalogs. They drift. They disagree. When an API mutates underneath an agent, the agent breaks silently — there is no `robots.txt`-equivalent for telling agents the world has moved.
 
-Agents in production break silently when sites change their API schema or move endpoints. There is no `robots.txt`-equivalent for telling agents the world has moved. MCP and A2A solved how agents _talk_; nothing solves how the world _announces it changed_.
+**This is that announcement layer** — plus a public observatory of where the existing standards already disagree about the same agent endpoint.
 
-`agent-feed` is the smallest possible thing that could solve this: a signed Atom feed at `/.well-known/agent-feed.xml`, identity via `did:web`, three entry types (`endpoint-announcement`, `schema-change`, `deprecation`). It complements MCP/A2A; it doesn't compete with them.
+---
 
-## Quickstart
+## See it
 
 ```bash
 bun install
-bun test                          # 55 tests across spec, crypto, feed, reader, snapshot, recovery, vectors, lint, aggregator
-bash scripts/full-demo.sh         # full end-to-end: schema-change survival → aggregator crawl → search → lint → stats
+PORT=4300 SEED=1 DB_PATH=/tmp/corpus.sqlite bun apps/corpus/src/server.ts &   # observatory + drift dashboard API
+PORT=4200 DB_PATH=/tmp/agg.sqlite           bun apps/aggregator/src/server.ts &   # signed-feed search engine
+PORT=4100                                   bun apps/web/src/server.ts &           # marketing site
+
+open http://localhost:4100
 ```
 
-Or piecewise:
+You'll see:
 
-```bash
-bun examples/publisher-fixture.ts &
-bun examples/consumer-demo.ts                            # watch an agent survive a schema change
-PORT=4200 bun apps/aggregator/src/server.ts              # the search engine — open http://localhost:4200
+- `http://localhost:4100/` — homepage with a real cross-source divergence in the hero
+- `http://localhost:4100/dashboard.html` — paste any GitHub repo or origin → see all observations + highlighted divergences + a draft signed-feed entry to publish
+- `http://localhost:4100/spec.html` — RFC-style SPEC viewer with sticky TOC
+- `http://localhost:4100/docs.html` — CLI / library / adapter quickstart
+- `http://localhost:4100/search.html` — signed-feed aggregator (honest empty state until publishers exist)
+
+The corpus seeds itself from real public sources on first boot: 500 servers from the official MCP registry, 50 agents from the A2A registry, 2,200+ entries from the awesome-mcp-servers GitHub catalog. After it warms up, paste `https://github.com/Auctalis/nocturnusai` into the dashboard — it'll show you the same server described two different ways by two different sources.
+
+## What's actually shipped
+
+|                                                                        | Status                                                                                                                                   |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Spec (v0)** — [SPEC.md](./SPEC.md)                                   | 1,190 lines · reader contract before producer schema                                                                                     |
+| **Library** — TypeScript reference                                     | `src/` · canonicalize · sign/verify · build/parse · Reader                                                                               |
+| **CLI** — `agent-feed init / sign / verify / lint / snapshot`          | [src/cli.ts](./src/cli.ts)                                                                                                               |
+| **Publisher adapters**                                                 | [Next.js](./adapters/next) · [FastAPI](./adapters/fastapi) (cross-language verified) · [Cloudflare Worker](./adapters/cloudflare-worker) |
+| **Aggregator** — search engine for signed feeds                        | [apps/aggregator](./apps/aggregator) · SQLite + FTS5 + REST + UI                                                                         |
+| **Corpus observatory** — third-party drift detection                   | [apps/corpus](./apps/corpus) · MCP registry + A2A registry + GitHub READMEs · cross-source divergence as headline                        |
+| **Web** — homepage + dashboard + spec + docs                           | [apps/web](./apps/web) · 5 pages from a Claude design handoff                                                                            |
+| **IETF draft**                                                         | [docs/IETF-DRAFT.md](./docs/IETF-DRAFT.md) · 2,691 lines · `draft-abdi-agent-feed-00`                                                    |
+| **MCP SEP** — `agent-feed` as the streaming layer beneath Server Cards | [docs/MCP-SEP-agent-feed.md](./docs/MCP-SEP-agent-feed.md)                                                                               |
+| **78 conformance tests** across 13 files                               | `bun test`                                                                                                                               |
+
+## Two doctrinal commitments
+
+### Snapshot ≠ stream
+
+Every origin gets two artifacts at two URLs:
+
+| URL                            | Mutability        | Answers                                 |
+| ------------------------------ | ----------------- | --------------------------------------- |
+| `/.well-known/agent-card.json` | mutable, replaced | "what is true _now_"                    |
+| `/.well-known/agent-feed.xml`  | append-only       | "how did we get here, and what changed" |
+
+You cannot reconstruct a stream from samples of state. They are different epistemic objects. Mixing them is why migrations break agents silently.
+
+### Signed ≠ observed
+
+Every fact in this system is one of two kinds:
+
+- **Signed** — first-party, `did:web`-rooted, Ed25519-attested. Testimony.
+- **Observed** — third-party, sourced, _always_ tagged `UNSIGNED`. Photograph.
+
+The protocol is signed-only. The corpus observatory is observed-only. Storage may join, surfaces never blur. Every observation row carries `source` + `sourceFetchedFrom` + `observedAt`. The dashboard renders unsigned tags loudly, in red, on every observation card. Differently-shaped facts; not a quality gradient.
+
+## How it composes with what you already run
+
+```
+agent ↔ agent     MCP · A2A · ANP                how agents talk
+agent ↔ api       OpenAPI · agents.json           how agents act
+agent ↔ context   llms.txt                        how agents read
+agent ↔ change    agent-feed                      how the world announces it moved   ← this project
 ```
 
-You should see:
+`agent-feed` is _the change-history layer_ beneath those protocols. Bring your own MCP / A2A / ANP / OpenAPI; we announce when they mutate. We are not trying to be the agentic web. The web doesn't live in DNS; we don't either.
 
+## Library quickstart
+
+```ts
+import { Reader, withFeedRecovery } from "agent-feed";
+
+const reader = new Reader();
+reader.on("mismatch", (e) => console.warn("schema mismatch", e));
+reader.on("unverified-entry", (e) => console.warn("bad signature", e));
+reader.on("feed-migrated", (e) => console.log("publisher moved", e.migratedTo));
+
+await reader.ingest({ origin, xml, didDocument });
+
+// after every live API call, hand the response to the reader so it can detect drift
+reader.observeLiveResponse({ origin, endpointId: "orders-api", body });
+
+// the 404-killer: when an agent gets a 404, consult the feed for a replacement
+const fetch2 = withFeedRecovery(reader, fetch, { origin });
+const res = await fetch2("https://api.example.com/v1/orders");
 ```
-Step 1: ingest feed
-   canonical /rest endpoint: /api/orders
-   schema version:           1.0
 
-Step 2: call /api/orders (agent expects v1.0)
-   got: {"id":"ord_1","total":100}
-
-Step 3: world changes — origin migrates v1.0 → v1.1, signs schema-change
-
-Step 4: re-ingest feed
-   schema version now:       1.1
-   migration hint:           {"add":["currency"]}
-
-Step 5: call /api/orders again, observe under new schema
-   got: {"id":"ord_1","total":100,"currency":"USD"}
-
-✓ agent survived schema change — currency field is present.
-```
-
-## CLI
+## CLI quickstart
 
 ```bash
 # Generate keypair + did.json + empty feed
@@ -63,81 +118,68 @@ bun src/cli.ts sign -d ./public/.well-known -t schema-change -p '{
   "to-version": "1.1"
 }'
 
-# Verify a remote feed
+# Verify and lint a remote feed
 bun src/cli.ts verify -o https://example.com
+bun src/cli.ts lint   -o https://example.com
 ```
 
-## Library
+## End-to-end demo (no servers needed)
 
-```ts
-import { Reader } from "agent-feed";
-
-const reader = new Reader();
-reader.on("mismatch", (e) => console.warn("schema mismatch", e));
-reader.on("unverified-entry", (e) => console.warn("bad signature", e));
-reader.on("feed-migrated", (e) => console.log("publisher moved", e.migratedTo));
-
-await reader.ingest({ origin, xml, didDocument });
-
-const endpoint = reader.canonicalEndpoint(origin, "rest");
-const version = reader.schemaVersion(origin, "orders-api");
-const migration = reader.migration(origin, "orders-api", "1.0", "1.1");
+```bash
+bash scripts/full-demo.sh
 ```
 
-After every live API call, hand the response to the reader so it can detect drift between the announced schema and the world:
+Prints a step-by-step walk: agent calls a v1.0 endpoint successfully → origin migrates to v1.1 and signs a `schema-change` entry → agent re-ingests the feed, reads the migration, and survives the breaking change without redeployment.
 
-```ts
-reader.observeLiveResponse({ origin, endpointId: "orders-api", body });
+## Repository layout
+
+```
+agent-feed/
+├── SPEC.md                  # the v0 protocol — 1,190 lines, reader contract first
+├── ROADMAP.md               # tiered, every item carries its kill-criterion
+├── CHANGELOG.md             # shipped items moved here per the roadmap discipline
+├── docs/
+│   ├── IETF-DRAFT.md        # draft-abdi-agent-feed-00
+│   ├── MCP-SEP-agent-feed.md # snapshot ≠ stream proposal
+│   └── design-brief.md       # design handoff brief
+├── src/                     # reference TypeScript library + CLI
+├── tests/                   # 78 tests + conformance vectors
+├── adapters/
+│   ├── next/                # @agent-feed/next  (44 LOC)
+│   ├── fastapi/             # agent-feed-fastapi (Python; cross-language verified)
+│   └── cloudflare-worker/   # @agent-feed/cloudflare-worker
+├── apps/
+│   ├── aggregator/          # signed-feed search engine — SQLite + FTS5
+│   ├── corpus/              # observatory — MCP registry + A2A + READMEs
+│   └── web/                 # homepage + dashboard + spec + docs (5 pages)
+├── examples/                # publisher fixture + consumer-survives-schema-change demo
+├── scripts/
+│   ├── full-demo.sh         # one-command end-to-end demo
+│   └── build-vectors.ts     # regenerate conformance vectors
+└── design materials/        # Claude-design handoff: source HTML/CSS for apps/web/
 ```
 
-The reader emits `mismatch` (with `expectedButMissing`, `observedButUnannounced`, `fallbackVersion`) when reality disagrees with the feed. It does not silently coerce, auto-rollback, or re-fetch — it reports facts and lets the agent decide.
+## Roadmap
 
-## Spec
+See [ROADMAP.md](./ROADMAP.md) — four tiers, every item has explicit kill-criteria. Shipped items move to [CHANGELOG.md](./CHANGELOG.md) per the roadmap discipline. Highlights:
 
-See [SPEC.md](./SPEC.md). Section ordering is deliberate:
-
-- **§2 Reader's behavioral contract** comes _first_, before the producer schema. Without a reader, the feed is a write-only fact stream with no epistemic status.
-- **§4 Resources** explains why the snapshot artifact (`agent-card.json` — current state) and the stream artifact (`agent-feed.xml` — history) are separate URLs and not braided.
-- **§10 Open issues** takes a position on each of the live divergences from the roundtable, instead of leaving them as questions.
-
-## Design choices (decided in roundtable, 2026-04-27)
-
-- **Polling-only in v0.** WebSub deferred until measured cost justifies it.
-- **Three entry types only:** `endpoint-announcement`, `schema-change`, `deprecation`. No status (different time-constants); no policy (different consumer profile).
-- **Detached Ed25519** over canonical JSON. Not HMAC. The signature covers the canonical payload bytes only — not the Atom envelope, title, or timestamps.
-- **Snapshot and stream are separate artifacts.** `agent-card.json` is "what is true now"; `agent-feed.xml` is "what became true and when." You cannot reconstruct the second from samples of the first.
-- **Reader's behavioral contract is specified before the producer schema.** Producer schema follows from reader behavior, not the other way around.
-- **`spec-version` field + `feed-status: terminated|migrated` kill switch in v0.** A publisher can revoke a feed without deleting it.
-
-Roundtable transcript: [`~/Developer/roundtables/2026-04-27-agent-pa-system.md`](../roundtables/2026-04-27-agent-pa-system.md).
-Concept page: [`~/Brain/wiki/concepts/agent-pa-system.md`](../../Brain/wiki/concepts/agent-pa-system.md).
-Implementation plan: [`docs/plans/2026-04-27-agent-feed-v0.md`](./docs/plans/2026-04-27-agent-feed-v0.md).
+- **Tier 1** (close the loop): WebSub push, did:web key rotation, HTTP `Cache-Control` honoring.
+- **Tier 2** (adoption): hosted conformance checker site, npm/JSR publish.
+- **Tier 3** (standards posture): IETF dialogue, MCP TC engagement, A2A extension, Rust + Go ports, formal TLA+ model.
+- **Tier 4** (the bets): the 30-year archive, the regulatory wedge, IDE/browser integration, ML training corpus, time-travel debugging — all gated on real-world signal.
 
 ## What this is not
 
 - **Not a registry.** No central index. Discovery is by origin URL.
-- **Not a discovery protocol.** MCP Server Cards / A2A Agent Cards already cover state-snapshot discovery; `agent-feed` is the temporal-history layer beneath them.
+- **Not a discovery protocol.** MCP Server Cards / A2A Agent Cards already cover state-snapshot discovery; agent-feed is the temporal-history layer beneath them.
 - **Not a status page.** Operational telemetry has different time-constants and consumers.
 - **Not a policy engine.** Pricing, rate limits, ToS belong in a separate slow-changing document.
-
-## Roadmap
-
-See [ROADMAP.md](./ROADMAP.md) — four tiers, every item with explicit kill-criteria. Shipped items move to [CHANGELOG.md](./CHANGELOG.md) per the roadmap discipline.
-
-**Shipped 2026-04-27:**
-
-- v0 reference: spec + library + CLI + fixture demo
-- v0.1 partial: `agent-card.json` snapshot, conformance vectors, `agent-feed lint`
-- v0.2 partial: `@agent-feed/next` (44 LOC), `agent-feed-fastapi` (cross-language verified), `@agent-feed/cloudflare-worker`, **the search-engine aggregator** (SQLite + FTS5 + REST + Web UI)
-- v0.3 partial: IETF draft (`docs/IETF-DRAFT.md`, 2691 lines), MCP SEP (`docs/MCP-SEP-agent-feed.md`)
-- v1.0+ first bet: the 404-killer (`withFeedRecovery`)
-
-**Still ahead:** WebSub push, key rotation, the marketing-grade conformance checker site, A2A extension, Rust + Go ports, formal model, real-world feed corpus, and most of Tier 4 (which require the protocol to _exist in the wild_, not just in this repo).
+- **Not the agentic web.** It's a layer, not a runtime. The web doesn't live in DNS; this doesn't either.
 
 ## Stewardship
 
-This repo is owned, not abandoned. The protocol is the gift; ongoing maintenance is the work. Bug reports and discussion welcome; PRs that change the spec require a roundtable.
+Independent. MIT-licensed. The two architecture roundtables that produced the trust-plane separation (`pg`+`carmack`+`taleb`+`hickey` for the protocol; `hickey`+`carmack`+`taleb`+`karpathy` for the corpus) are committed to this repo as design provenance. No company. No funding. No signup. `agent-feed.dev`, not `app.agent-feed.dev`.
 
 ## License
 
-MIT — to come. Treat as draft until then.
+[MIT](./LICENSE).

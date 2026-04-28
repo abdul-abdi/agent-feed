@@ -5,3 +5,7 @@ dist
 .env
 .fixture-keys/
 bun.lockb
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
