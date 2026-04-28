@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agent-feed — the agentic web's git log</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* page-specific */
+  .hero {
+    padding: var(--s-8) 0 var(--s-7);
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--s-7);
+    align-items: start;
+  }
+  @media (max-width: 1000px) { .hero { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  .hero-meta {
+    display: flex; align-items: center; gap: var(--s-3);
+    color: var(--muted); font-size: var(--fs-xs);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: var(--s-4);
+  }
+  .hero-meta .sep { color: var(--dim); }
+
+  .cta-row { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-top: var(--s-2); }
+
+  .hero-side {
+    display: flex; flex-direction: column; gap: var(--s-3);
+  }
+  .hero-caption {
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+
+  /* two-artifacts */
+  .artifact {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: var(--s-5);
+    display: flex; flex-direction: column; gap: var(--s-3);
+    min-height: 240px;
+  }
+  .artifact .head {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .artifact .url {
+    color: var(--signed); font-size: var(--fs-sm);
+  }
+  .artifact .icon {
+    width: 28px; height: 28px;
+    border: 1px solid var(--border-2);
+    display: inline-grid; place-items: center;
+    color: var(--fg-2);
+    font-size: 14px;
+  }
+  .artifact .desc { color: var(--fg-2); font-size: var(--fs-sm); }
+  .artifact .schema {
+    margin-top: auto;
+    padding-top: var(--s-3);
+    border-top: 1px dotted var(--border);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+  .artifact-snapshot { border-left: 2px solid var(--signed); }
+  .artifact-stream   { border-left: 2px solid var(--good); }
+
+  /* composes-with */
+  .badges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .badge {
+    padding: var(--s-4) var(--s-5);
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .badge:last-child { border-right: 0; }
+  .badge .n { font-weight: 600; color: var(--fg); }
+  .badge .l { color: var(--muted); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; }
+  @media (max-width: 900px) {
+    .badges { grid-template-columns: 1fr 1fr; }
+    .badge { border-right: 0; border-bottom: 1px solid var(--border); }
+    .badge:nth-child(odd) { border-right: 1px solid var(--border); }
+  }
+
+  /* conversion path */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .step {
+    padding: var(--s-4) var(--s-4);
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: var(--s-2);
+    position: relative;
+  }
+  .step:last-child { border-right: 0; }
+  .step .num {
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .step .title { font-weight: 600; color: var(--fg); font-size: var(--fs-sm); }
+  .step .body { color: var(--fg-2); font-size: var(--fs-sm); }
+  .step .body code { font-size: 12px; background: var(--bg-2); padding: 1px 6px; border: 1px solid var(--border); }
+  .step::after {
+    content: "→";
+    position: absolute; right: -8px; top: 18px;
+    color: var(--muted); background: var(--bg);
+    width: 16px; text-align: center;
+  }
+  .step:last-child::after { display: none; }
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: 0; }
+    .step::after { display: none; }
+  }
+
+  /* status checklist */
+  .status-list {
+    columns: 2;
+    column-gap: var(--s-6);
+    list-style: none; padding: 0; margin: 0;
+  }
+  .status-list li {
+    break-inside: avoid;
+    padding: var(--s-2) 0;
+    border-top: 1px dotted var(--border);
+    display: flex; align-items: baseline; gap: var(--s-3);
+    color: var(--fg-2);
+    font-size: var(--fs-sm);
+  }
+  .status-list li:first-child,
+  .status-list li:nth-child(5) { border-top: 0; }
+  .status-list .ok { color: var(--good); font-weight: 700; }
+  @media (max-width: 700px) { .status-list { columns: 1; } }
+
+  /* FAQ */
+  .faq details {
+    border-top: 1px solid var(--border);
+    padding: var(--s-4) 0;
+  }
+  .faq details:last-of-type { border-bottom: 1px solid var(--border); }
+  .faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--fg);
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--s-3);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+"; color: var(--muted); font-weight: 400; font-size: 18px;
+  }
+  .faq details[open] summary::after { content: "−"; }
+  .faq .a {
+    margin-top: var(--s-3);
+    color: var(--fg-2);
+    max-width: 720px;
+  }
+
+  /* big tagline diff aesthetic */
+  .tagline-line { display: block; }
+  .tagline-line + .tagline-line { margin-top: 4px; }
+</style>
+</head>
+<body data-density="default">
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>agent-feed</a>
+    <nav class="nav">
+      <a href="index.html" class="active">overview</a>
+      <a href="dashboard.html">drift dashboard</a>
+      <a href="search.html" class="nav-extra">aggregator</a>
+      <a href="spec.html">spec</a>
+      <a href="docs.html" class="nav-extra">docs</a>
+      <a href="https://github.com" style="color: var(--muted)">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div>
+      <div class="hero-meta">
+        <span>v0 protocol</span>
+        <span class="sep">/</span>
+        <span>shipped 2026-04-27</span>
+        <span class="sep">/</span>
+        <span>MIT</span>
+      </div>
+
+      <h1 class="hero-tagline">
+        <span class="tagline-line">The agentic web's <em class="em">git log</em>.</span>
+        <span class="tagline-line muted" style="font-weight:500; font-size:0.66em; letter-spacing:-0.01em;">And the place to see how it disagrees with itself.</span>
+      </h1>
+
+      <p class="hero-para">
+        Agent endpoints are described across MCP server cards, A2A registries,
+        agents.json, llms.txt, and a half-dozen GitHub catalogs. They drift.
+        They disagree. When an API mutates underneath an agent, the agent breaks
+        silently. <span class="fg-2">There is no robots.txt for telling agents the world has moved.</span>
+        This is that announcement layer — plus a public observatory of the
+        existing ecosystem's disagreements.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="dashboard.html">
+          Drift-check any agent endpoint <span class="arrow">→</span>
+        </a>
+        <a class="btn" href="spec.html">
+          Read the v0 spec <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div style="margin-top: var(--s-5); font-size: var(--fs-xs); color: var(--muted); letter-spacing: 0.04em;">
+        composes with
+        <code class="inline" style="margin: 0 4px;">MCP</code>
+        <code class="inline" style="margin: 0 4px;">A2A</code>
+        <code class="inline" style="margin: 0 4px;">ANP</code>
+        <code class="inline" style="margin: 0 4px;">OpenAPI</code>
+        ·  not a competitor
+      </div>
+    </div>
+
+    <!-- divergence-as-hero -->
+    <aside class="hero-side">
+      <div class="hero-caption">
+        <span class="pill pill-diverge"><span class="dot"></span>LIVE DIVERGENCE · DETECTED 04:21 UTC</span>
+      </div>
+
+      <article class="divergence" aria-label="Live cross-source divergence">
+        <header class="divergence-head">
+          <span class="glyph">≠</span>
+          <div class="col gap-1" style="flex:1;">
+            <div style="font-weight:600;">github.com/Auctalis/nocturnusai</div>
+            <div class="muted" style="font-size: var(--fs-xs); letter-spacing: 0.04em;">
+              same server · 2 sources · 2 fields disagree
+            </div>
+          </div>
+          <span class="pill pill-source">2 sources</span>
+        </header>
+
+        <div class="diff-row">
+          <div class="diff-field">≠ name</div>
+          <div class="diff-value">
+            <div class="src"><span class="pill pill-source">github-readme</span></div>
+            <div class="val">Auctalis/nocturnusai</div>
+          </div>
+          <div class="diff-value">
+            <div class="src"><span class="pill pill-source">mcp-registry</span></div>
+            <div class="val">ai.nocturnus/logic-server</div>
+          </div>
+        </div>
+
+        <div class="diff-row">
+          <div class="diff-field">≠ description</div>
+          <div class="diff-value">
+            <div class="src"><span class="pill pill-source">github-readme</span></div>
+            <div class="val">Deterministic reasoning engine for AI agent context compression. Extracts structured facts with logical inference, proof chains, and truth maintenance.</div>
+          </div>
+          <div class="diff-value">
+            <div class="src"><span class="pill pill-source">mcp-registry</span></div>
+            <div class="val">Agent reasoning, memory, and token-optimized context for AI applications.</div>
+          </div>
+        </div>
+
+        <footer style="display:flex; gap:var(--s-2); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--border); align-items:center;">
+          <span class="pill pill-unsigned">UNSIGNED</span>
+          <span class="muted" style="font-size: var(--fs-xs);">no authoritative feed at /.well-known/agent-feed.xml</span>
+          <a href="dashboard.html?o=Auctalis/nocturnusai" class="btn-link" style="margin-left:auto; font-size: var(--fs-xs);">open in dashboard →</a>
+        </footer>
+      </article>
+
+      <p class="hero-caption" style="line-height:1.55;">
+        This is real. Same server, two stories. The publisher doesn't see this
+        because no publisher reads themselves through a third-party index.
+      </p>
+    </aside>
+  </section>
+
+  <!-- ─── COUNTERS ───────────────────────────────────────── -->
+  <section style="padding-bottom: var(--s-7);">
+    <div class="counters" aria-label="Live corpus counters" id="counters">
+      <div class="counter">
+        <div class="l"><span class="pulse"></span>observations indexed</div>
+        <div class="n" data-counter="total">2,787</div>
+        <div class="muted" style="font-size: var(--fs-xs);">across 3 source adapters</div>
+      </div>
+      <div class="counter">
+        <div class="l">mcp-registry</div>
+        <div class="n" data-counter="mcp-registry">500</div>
+        <div class="muted" style="font-size: var(--fs-xs);">servers · refreshed 12m ago</div>
+      </div>
+      <div class="counter">
+        <div class="l">a2a-registry</div>
+        <div class="n" data-counter="a2a-registry">50</div>
+        <div class="muted" style="font-size: var(--fs-xs);">agents · refreshed 12m ago</div>
+      </div>
+      <div class="counter">
+        <div class="l" style="color: var(--diverge);">cross-source divergences</div>
+        <div class="n diverge" data-counter="divergences">1</div>
+        <div class="muted" style="font-size: var(--fs-xs);">and counting</div>
+      </div>
+    </div>
+    <div class="muted" style="font-size: var(--fs-xs); margin-top: var(--s-2); letter-spacing: 0.04em;">
+      data: <code class="inline">/api/corpus/counts</code> · respects robots.txt · schemas-only · opt-out at <code class="inline">/api/corpus/optout</code>
+    </div>
+  </section>
+
+  <!-- ─── TWO ARTIFACTS ──────────────────────────────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 01 — DOCTRINE</div>
+        <h2 class="h2">Two artifacts, two URLs.</h2>
+      </div>
+      <a href="spec.html#artifacts" class="btn-link">spec → §3 artifacts</a>
+    </div>
+
+    <div class="grid-2">
+      <article class="artifact artifact-snapshot">
+        <header class="head">
+          <div class="col gap-1">
+            <span class="pill pill-signed"><span class="dot"></span>SNAPSHOT</span>
+            <div class="url">/.well-known/agent-card.json</div>
+          </div>
+          <span class="icon">▢</span>
+        </header>
+        <p class="desc">
+          The current state. What this origin is, right now. Versioned, signed,
+          fetched on first contact. <strong>Photograph.</strong>
+        </p>
+        <div class="schema">
+          <code class="inline">name</code> ·
+          <code class="inline">version</code> ·
+          <code class="inline">protocolVersion</code> ·
+          <code class="inline">endpoints[]</code> ·
+          <code class="inline">did:web</code> ·
+          <code class="inline">sig (Ed25519)</code>
+        </div>
+      </article>
+
+      <article class="artifact artifact-stream">
+        <header class="head">
+          <div class="col gap-1">
+            <span class="pill pill-good"><span class="dot"></span>STREAM</span>
+            <div class="url" style="color: var(--good);">/.well-known/agent-feed.xml</div>
+          </div>
+          <span class="icon">≡</span>
+        </header>
+        <p class="desc">
+          The history. Append-only. Schema migrations, deprecations, canonical
+          endpoint moves — every change announced, every entry signed.
+          <strong>Testimony.</strong>
+        </p>
+        <div class="schema">
+          <code class="inline">entry/migrated</code> ·
+          <code class="inline">entry/deprecated</code> ·
+          <code class="inline">entry/moved</code> ·
+          <code class="inline">since</code> ·
+          <code class="inline">sig (Ed25519)</code>
+        </div>
+      </article>
+    </div>
+
+    <p class="muted" style="margin-top: var(--s-4); font-size: var(--fs-sm); max-width: 720px;">
+      Snapshot ≠ stream. The agent-card answers <em>what is true now</em>. The feed
+      answers <em>how did we get here, and what's ahead</em>. Conflating them is
+      why migrations break agents silently. Both are signed; both are required.
+    </p>
+  </section>
+
+  <!-- ─── COMPOSES WITH ──────────────────────────────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 02 — COMPOSITION</div>
+        <h2 class="h2">The change-history layer beneath what you already run.</h2>
+      </div>
+    </div>
+
+    <div class="badges">
+      <div class="badge">
+        <div class="l">agent ↔ agent</div>
+        <div class="n">MCP · A2A · ANP</div>
+        <div class="muted" style="font-size: var(--fs-xs);">how agents talk</div>
+      </div>
+      <div class="badge">
+        <div class="l">agent ↔ api</div>
+        <div class="n">OpenAPI · agents.json</div>
+        <div class="muted" style="font-size: var(--fs-xs);">how agents act</div>
+      </div>
+      <div class="badge">
+        <div class="l">agent ↔ context</div>
+        <div class="n">llms.txt</div>
+        <div class="muted" style="font-size: var(--fs-xs);">how agents read</div>
+      </div>
+      <div class="badge" style="background: var(--good-bg); border-left: 2px solid var(--good);">
+        <div class="l" style="color: var(--good);">agent ↔ change</div>
+        <div class="n" style="color: var(--good);">agent-feed</div>
+        <div class="muted" style="font-size: var(--fs-xs);">how the world announces it moved</div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: var(--s-4); font-size: var(--fs-sm); max-width: 720px;">
+      MCP and A2A solved how agents talk. Nothing solved how the world announces
+      it changed. agent-feed sits beneath all of them — protocol-agnostic,
+      bring-your-own-schema. We are not trying to be the agentic web. The web
+      doesn't live in DNS; we don't either.
+    </p>
+  </section>
+
+  <!-- ─── CONVERSION PATH ────────────────────────────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 03 — FOR ORIGIN OPERATORS</div>
+        <h2 class="h2">From "what's this random tool" to publishing, in three commands.</h2>
+        <p class="lead muted" style="margin-top: var(--s-2);">
+          Run an MCP server, an A2A agent, or any service with a machine-readable
+          surface? See how the public world describes you. Make your description
+          authoritative.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">01 · paste</div>
+        <div class="title">Drop your origin</div>
+        <div class="body">
+          <code>https://example.com</code> or a GitHub repo. The dashboard
+          fans out across every source we crawl.
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">02 · review</div>
+        <div class="title">See what the world says</div>
+        <div class="body">
+          Per-source observation cards with confidence pills. Disagreements
+          highlighted. Every value is sourced. None of it is signed.
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">03 · sign</div>
+        <div class="title">Draft, signed for you</div>
+        <div class="body">
+          We pre-fill an entry from the highest-confidence observation.
+          <code>bunx agent-feed sign</code> with your did:web key.
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">04 · publish</div>
+        <div class="title">Drop it at /.well-known/</div>
+        <div class="body">
+          One file. <code>agent-feed.xml</code>. From the next crawl on,
+          your origin is authoritative.
+        </div>
+      </div>
+    </div>
+
+    <pre class="block" style="margin-top: var(--s-4);"><span class="c-cmt"># after step 02 — the dashboard hands you this</span>
+<span class="c-cmd">$</span> bunx agent-feed init <span class="c-str">--from-corpus example.com</span>
+<span class="c-cmt"># reviewing 3 observations · drafting agent-feed.xml</span>
+<span class="c-cmd">$</span> bunx agent-feed sign <span class="c-str">--key did:web:example.com#k0</span>
+<span class="c-cmd">$</span> cp agent-feed.xml ./public/.well-known/
+<span class="c-cmt"># done. on next crawl, all unsigned observations defer to you.</span></pre>
+  </section>
+
+  <!-- ─── SCENARIO ───────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 04 — FOR AGENT OPERATORS</div>
+        <h2 class="h2">Your agent hit a 404. Now what?</h2>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <p class="lead">
+          Schema drift breaks agents silently. The dashboard answers a single
+          question fast: <strong class="fg-2">does the world agree about this endpoint, and is anyone authoritative?</strong>
+        </p>
+        <ul class="status-list" style="columns:1; margin-top: var(--s-4);">
+          <li><span class="ok">→</span><span><strong>Stale registry?</strong> See last-crawled timestamps per source.</span></li>
+          <li><span class="ok">→</span><span><strong>No signed feed?</strong> File an issue with the dashboard URL — the publisher sees their own divergence.</span></li>
+          <li><span class="ok">→</span><span><strong>Endpoint moved?</strong> If signed, you'll see <code class="inline">moved</code> entries with <code class="inline">since</code> timestamps.</span></li>
+          <li><span class="ok">→</span><span><strong>Pin it.</strong> Subscribe to the feed; CI fails on breaking entries before your agent does.</span></li>
+        </ul>
+      </div>
+
+      <pre class="block"><span class="c-cmt"># in your agent's CI</span>
+<span class="c-cmd">$</span> bunx agent-feed verify <span class="c-str">https://api.example.com</span>
+<span class="c-key">origin</span>          api.example.com
+<span class="c-key">signed</span>          <span class="c-add">true</span>  <span class="c-cmt">// did:web:api.example.com</span>
+<span class="c-key">last-entry</span>      2026-04-26T11:02:00Z
+<span class="c-key">breaking-since</span>  <span class="c-key">your pin (2026-03-01)</span>:
+  <span class="c-del">- /v1/orders        deprecated 2026-04-12</span>
+  <span class="c-add">+ /v2/orders        canonical  2026-04-12</span>
+
+<span class="c-cmt"># exit 1 — your agent will break. fix the pin.</span></pre>
+    </div>
+  </section>
+
+  <!-- ─── STATUS ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 05 — IMPLEMENTATION</div>
+        <h2 class="h2">What's shipped, today.</h2>
+      </div>
+      <span class="stamp">v0 · 2026-04-28</span>
+    </div>
+
+    <ul class="status-list">
+      <li><span class="ok">✓</span><span>v0 spec (1190 lines) — <a href="spec.html">SPEC.md</a></span></li>
+      <li><span class="ok">✓</span><span>TypeScript + Python reference libraries</span></li>
+      <li><span class="ok">✓</span><span>Next.js / FastAPI / Cloudflare Worker adapters</span></li>
+      <li><span class="ok">✓</span><span>Drift dashboard — <a href="dashboard.html">/dashboard</a></span></li>
+      <li><span class="ok">✓</span><span>IETF draft <code class="inline">draft-abdi-agent-feed-00</code></span></li>
+      <li><span class="ok">✓</span><span>MCP SEP filed (snapshot ≠ stream)</span></li>
+      <li><span class="ok">✓</span><span>3 source adapters (mcp-registry · a2a-registry · github-readme)</span></li>
+      <li><span class="ok">✓</span><span>78 tests passing · MIT-licensed</span></li>
+    </ul>
+  </section>
+
+  <!-- ─── FAQ ────────────────────────────────────────────── -->
+  <section class="section faq" id="faq">
+    <div class="section-head">
+      <div>
+        <div class="section-num">§ 06 — SKEPTICAL FAQ</div>
+        <h2 class="h2">Push back. We push back at ourselves first.</h2>
+      </div>
+    </div>
+
+    <details>
+      <summary>Why not just use MCP Server Cards?</summary>
+      <div class="a">
+        Because snapshots ≠ streams. A server card answers <em>what is true now</em>.
+        It can't tell a depending agent that <code class="inline">/v1/orders</code>
+        was deprecated three weeks ago, or that the canonical endpoint moved. That's
+        a stream — append-only, signed, with <code class="inline">since</code>
+        timestamps. The MCP SEP we filed is precisely about preserving this split.
+      </div>
+    </details>
+    <details>
+      <summary>Are you scraping my site?</summary>
+      <div class="a">
+        We respect robots.txt. We pull schemas only — agent cards, A2A descriptors,
+        registry entries, README catalogs that exist <em>to be machine-read</em>.
+        No prose, no human pages. Opt out any origin at
+        <code class="inline">/api/corpus/optout</code>; the entry disappears on the
+        next crawl.
+      </div>
+    </details>
+    <details>
+      <summary>Is this trying to be the entire agentic web?</summary>
+      <div class="a">
+        No. We're the change-history layer beneath the protocols you already run.
+        Bring your own MCP / A2A / ANP / OpenAPI. The web doesn't live in DNS;
+        we don't either. agent-feed is a layer, not a runtime.
+      </div>
+    </details>
+    <details>
+      <summary>Why should I sign feeds?</summary>
+      <div class="a">
+        Because once one of your dependents is an agent, your silent migrations
+        cost them money. Signed feeds are how you put your migration log on the
+        record before anyone's CI catches the breakage. It's not a marketing
+        surface — it's a contract.
+      </div>
+    </details>
+    <details>
+      <summary>Aren't observations and signed feeds the same kind of thing?</summary>
+      <div class="a">
+        No, and we are doctrinal about this. <strong style="color: var(--signed);">Signed</strong>
+        is testimony — first-party, cryptographically attested, did:web-rooted.
+        <strong style="color: var(--diverge);">Observed</strong> is a photograph —
+        third-party, possibly stale, and <em>always</em> tagged UNSIGNED. The site
+        never blurs them. Different kinds of facts, not a quality gradient.
+      </div>
+    </details>
+    <details>
+      <summary>Who's behind this?</summary>
+      <div class="a">
+        Independent. MIT-licensed. The two architecture roundtables that produced
+        the trust-plane separation are in the repo verbatim. No company, no
+        funding, no signup. agent-feed.dev — not app.agent-feed.dev.
+      </div>
+    </details>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="row gap-5" style="flex-wrap:wrap; align-items:flex-start;">
+      <div class="col gap-2" style="flex: 1; min-width: 220px;">
+        <div class="brand"><span class="brand-mark"></span>agent-feed</div>
+        <div>The agentic web's git log. v0 protocol — 2026-04-27.</div>
+      </div>
+      <div class="col gap-2" style="min-width: 160px;">
+        <div class="mono-caps">protocol</div>
+        <a href="spec.html">SPEC.md (v0)</a>
+        <a href="#">IETF draft-abdi-agent-feed-00</a>
+        <a href="#">MCP SEP — snapshot ≠ stream</a>
+      </div>
+      <div class="col gap-2" style="min-width: 160px;">
+        <div class="mono-caps">tools</div>
+        <a href="dashboard.html">drift dashboard</a>
+        <a href="search.html">aggregator</a>
+        <a href="docs.html">CLI / library</a>
+      </div>
+      <div class="col gap-2" style="min-width: 160px;">
+        <div class="mono-caps">opt out</div>
+        <a href="#"><code class="inline">/api/corpus/optout</code></a>
+        <span>schemas-only · respects robots.txt</span>
+      </div>
+    </div>
+    <hr style="margin-top: var(--s-6);">
+    <div class="row" style="margin-top: var(--s-4); justify-content: space-between; flex-wrap: wrap; gap: var(--s-3);">
+      <span>MIT · independent · no signup, no billing</span>
+      <span>built for agents, by people who read code</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Live counters: graceful enhancement. If the corpus origin is reachable
+  // and CORS-permissive, replace the static numbers with the real-time ones.
+  // Falls back silently to the rendered defaults.
+  (async () => {
+    const CORPUS = (window.__CORPUS_ORIGIN__) || "http://localhost:4300";
+    try {
+      const res = await fetch(`${CORPUS}/api/corpus/counts`, { mode: "cors" });
+      if (!res.ok) return;
+      const { counts } = await res.json();
+      const total = Object.values(counts).reduce((a, b) => a + b, 0);
+      const fmt = (n) => n.toLocaleString();
+      const set = (k, v) => {
+        const el = document.querySelector(`[data-counter="${k}"]`);
+        if (el && Number.isFinite(v)) el.textContent = fmt(v);
+      };
+      set("total", total);
+      for (const [k, v] of Object.entries(counts)) set(k, v);
+    } catch {
+      /* offline / cross-origin blocked — leave the static numbers */
+    }
+  })();
+</script>
+
+</body>
+</html>
