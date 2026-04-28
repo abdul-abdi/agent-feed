@@ -1,0 +1,4050 @@
+{
+  "servers": [
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.getperspective/mcp",
+        "description": "An AI concierge that turns static forms into adaptive AI conversations. From any MCP client.",
+        "title": "Perspective AI",
+        "repository": {
+          "url": "https://github.com/Perspective-AI/mcp",
+          "source": "github"
+        },
+        "version": "0.0.7",
+        "websiteUrl": "https://getperspective.ai/docs/build/mcp",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/Perspective-AI/mcp/main/icon.png",
+            "mimeType": "image/png"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://getperspective.ai/mcp",
+            "headers": [
+              {
+                "description": "Authorization header for authenticated requests",
+                "value": "Bearer {perspective_token}",
+                "variables": {
+                  "perspective_token": {
+                    "description": "Access token generated at https://getperspective.ai/settings/mcp",
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-21T13:25:46.451335Z",
+          "publishedAt": "2026-04-21T13:25:46.451335Z",
+          "updatedAt": "2026-04-21T13:25:46.451335Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.gomarble/mcp-api",
+        "description": "GoMarble MCP API Server",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://apps.gomarble.ai/mcp-api/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-14T05:56:54.505554Z",
+          "publishedAt": "2025-10-14T05:56:54.505554Z",
+          "updatedAt": "2025-10-14T05:56:54.505554Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.gossiper/shopify-admin-mcp",
+        "description": "Control Shopify Admin tasks with agents or via prompt. Ultra slim integration, fast and secure.",
+        "title": "Gossiper Shopify Admin MCP Server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.gossiper.io/mcp",
+            "headers": [
+              {
+                "description": "API key for authentication, alternative to OAuth",
+                "isSecret": true,
+                "name": "X-API-Key"
+              }
+            ]
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.gossiper.io/mcp",
+            "headers": [
+              {
+                "description": "API key for authentication, alternative to OAuth",
+                "isSecret": true,
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-06T18:20:42.175634Z",
+          "publishedAt": "2026-01-06T18:20:42.175634Z",
+          "updatedAt": "2026-01-06T18:20:42.175634Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.4.0",
+        "websiteUrl": "https://database.haymon.ai"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-01T08:12:41.17542Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.5.0",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.5.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode (default)",
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.5.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-01T13:24:52.524719Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.5.2",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.5.2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode (default)",
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.5.2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-06T06:05:56.31214Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode (default)",
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-08T14:40:55.456277Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.6.1",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.1",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode (default)",
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.1",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-10T16:10:54.841623Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.6.2",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode (default)",
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-12T19:21:01.151866Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.6.3",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.3",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode",
+                "isRequired": true,
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.3",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-15T14:08:29.787696Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.6.4",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.4",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode",
+                "isRequired": true,
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.6.4",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-15T14:34:40.269387Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/database",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/database",
+          "source": "github"
+        },
+        "version": "0.7.0",
+        "websiteUrl": "https://database.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.7.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode",
+                "isRequired": true,
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/database:0.7.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "deprecated",
+          "statusChangedAt": "2026-04-23T10:48:48.962283Z",
+          "statusMessage": "Renamed to ai.haymon/dbmcp",
+          "publishedAt": "2026-04-20T18:05:53.960165Z",
+          "updatedAt": "2026-04-23T10:48:48.962283Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.haymon/dbmcp",
+        "description": "Database MCP server for MySQL, MariaDB, PostgreSQL & SQLite",
+        "repository": {
+          "url": "https://github.com/haymon-ai/dbmcp",
+          "source": "github"
+        },
+        "version": "0.8.0",
+        "websiteUrl": "https://dbmcp.haymon.ai",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/dbmcp:0.8.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in stdio transport mode",
+                "isRequired": true,
+                "value": "stdio",
+                "type": "positional"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/haymon-ai/dbmcp:0.8.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://{--host}:{--port}/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Start in HTTP transport mode",
+                "isRequired": true,
+                "value": "http",
+                "type": "positional"
+              },
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "HTTP bind port",
+                "default": "9001",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "type": "named",
+                "name": "--allowed-origins",
+                "isRepeated": true
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "type": "named",
+                "name": "--allowed-hosts",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "HTTP bind host",
+                "default": "127.0.0.1",
+                "name": "HTTP_HOST"
+              },
+              {
+                "description": "HTTP bind port",
+                "format": "number",
+                "default": "9001",
+                "name": "HTTP_PORT"
+              },
+              {
+                "description": "Allowed CORS origins (comma-separated)",
+                "name": "HTTP_ALLOWED_ORIGINS"
+              },
+              {
+                "description": "Allowed host names (comma-separated)",
+                "name": "HTTP_ALLOWED_HOSTS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-23T10:43:38.880545Z",
+          "publishedAt": "2026-04-23T10:43:38.880545Z",
+          "updatedAt": "2026-04-23T10:43:38.880545Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.helixar/mcp",
+        "description": "Security tools for AI agents: scan MCP servers, validate HDP delegation chains, audit releases.",
+        "title": "Helixar Security",
+        "repository": {
+          "url": "https://github.com/Helixar-AI/helixar-mcp",
+          "source": "github"
+        },
+        "version": "0.0.1",
+        "websiteUrl": "https://helixar.ai/connect",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.helixar.ai/mcp"
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "notes": "Workers deployment exposes 2 of 3 tools (helixar_inspect_mcp, helixar_hdp_validate). The third tool (helixar_releaseguard) wraps a Go binary and is stdio-only — install the npm package locally for the full set.",
+            "tool": "manual",
+            "version": "0.0.1"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-27T13:04:20.59969Z",
+          "publishedAt": "2026-04-27T13:04:20.59969Z",
+          "updatedAt": "2026-04-27T13:04:20.59969Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.i18nagent/i18n-agent",
+        "description": "AI-powered translation for 48 languages with context-aware quality",
+        "title": "i18n-agent",
+        "repository": {
+          "url": "https://github.com/i18n-agent/mcp-client",
+          "source": "github"
+        },
+        "version": "1.16.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@i18n-agent/mcp-client",
+            "version": "1.16.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key from app.i18nagent.ai",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "I18N_AGENT_API_KEY"
+              },
+              {
+                "description": "MCP server URL",
+                "name": "MCP_SERVER_URL"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.i18nagent.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-16T10:02:49.134686Z",
+          "publishedAt": "2026-03-16T10:02:49.134686Z",
+          "updatedAt": "2026-03-16T10:02:49.134686Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.imboard/dossier",
+        "description": "MCP server for dossier automation standard - enables LLMs to discover, verify, and execute dossiers",
+        "repository": {
+          "url": "https://github.com/imboard-ai/ai-dossier",
+          "source": "github"
+        },
+        "version": "1.0.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@ai-dossier/mcp-server",
+            "version": "1.0.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-07T09:20:43.263852Z",
+          "publishedAt": "2026-03-07T09:20:43.263852Z",
+          "updatedAt": "2026-03-07T09:20:43.263852Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.inflowpay.app/inflow",
+        "description": "Inflow MCP Server",
+        "repository": {
+          "url": "https://github.com/inflowpay/inflow",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://app.inflowpay.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-31T06:18:04.101329Z",
+          "publishedAt": "2026-03-31T06:18:04.101329Z",
+          "updatedAt": "2026-03-31T06:18:04.101329Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.inflowpay.app/inflow",
+        "description": "MCP Server for agents to onboard, pay, and provision services autonomously",
+        "repository": {
+          "url": "https://github.com/inflowpay/inflow",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://app.inflowpay.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-31T07:47:45.171487Z",
+          "publishedAt": "2026-03-31T07:47:45.171487Z",
+          "updatedAt": "2026-03-31T07:47:45.171487Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.inflowpay.app/inflow",
+        "description": "MCP Server for agents to onboard, pay, and provision services autonomously with InFlow",
+        "repository": {
+          "url": "https://github.com/inflowpay/inflow",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://app.inflowpay.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-31T09:58:09.190687Z",
+          "publishedAt": "2026-03-31T09:58:09.190687Z",
+          "updatedAt": "2026-03-31T09:58:09.190687Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.inflowpay.app/inflow",
+        "description": "MCP Server for agents to onboard, pay, and provision services autonomously with InFlow",
+        "repository": {
+          "url": "https://github.com/inflowpayai/inflow-mcp",
+          "source": "github"
+        },
+        "version": "1.0.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://app.inflowpay.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-01T08:15:17.136175Z",
+          "publishedAt": "2026-04-01T08:15:17.136175Z",
+          "updatedAt": "2026-04-01T08:15:17.136175Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "repository": {
+          "url": "https://github.com/ai-dev-dojoit/jedaai-lite",
+          "source": "github"
+        },
+        "version": "1.23.19",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T09:45:45.723519Z",
+          "publishedAt": "2026-04-24T09:45:45.723519Z",
+          "updatedAt": "2026-04-24T09:45:45.723519Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "repository": {
+          "url": "https://github.com/ai-dev-dojoit/jedaai-lite",
+          "source": "github"
+        },
+        "version": "1.23.21",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T09:55:56.673787Z",
+          "publishedAt": "2026-04-24T09:55:56.673787Z",
+          "updatedAt": "2026-04-24T09:55:56.673787Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "repository": {
+          "url": "https://github.com/ai-dev-dojoit/jedaai-lite",
+          "source": "github"
+        },
+        "version": "1.23.22",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T10:19:40.864601Z",
+          "publishedAt": "2026-04-24T10:19:40.864601Z",
+          "updatedAt": "2026-04-24T10:19:40.864601Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.23",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T11:14:41.655147Z",
+          "publishedAt": "2026-04-24T11:14:41.655147Z",
+          "updatedAt": "2026-04-24T11:14:41.655147Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.25",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T20:09:31.905451Z",
+          "publishedAt": "2026-04-24T20:09:31.905451Z",
+          "updatedAt": "2026-04-24T20:09:31.905451Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.26",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T20:21:48.460368Z",
+          "publishedAt": "2026-04-24T20:21:48.460368Z",
+          "updatedAt": "2026-04-24T20:21:48.460368Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.27",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T20:44:18.156782Z",
+          "publishedAt": "2026-04-24T20:44:18.156782Z",
+          "updatedAt": "2026-04-24T20:44:18.156782Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.28",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T20:58:21.986842Z",
+          "publishedAt": "2026-04-24T20:58:21.986842Z",
+          "updatedAt": "2026-04-24T20:58:21.986842Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.29",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T21:09:01.585713Z",
+          "publishedAt": "2026-04-24T21:09:01.585713Z",
+          "updatedAt": "2026-04-24T21:09:01.585713Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.30",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T21:19:37.980626Z",
+          "publishedAt": "2026-04-24T21:19:37.980626Z",
+          "updatedAt": "2026-04-24T21:19:37.980626Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.36",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-25T08:08:23.687033Z",
+          "publishedAt": "2026-04-25T08:08:23.687033Z",
+          "updatedAt": "2026-04-25T08:08:23.687033Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.37",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-25T08:20:40.350592Z",
+          "publishedAt": "2026-04-25T08:20:40.350592Z",
+          "updatedAt": "2026-04-25T08:20:40.350592Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.38",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-25T08:40:25.724708Z",
+          "publishedAt": "2026-04-25T08:40:25.724708Z",
+          "updatedAt": "2026-04-25T08:40:25.724708Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.39",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-25T10:05:37.248722Z",
+          "publishedAt": "2026-04-25T10:05:37.248722Z",
+          "updatedAt": "2026-04-25T10:05:37.248722Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.jeda/jeda-ai",
+        "description": "Visual AI for strategic thinking — SWOT, flowcharts, mindmaps, Gantt diagrams as polished SVG.",
+        "version": "1.23.40",
+        "websiteUrl": "https://jeda.ai",
+        "icons": [
+          {
+            "src": "https://mcp.jeda.ai/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://mcp.jeda.ai/icon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://solo.jeda.ai/mcp-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.jeda.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-25T10:54:36.592102Z",
+          "publishedAt": "2026-04-25T10:54:36.592102Z",
+          "updatedAt": "2026-04-25T10:54:36.592102Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.kawacode/mcp",
+        "description": "Intent tracking, decision recording, and team coordination for AI coding assistants",
+        "title": "Kawa Code MCP",
+        "repository": {
+          "url": "https://github.com/codeawareness/kawa.mcp",
+          "source": "github"
+        },
+        "version": "5.0.2",
+        "websiteUrl": "https://codeawareness.com",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kawacode/mcp",
+            "version": "5.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-18T04:58:25.711997Z",
+          "publishedAt": "2026-03-18T04:58:25.711997Z",
+          "updatedAt": "2026-03-18T04:58:25.711997Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.kawacode/mcp",
+        "description": "Intent tracking, decision recording, and team coordination for AI coding assistants",
+        "title": "Kawa Code MCP",
+        "repository": {
+          "url": "https://github.com/codeawareness/kawa.mcp",
+          "source": "github"
+        },
+        "version": "5.0.3",
+        "websiteUrl": "https://kawacode.ai",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kawacode/mcp",
+            "version": "5.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-18T05:00:03.803884Z",
+          "publishedAt": "2026-03-18T05:00:03.803884Z",
+          "updatedAt": "2026-03-18T05:00:03.803884Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.kawacode/mcp",
+        "description": "Intent tracking, decision recording, and team coordination for AI coding assistants",
+        "title": "Kawa Code MCP",
+        "repository": {
+          "url": "https://github.com/codeawareness/kawa.mcp",
+          "source": "github"
+        },
+        "version": "5.0.4",
+        "websiteUrl": "https://kawacode.ai",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kawacode/mcp",
+            "version": "5.0.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-18T05:01:22.823972Z",
+          "publishedAt": "2026-03-18T05:01:22.823972Z",
+          "updatedAt": "2026-03-18T05:01:22.823972Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.klavis/strata",
+        "description": "MCP server for progressive tool usage at any scale (see https://klavis.ai)",
+        "repository": {
+          "url": "https://github.com/Klavis-AI/klavis",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://strata.klavis.ai/mcp/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-28T19:13:44.307076Z",
+          "publishedAt": "2025-09-28T19:13:44.307076Z",
+          "updatedAt": "2025-09-28T19:13:44.307076Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.kubit/mcp-server",
+        "description": "Bring Kubit into your AI workflow — query your warehouse with natural language",
+        "title": "Kubit",
+        "repository": {
+          "url": "https://github.com/Kubit-AI/mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://docs.kubit.ai/docs/mcp-server",
+        "icons": [
+          {
+            "src": "https://kubit.ai/wp-content/uploads/2025/12/Logo-Blue-Background-Stacked.png",
+            "mimeType": "image/png",
+            "theme": "light"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.kubit.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-12-09T00:18:46.752966Z",
+          "publishedAt": "2025-12-09T00:18:46.752966Z",
+          "updatedAt": "2025-12-09T00:18:46.752966Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.lattiq/x402-trading-signals",
+        "description": "Regime-aware ES1/NQ futures trading signals. HMM + 15 quant strategies. x402 USDC micropayments.",
+        "title": "Lattiq x402 Trading Signals",
+        "repository": {
+          "url": "https://github.com/PoopsDavis/lattiq-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.lattiq.ai/mcp",
+            "headers": [
+              {
+                "description": "x402 payment header (USDC on Base). Required for paid tool calls.",
+                "isSecret": true,
+                "name": "X-PAYMENT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-26T21:58:49.321402Z",
+          "publishedAt": "2026-03-26T21:58:49.321402Z",
+          "updatedAt": "2026-03-26T21:58:49.321402Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.limitguard.api/trust-intelligence",
+        "description": "Entity verification, sanctions screening, and trust scoring for AI agents.",
+        "title": "LimitGuard Trust Intelligence",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.limitguard.ai/mcp",
+            "headers": [
+              {
+                "description": "LimitGuard API key (get free at /v1/keys/create)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-24T13:09:48.187879Z",
+          "publishedAt": "2026-02-24T13:09:48.187879Z",
+          "updatedAt": "2026-02-24T13:09:48.187879Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.limitguard.api/trust-intelligence",
+        "description": "Entity verification, sanctions screening, and trust scoring for AI agents.",
+        "title": "LimitGuard Trust Intelligence",
+        "repository": {
+          "url": "https://github.com/JWconsultancy1234/limitguard-ai",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "websiteUrl": "https://limitguard.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.limitguard.ai/mcp",
+            "headers": [
+              {
+                "description": "LimitGuard API key (get free at /v1/keys/create)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-24T13:42:25.987571Z",
+          "publishedAt": "2026-02-24T13:42:25.987571Z",
+          "updatedAt": "2026-02-24T13:42:25.987571Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.llmse/mcp",
+        "description": "Public MCP server for the LLM Search Engine",
+        "repository": {},
+        "version": "1.3.12",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://llmse.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-21T16:19:36.12182Z",
+          "publishedAt": "2026-01-21T16:19:36.12182Z",
+          "updatedAt": "2026-01-21T16:19:36.12182Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.lucasandersen/mlp-tax",
+        "description": "Deterministic MLP tax engine with IRS citations. 6 tools: basis, §751, estate, projections.",
+        "title": "MLP Tax Computation Engine",
+        "repository": {
+          "url": "https://github.com/luc253/lucasandersen-ai",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.lucasandersen.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T21:25:53.503719Z",
+          "publishedAt": "2026-04-15T21:25:53.503719Z",
+          "updatedAt": "2026-04-15T21:25:53.503719Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.ludo/game-assets",
+        "description": "Generate game assets with AI: sprites, 3D models, animations, sound effects, music, and voices.",
+        "title": "Ludo AI Game Assets",
+        "repository": {
+          "url": "https://github.com/Ludo-AI/ludo-mcp",
+          "source": "github"
+        },
+        "version": "0.9.0",
+        "websiteUrl": "https://ludo.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.ludo.ai/mcp",
+            "headers": [
+              {
+                "description": "API key from Ludo AI (format: 'ApiKey your-api-key'). Get your key at https://app.ludo.ai",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "documentation": "https://api.ludo.ai/api-documentation",
+            "examples": [
+              {
+                "description": "Create a character sprite with specific art style",
+                "name": "Generate Pixel Art Sprite",
+                "note": "createImage with image_type='sprite', art_style='Pixel Art (16-Bit)', perspective='Side-Scroll'"
+              },
+              {
+                "description": "Generate an app icon for your game",
+                "name": "Create Isometric Game Icon",
+                "note": "createImage with image_type='icon', perspective='Isometric', aspect_ratio='ar_1_1'"
+              },
+              {
+                "description": "Transform a 2D sprite into a 3D GLB model with PBR textures",
+                "name": "Convert Sprite to 3D Model",
+                "note": "create3DModel with texture_type='pbr' returns model_url (.glb) and 4 snapshot images"
+              },
+              {
+                "description": "Animate a character with a walk cycle",
+                "name": "Create Walking Animation",
+                "note": "animateSprite with motion_prompt='walking cycle', loop=true, frames=16"
+              },
+              {
+                "description": "Create animated visual effects",
+                "name": "Generate Attack VFX",
+                "note": "animateSprite with image_type='sprite-vfx', motion_prompt='fire explosion effect'"
+              },
+              {
+                "description": "Generate a short video from a screenshot",
+                "name": "Create Game Trailer Clip",
+                "note": "createVideo with duration=5, prompt='camera slowly zooms in'"
+              },
+              {
+                "description": "Create a sci-fi weapon sound effect",
+                "name": "Generate Laser Sound",
+                "note": "createSoundEffect with description='futuristic laser gun firing, sci-fi'"
+              },
+              {
+                "description": "Generate background music for combat",
+                "name": "Create Battle Music",
+                "note": "createMusic with description='epic orchestral battle theme, fast-paced, intense'"
+              },
+              {
+                "description": "Create a unique voice for a game character",
+                "name": "Generate Character Voice",
+                "note": "createVoice with voice_description='gruff old warrior', text='Prepare for battle!'"
+              }
+            ],
+            "keywords": [
+              "game-dev",
+              "gamedev",
+              "sprites",
+              "pixel-art",
+              "3d-models",
+              "glb",
+              "animation",
+              "spritesheet",
+              "sound-effects",
+              "sfx",
+              "music",
+              "voice",
+              "tts",
+              "ai",
+              "assets",
+              "indie-game",
+              "unity",
+              "godot",
+              "unreal"
+            ],
+            "license": "Proprietary",
+            "notes": [
+              "Credit-based pricing: images (0.5), 3D models (3), animations (5), videos (5-15), audio (3)",
+              "Supports multiple art styles: Pixel Art, Low Poly, Cartoonish, Stylized 3D, and more",
+              "3D models output as GLB with optional PBR textures",
+              "Spritesheets support variable frame counts (4-64) and sizes (64-256px)",
+              "Long-running operations (3D models, animations) may take 60-120 seconds"
+            ],
+            "publisher": "Ludo AI"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-30T17:59:40.034021Z",
+          "publishedAt": "2026-01-30T17:59:40.034021Z",
+          "updatedAt": "2026-01-30T17:59:40.034021Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mailjunky/mcp",
+        "description": "Send emails, track events, and manage contacts with MailJunky.",
+        "title": "MailJunky",
+        "repository": {
+          "url": "https://github.com/TheNightProject/tnp.web.mailjunky.ai",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.mailjunky.ai/sse",
+            "headers": [
+              {
+                "description": "Your MailJunky API key in Bearer format (e.g., 'Bearer mj_live_xxx')",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-24T00:30:06.33677Z",
+          "publishedAt": "2026-01-24T00:30:06.33677Z",
+          "updatedAt": "2026-01-24T00:30:06.33677Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.marketcore/mcp",
+        "description": "Create on-brand marketing deliverables and GTM docs with AI-powered blueprints and brand guidelines.",
+        "title": "MarketCore MCP Server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.marketcore.ai/"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.marketcore.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-04T17:51:36.392611Z",
+          "publishedAt": "2026-03-04T17:51:36.392611Z",
+          "updatedAt": "2026-03-04T17:51:36.392611Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.marketcore/mcp",
+        "description": "Create on-brand marketing deliverables and GTM docs with AI-powered blueprints and brand guidelines.",
+        "title": "MarketCore MCP Server",
+        "version": "1.0.1",
+        "icons": [
+          {
+            "src": "https://mcp.marketcore.ai/favicon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.marketcore.ai/"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.marketcore.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-04T18:01:09.660995Z",
+          "publishedAt": "2026-03-04T18:01:09.660995Z",
+          "updatedAt": "2026-03-04T18:01:09.660995Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.marketcore/mcp",
+        "description": "Create on-brand marketing deliverables and GTM docs with AI-powered blueprints and brand guidelines.",
+        "title": "MarketCore",
+        "version": "1.0.2",
+        "websiteUrl": "https://marketcore.ai",
+        "icons": [
+          {
+            "src": "https://mcp.marketcore.ai/favicon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.marketcore.ai/"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.marketcore.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-04T18:25:55.768179Z",
+          "publishedAt": "2026-03-04T18:25:55.768179Z",
+          "updatedAt": "2026-03-04T18:25:55.768179Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "ML statistical analysis platform for data teams",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T02:35:06.675809Z",
+          "publishedAt": "2025-09-17T02:35:06.675809Z",
+          "updatedAt": "2025-09-17T02:38:18.073872Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "MCP Analytics, searchable tools and reports with interactive HTML visualization",
+        "repository": {},
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T02:38:18.067163Z",
+          "publishedAt": "2025-09-17T02:38:18.067163Z",
+          "updatedAt": "2025-09-17T03:00:38.27521Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "MCP Analytics, searchable tools and reports with interactive HTML visualization",
+        "repository": {
+          "url": "https://github.com/embeddedlayers/mcp-analytics",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T03:00:38.248012Z",
+          "publishedAt": "2025-09-17T03:00:38.248012Z",
+          "updatedAt": "2025-09-17T03:17:49.632449Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "MCP Analytics, searchable tools and reports with interactive HTML visualization",
+        "repository": {
+          "url": "https://github.com/embeddedlayers/mcp-analytics",
+          "source": "github"
+        },
+        "version": "1.0.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T03:17:49.595346Z",
+          "publishedAt": "2025-09-17T03:17:49.595346Z",
+          "updatedAt": "2025-09-17T03:17:49.595346Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "Analytics for business data: upload CSV or connect GA4/GSC, run ML/stats, get HTML reports.",
+        "repository": {
+          "url": "https://github.com/embeddedlayers/mcp-analytics",
+          "source": "github"
+        },
+        "version": "1.0.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-18T05:02:45.390281Z",
+          "publishedAt": "2026-03-18T05:02:45.390281Z",
+          "updatedAt": "2026-03-18T05:02:45.390281Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpanalytics/analytics",
+        "description": "Analytics for business data: upload CSV or connect GA4/GSC, run ML/stats, get HTML reports.",
+        "repository": {
+          "url": "https://github.com/embeddedlayers/mcp-analytics",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.mcpanalytics.ai/auth0"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-27T02:17:44.837686Z",
+          "publishedAt": "2026-03-27T02:17:44.837686Z",
+          "updatedAt": "2026-03-27T02:17:44.837686Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.4.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T01:00:19.713725Z",
+          "publishedAt": "2025-09-11T01:00:19.713725Z",
+          "updatedAt": "2025-09-11T01:06:15.729223Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.4.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T01:06:15.722886Z",
+          "publishedAt": "2025-09-11T01:06:15.722886Z",
+          "updatedAt": "2025-09-12T01:41:27.484537Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.10",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T05:10:59.806509Z",
+          "publishedAt": "2025-09-12T05:10:59.806509Z",
+          "updatedAt": "2025-09-18T00:54:49.018201Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T01:41:27.474865Z",
+          "publishedAt": "2025-09-12T01:41:27.474865Z",
+          "updatedAt": "2025-09-12T01:50:59.068605Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T01:50:59.054897Z",
+          "publishedAt": "2025-09-12T01:50:59.054897Z",
+          "updatedAt": "2025-09-12T01:53:51.978639Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T01:53:51.972295Z",
+          "publishedAt": "2025-09-12T01:53:51.972295Z",
+          "updatedAt": "2025-09-12T01:55:40.789432Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T01:55:40.782814Z",
+          "publishedAt": "2025-09-12T01:55:40.782814Z",
+          "updatedAt": "2025-09-12T02:03:43.967161Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T02:03:43.941695Z",
+          "publishedAt": "2025-09-12T02:03:43.941695Z",
+          "updatedAt": "2025-09-12T04:24:04.029498Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T04:24:04.024828Z",
+          "publishedAt": "2025-09-12T04:24:04.024828Z",
+          "updatedAt": "2025-09-12T04:28:40.563658Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.8",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T04:28:40.558477Z",
+          "publishedAt": "2025-09-12T04:28:40.558477Z",
+          "updatedAt": "2025-09-12T04:48:10.705163Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.5.9",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T04:48:10.687272Z",
+          "publishedAt": "2025-09-12T04:48:10.687272Z",
+          "updatedAt": "2025-09-12T05:10:59.819864Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcpcap",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T00:54:48.998145Z",
+          "publishedAt": "2025-09-18T00:54:48.998145Z",
+          "updatedAt": "2025-09-18T00:54:48.998145Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.6.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.6.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-16T00:59:57.546137Z",
+          "publishedAt": "2026-03-16T00:59:57.546137Z",
+          "updatedAt": "2026-03-16T00:59:57.546137Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.7.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.7.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-16T03:25:50.203637Z",
+          "publishedAt": "2026-03-16T03:25:50.203637Z",
+          "updatedAt": "2026-03-16T03:25:50.203637Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.8.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.8.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-16T23:47:24.291929Z",
+          "publishedAt": "2026-03-16T23:47:24.291929Z",
+          "updatedAt": "2026-03-16T23:47:24.291929Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.9.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.9.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-17T00:58:25.919539Z",
+          "publishedAt": "2026-03-17T00:58:25.919539Z",
+          "updatedAt": "2026-03-17T00:58:25.919539Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.9.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.9.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-17T01:24:33.242366Z",
+          "publishedAt": "2026-03-17T01:24:33.242366Z",
+          "updatedAt": "2026-03-17T01:24:33.242366Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.9.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.9.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-17T03:06:15.506141Z",
+          "publishedAt": "2026-03-17T03:06:15.506141Z",
+          "updatedAt": "2026-03-17T03:06:15.506141Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mcpcap/mcpcap",
+        "description": "An MCP server for analyzing PCAP files.",
+        "repository": {
+          "url": "https://github.com/mcpcap/mcpcap",
+          "source": "github"
+        },
+        "version": "0.9.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpcap",
+            "version": "0.9.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-17T05:29:03.951926Z",
+          "publishedAt": "2026-03-17T05:29:03.951926Z",
+          "updatedAt": "2026-03-17T05:29:03.951926Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.meacheal/mrc-data",
+        "description": "China's apparel supply chain data for AI: 1,000+ suppliers, 350+ fabrics, 170+ clusters.",
+        "title": "MRC Data — China's Apparel Supply Chain Infrastructure",
+        "version": "2.2.2",
+        "websiteUrl": "https://api.meacheal.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.meacheal.ai/mcp",
+            "headers": [
+              {
+                "description": "Bearer token. Get a free API key (100 calls/day) at https://api.meacheal.ai/apply",
+                "isRequired": true,
+                "value": "Bearer {api_key}",
+                "isSecret": true,
+                "variables": {
+                  "api_key": {
+                    "description": "Your MRC Data API key",
+                    "isRequired": true,
+                    "isSecret": true
+                  }
+                },
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-07T18:31:28.329956Z",
+          "publishedAt": "2026-04-07T18:31:28.329956Z",
+          "updatedAt": "2026-04-07T18:31:28.329956Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.meetlark/mcp-server",
+        "description": "Agent-first meeting schedule polls for humans and agents. Create polls, vote, find times.",
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@meetlark/mcp-server",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://meetlark.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-07T14:09:42.691681Z",
+          "publishedAt": "2026-02-07T14:09:42.691681Z",
+          "updatedAt": "2026-02-07T14:09:42.691681Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.meetlark/mcp-server",
+        "description": "Agent-first meeting schedule polls for humans and agents. Create polls, vote, find times.",
+        "version": "1.0.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@meetlark/mcp-server",
+            "version": "1.0.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://meetlark.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-08T08:48:19.364402Z",
+          "publishedAt": "2026-02-08T08:48:19.364402Z",
+          "updatedAt": "2026-02-08T08:48:19.364402Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.meetsquad/squad",
+        "description": "Your AI Product Manager. Surface insights, build roadmaps, and plan strategy with 30+ tools.",
+        "title": "Squad",
+        "repository": {
+          "url": "https://github.com/the-basilisk-ai/squad-mcp",
+          "source": "github"
+        },
+        "version": "3.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.meetsquad.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-12T21:01:17.340634Z",
+          "publishedAt": "2026-02-12T21:01:17.340634Z",
+          "updatedAt": "2026-02-12T21:01:17.340634Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.meetsquad/squad",
+        "description": "Your AI Product Manager. Surface insights, build roadmaps, and plan strategy with 30+ tools.",
+        "title": "Squad",
+        "repository": {
+          "url": "https://github.com/the-basilisk-ai/squad-mcp",
+          "source": "github"
+        },
+        "version": "3.0.1",
+        "icons": [
+          {
+            "src": "https://assets.meetsquad.ai/images/squad-icon.png",
+            "sizes": [
+              "128x128"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.meetsquad.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-12T21:34:42.742193Z",
+          "publishedAt": "2026-02-12T21:34:42.742193Z",
+          "updatedAt": "2026-02-12T21:34:42.742193Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.memestack/mcp",
+        "description": "Search and browse a curated gallery of memes, infographics, and visual content.",
+        "title": "MemeStack",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.memestack.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-09T14:25:58.46397Z",
+          "publishedAt": "2026-04-09T14:25:58.46397Z",
+          "updatedAt": "2026-04-09T14:25:58.46397Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.meminal/meminal",
+        "description": "Memory for deep conversational context across any platform",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://meminal.ai/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for authentication (OAuth or Personal Access Token)",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-12T23:40:10.473855Z",
+          "publishedAt": "2025-10-12T23:40:10.473855Z",
+          "updatedAt": "2025-10-12T23:40:10.473855Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.mino/web-agent",
+        "description": "AI-powered web automation. Navigate websites using AI agents for one page or a thousand",
+        "title": "TinyFish AI Web Agent",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mino.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-28T02:20:51.640868Z",
+          "publishedAt": "2026-01-28T02:20:51.640868Z",
+          "updatedAt": "2026-01-28T02:20:51.640868Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.namewhisper/ens-tools",
+        "description": "34 MCP tools to search, value, trade, and manage ENS names. AI-powered intelligence layer.",
+        "title": "Name Whisper — ENS Intelligence Layer",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://namewhisper.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-26T21:42:50.686363Z",
+          "publishedAt": "2026-03-26T21:42:50.686363Z",
+          "updatedAt": "2026-03-26T21:42:50.686363Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.namewhisper/ens-tools",
+        "description": "34 MCP tools to search, value, trade, and manage ENS names. AI-powered intelligence layer.",
+        "title": "Name Whisper — ENS Intelligence Layer",
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://namewhisper.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-27T04:30:16.85997Z",
+          "publishedAt": "2026-03-27T04:30:16.85997Z",
+          "updatedAt": "2026-03-27T04:30:16.85997Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.namewhisper/ens-tools",
+        "description": "34 MCP tools to search, register, manage, value, and trade ENS names. AI-powered intelligence layer.",
+        "title": "Name Whisper — ENS Intelligence Layer",
+        "version": "1.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://namewhisper.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-27T04:30:43.134538Z",
+          "publishedAt": "2026-03-27T04:30:43.134538Z",
+          "updatedAt": "2026-03-27T04:30:43.134538Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nefesh/human-state",
+        "description": "Real-time human state fusion: stress score from heart, voice, face signals. GDPR compliant.",
+        "title": "Nefesh — Real-time Human State Awareness",
+        "repository": {
+          "url": "https://github.com/tomstuhl/nefesh-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.nefesh.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-28T22:47:11.974471Z",
+          "publishedAt": "2026-03-28T22:47:11.974471Z",
+          "updatedAt": "2026-03-28T22:47:11.974471Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nefesh/human-state",
+        "description": "Fuses biometric signals into a stress score (0-100) for AI adaptation. MCP + A2A native.",
+        "title": "Nefesh — Real-Time Human State Awareness for AI",
+        "repository": {
+          "url": "https://github.com/nefesh-ai/nefesh-mcp-server",
+          "source": "github"
+        },
+        "version": "4.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.nefesh.ai/mcp",
+            "headers": [
+              {
+                "description": "API key. Get free at https://nefesh.ai/signup (1,000 calls/month) or connect without a key and use the request_api_key tool.",
+                "isSecret": true,
+                "name": "X-Nefesh-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-03T19:42:18.337564Z",
+          "publishedAt": "2026-04-03T19:42:18.337564Z",
+          "updatedAt": "2026-04-03T19:42:18.337564Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.newzai.api/NewzAI",
+        "description": "NewzAI news MCP: global, customizable, time-scoped semantic+keyword search across articles.",
+        "title": "NewzAI MCP Server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.newzai.ai/mcp/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T01:51:32.32857Z",
+          "publishedAt": "2026-04-08T01:51:32.32857Z",
+          "updatedAt": "2026-04-08T01:51:32.32857Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.newzai.api/NewzAI",
+        "description": "AI Powered News MCP: global, custom, time-scoped semantic+keyword search across news.Try for free.",
+        "title": "NewzAI MCP Server",
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.newzai.ai/mcp/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T02:08:31.232144Z",
+          "publishedAt": "2026-04-08T02:08:31.232144Z",
+          "updatedAt": "2026-04-08T02:08:31.232144Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.newzai.api/NewzAI",
+        "description": "News MCP: real-time headlines & custom news search across 7 regions. Free, just sign in with Google.",
+        "title": "NewzAI MCP Server",
+        "repository": {
+          "url": "https://github.com/Gauraviitkgp/news-mcp",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.newzai.ai/mcp/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T02:47:09.644135Z",
+          "publishedAt": "2026-04-08T02:47:09.644135Z",
+          "updatedAt": "2026-04-08T02:47:09.644135Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.newzai.api/news-mcp",
+        "description": "News MCP: real-time headlines & custom news search across 7 regions. Free, just sign in with Google.",
+        "title": "NewzAI MCP Server",
+        "repository": {
+          "url": "https://github.com/Gauraviitkgp/news-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.newzai.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T15:21:34.735478Z",
+          "publishedAt": "2026-04-08T15:21:34.735478Z",
+          "updatedAt": "2026-04-08T15:21:34.735478Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nexustoken/nexustoken-sdk",
+        "description": "Create/check agent tasks, discover capabilities, and run V2 Jobs on NexusToken.",
+        "title": "NexusToken",
+        "repository": {
+          "url": "https://github.com/bobuilds/nexustoken-sdk",
+          "source": "github"
+        },
+        "version": "0.6.5",
+        "websiteUrl": "https://nexustoken.ai",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "nexustoken-sdk",
+            "version": "0.6.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your NexusToken API key. Get one free at https://nexustoken.ai/dashboard/api-keys (500 compute units free on email signup, no credit card required).",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "NEXUS_API_KEY"
+              },
+              {
+                "description": "NexusToken API base URL. Optional; defaults to https://api.nexustoken.ai",
+                "name": "NEXUS_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T15:11:58.794139Z",
+          "publishedAt": "2026-04-24T15:11:58.794139Z",
+          "updatedAt": "2026-04-24T15:11:58.794139Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nocturnus/logic-server",
+        "description": "Agent reasoning, memory, and token-optimized context for AI applications.",
+        "repository": {
+          "url": "https://github.com/Auctalis/nocturnusai",
+          "source": "github"
+        },
+        "version": "0.3.11",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "nocturnusai-mcp",
+            "version": "0.3.11",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Base URL of the NocturnusAI server",
+                "format": "string",
+                "name": "NOCTURNUSAI_URL"
+              },
+              {
+                "description": "API key for authenticated access",
+                "format": "string",
+                "isSecret": true,
+                "name": "NOCTURNUSAI_API_KEY"
+              },
+              {
+                "description": "Database name to use",
+                "format": "string",
+                "name": "NOCTURNUSAI_DATABASE"
+              },
+              {
+                "description": "Tenant ID for multi-tenant isolation",
+                "format": "string",
+                "name": "NOCTURNUSAI_TENANT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-16T01:50:31.889198Z",
+          "publishedAt": "2026-04-16T01:50:31.889198Z",
+          "updatedAt": "2026-04-16T01:50:31.889198Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nordax/mcp",
+        "description": "Search and verify 360K+ business entities with trust scores and W3C credentials.",
+        "title": "Nordax AI Entity Network",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.nordax.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-07T14:05:48.832804Z",
+          "publishedAt": "2026-04-07T14:05:48.832804Z",
+          "updatedAt": "2026-04-07T14:05:48.832804Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search engine for AI agents. Find websites and APIs ranked by agentic readiness.",
+        "title": "Not Human Search",
+        "version": "1.0.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T04:12:27.951723Z",
+          "publishedAt": "2026-04-15T04:12:27.951723Z",
+          "updatedAt": "2026-04-15T04:12:27.951723Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search engine for AI agents. Find websites and APIs ranked by agentic readiness.",
+        "title": "Not Human Search",
+        "version": "1.1.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T07:15:28.513928Z",
+          "publishedAt": "2026-04-15T07:15:28.513928Z",
+          "updatedAt": "2026-04-15T07:15:28.513928Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web. Discover APIs and tools ranked by agent-readiness.",
+        "title": "Not Human Search",
+        "version": "1.2.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T18:29:12.86348Z",
+          "publishedAt": "2026-04-15T18:29:12.86348Z",
+          "updatedAt": "2026-04-15T18:29:12.86348Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web. 960+ sites scored 0-100 on agentic readiness. Includes verify_mcp tool.",
+        "title": "Not Human Search",
+        "repository": {
+          "url": "https://github.com/unitedideas/nothumansearch-mcp",
+          "source": "github"
+        },
+        "version": "1.3.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T22:05:32.994172Z",
+          "publishedAt": "2026-04-15T22:05:32.994172Z",
+          "updatedAt": "2026-04-15T22:05:32.994172Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web, submit sites, monitor changes, probe any URL for live MCP support.",
+        "title": "Not Human Search",
+        "version": "1.4.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-16T00:48:59.913239Z",
+          "publishedAt": "2026-04-16T00:48:59.913239Z",
+          "updatedAt": "2026-04-16T00:48:59.913239Z",
+          "isLatest": false
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "nextCursor": "ai.nothumansearch/search:1.4.0",
+    "count": 100
+  }
+}

@@ -1,0 +1,3731 @@
+{
+  "servers": [
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web. 1,750+ sites scored by agent-readiness. 8 tools incl. verify_mcp.",
+        "title": "Not Human Search",
+        "version": "1.5.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-17T02:39:10.052874Z",
+          "publishedAt": "2026-04-17T02:39:10.052874Z",
+          "updatedAt": "2026-04-17T02:39:10.052874Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web. 1,900+ sites scored by agent-readiness. 10 tools incl. find_mcp_servers.",
+        "title": "Not Human Search",
+        "version": "1.6.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-18T08:38:41.34999Z",
+          "publishedAt": "2026-04-18T08:38:41.34999Z",
+          "updatedAt": "2026-04-18T08:38:41.34999Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.nothumansearch/search",
+        "description": "Search the agentic web. 1,900+ sites, 11 tools incl. check_url + verify_mcp for probe-before-use.",
+        "title": "Not Human Search",
+        "version": "1.7.0",
+        "websiteUrl": "https://nothumansearch.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nothumansearch.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-18T08:50:28.605265Z",
+          "publishedAt": "2026-04-18T08:50:28.605265Z",
+          "updatedAt": "2026-04-18T08:50:28.605265Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.obaron/aeo",
+        "description": "Scan any website for AI readiness — 100-point score across 6 AEO categories in seconds.",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.obaron.ai/aeo/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-05T05:19:07.413315Z",
+          "publishedAt": "2026-04-05T05:19:07.413315Z",
+          "updatedAt": "2026-04-05T05:19:07.413315Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.obris/mcp",
+        "description": "Stop re-explaining yourself to AI. Save knowledge once, use it in every conversation.",
+        "title": "Obris",
+        "repository": {
+          "url": "https://github.com/obris-dev/obris-mcp",
+          "source": "github"
+        },
+        "version": "0.2.5",
+        "websiteUrl": "https://obris.ai",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/obris-dev/obris-mcp/main/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "obris-mcp",
+            "version": "0.2.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Obris API key from app.obris.ai/api-keys",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "OBRIS_API_KEY"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.obris.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-02T01:36:26.051491Z",
+          "publishedAt": "2026-03-02T01:36:26.051491Z",
+          "updatedAt": "2026-03-02T01:36:26.051491Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.obris/mcp",
+        "description": "Stop re-explaining yourself to AI. Save knowledge once, use it in every conversation.",
+        "title": "Obris",
+        "repository": {
+          "url": "https://github.com/obris-dev/obris-mcp",
+          "source": "github"
+        },
+        "version": "0.2.6",
+        "websiteUrl": "https://obris.ai",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/obris-dev/obris-mcp/main/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "obris-mcp",
+            "version": "0.2.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Obris API key from app.obris.ai/api-keys",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "OBRIS_API_KEY"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.obris.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-02T03:37:46.025768Z",
+          "publishedAt": "2026-03-02T03:37:46.025768Z",
+          "updatedAt": "2026-03-02T03:37:46.025768Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.obris/mcp",
+        "description": "Stop re-explaining yourself to AI. Save knowledge once, use it in every conversation.",
+        "title": "Obris",
+        "repository": {
+          "url": "https://github.com/obris-dev/obris-mcp",
+          "source": "github"
+        },
+        "version": "0.3.0",
+        "websiteUrl": "https://obris.ai",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/obris-dev/obris-mcp/main/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "obris-mcp",
+            "version": "0.3.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Obris API key from app.obris.ai/api-keys",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "OBRIS_API_KEY"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.obris.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-07T00:12:17.707082Z",
+          "publishedAt": "2026-03-07T00:12:17.707082Z",
+          "updatedAt": "2026-03-07T00:12:17.707082Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.obris/mcp",
+        "description": "Stop re-explaining yourself to AI. Save knowledge once, use it in every conversation.",
+        "title": "Obris",
+        "repository": {
+          "url": "https://github.com/obris-dev/obris-mcp",
+          "source": "github"
+        },
+        "version": "0.4.0",
+        "websiteUrl": "https://obris.ai",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/obris-dev/obris-mcp/main/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "obris-mcp",
+            "version": "0.4.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Obris API key from app.obris.ai/api-keys",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "OBRIS_API_KEY"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.obris.ai/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-07T15:43:41.190623Z",
+          "publishedAt": "2026-03-07T15:43:41.190623Z",
+          "updatedAt": "2026-03-07T15:43:41.190623Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — open protocol for bilateral matching.",
+        "title": "OpenMandate",
+        "version": "0.3.1",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-06T18:04:56.127382Z",
+          "publishedAt": "2026-03-06T18:04:56.127382Z",
+          "updatedAt": "2026-03-06T18:04:56.127382Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — open protocol for bilateral matching.",
+        "title": "OpenMandate",
+        "version": "0.3.2",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-06T18:08:53.025712Z",
+          "publishedAt": "2026-03-06T18:08:53.025712Z",
+          "updatedAt": "2026-03-06T18:08:53.025712Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — post mandates and check matches for cofounders and early teams.",
+        "title": "OpenMandate",
+        "version": "0.3.3",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-07T08:39:19.54151Z",
+          "publishedAt": "2026-03-07T08:39:19.54151Z",
+          "updatedAt": "2026-03-07T08:39:19.54151Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — post mandates and check matches for cofounders and early teams.",
+        "title": "OpenMandate",
+        "version": "0.5.0",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-08T14:15:33.672356Z",
+          "publishedAt": "2026-03-08T14:15:33.672356Z",
+          "updatedAt": "2026-03-08T14:15:33.672356Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — post mandates and check matches for cofounders and early teams.",
+        "title": "OpenMandate",
+        "version": "0.5.1",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-15T19:44:56.410124Z",
+          "publishedAt": "2026-03-15T19:44:56.410124Z",
+          "updatedAt": "2026-03-15T19:44:56.410124Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.openmandate/mcp",
+        "description": "MCP server for OpenMandate — find cofounders and early teammates beyond your network. 15 tools.",
+        "title": "OpenMandate",
+        "version": "0.6.0",
+        "websiteUrl": "https://openmandate.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.openmandate.ai/mcp",
+            "headers": [
+              {
+                "description": "API key in Bearer format: Bearer om_live_... — get one at https://openmandate.ai/api-keys",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T05:19:50.135009Z",
+          "publishedAt": "2026-04-15T05:19:50.135009Z",
+          "updatedAt": "2026-04-15T05:19:50.135009Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.optimly/scout",
+        "description": "Query the AI Brand Directory. Audit brand visibility in ChatGPT, Claude, and Gemini.",
+        "title": "Scout by Optimly",
+        "version": "1.0.0",
+        "websiteUrl": "https://optimly.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://scout.optimly.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-18T05:46:04.612377Z",
+          "publishedAt": "2026-04-18T05:46:04.612377Z",
+          "updatedAt": "2026-04-18T05:46:04.612377Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.packmind/mcp-server",
+        "description": "Packmind captures, scales, and enforces your organization's technical decisions.",
+        "repository": {
+          "url": "https://github.com/PackmindHub/packmind",
+          "source": "github",
+          "subfolder": "apps/mcp-server"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://app.packmind.ai/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Packmind authentication",
+                "value": "Bearer {packmind_mcp_token}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-11-24T15:23:52.365339Z",
+          "publishedAt": "2025-11-24T15:23:52.365339Z",
+          "updatedAt": "2025-11-24T15:23:52.365339Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.paperlantern/code",
+        "description": "Research intelligence for AI coding agents. 2M+ CS papers with evidence and tradeoffs.",
+        "title": "Paper Lantern",
+        "repository": {
+          "url": "https://github.com/paperlantern-ai/paperlantern-cli",
+          "source": "github"
+        },
+        "version": "0.2.2",
+        "websiteUrl": "https://paperlantern.ai/code",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.paperlantern.ai/chat/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-21T04:21:32.54597Z",
+          "publishedAt": "2026-04-21T04:21:32.54597Z",
+          "updatedAt": "2026-04-21T04:21:32.54597Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.paperlantern/code",
+        "description": "Research intelligence for AI coding agents. 2M+ CS papers with evidence and tradeoffs.",
+        "title": "Paper Lantern",
+        "repository": {
+          "url": "https://github.com/paperlantern-ai/paperlantern-cli",
+          "source": "github"
+        },
+        "version": "0.3.0",
+        "websiteUrl": "https://paperlantern.ai/code",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.paperlantern.ai/chat/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-21T05:30:29.320284Z",
+          "publishedAt": "2026-04-21T05:30:29.320284Z",
+          "updatedAt": "2026-04-21T05:30:29.320284Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.paperlantern/code",
+        "description": "Research intelligence for AI coding agents. 2M+ CS papers with evidence and tradeoffs.",
+        "title": "Paper Lantern",
+        "repository": {
+          "url": "https://github.com/paperlantern-ai/paperlantern-cli",
+          "source": "github"
+        },
+        "version": "0.3.1",
+        "websiteUrl": "https://paperlantern.ai/code",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.paperlantern.ai/chat/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-21T06:03:58.313689Z",
+          "publishedAt": "2026-04-21T06:03:58.313689Z",
+          "updatedAt": "2026-04-21T06:03:58.313689Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.parallel/search-mcp",
+        "description": "The best web search for your AI Agent",
+        "title": "Parallel Search MCP",
+        "repository": {
+          "url": "https://github.com/parallel-web/search-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://parallel.ai",
+        "icons": [
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-270.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "270x270"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-520.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "520x520"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-1080.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1080x1080"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-1080.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-270.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "270x270"
+            ],
+            "theme": "light"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-540.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "540x540"
+            ],
+            "theme": "light"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-1080.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ],
+            "theme": "light"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://search-mcp.parallel.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-09T11:15:39.72942Z",
+          "publishedAt": "2026-01-09T11:15:39.72942Z",
+          "updatedAt": "2026-01-09T11:15:39.72942Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.parallel/task-mcp",
+        "description": "An MCP server for deep research or task groups",
+        "title": "Parallel Task MCP",
+        "repository": {
+          "url": "https://github.com/parallel-web/task-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://parallel.ai",
+        "icons": [
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-270.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "270x270"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-520.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "520x520"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-1080.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1080x1080"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/white-parallel-symbol-1080.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ],
+            "theme": "dark"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-270.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "270x270"
+            ],
+            "theme": "light"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-540.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "540x540"
+            ],
+            "theme": "light"
+          },
+          {
+            "src": "https://assets.p0web.com/dark-parallel-symbol-1080.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ],
+            "theme": "light"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://task-mcp.parallel.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-01-09T11:11:31.316037Z",
+          "publishedAt": "2026-01-09T11:11:31.316037Z",
+          "updatedAt": "2026-01-09T11:11:31.316037Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.parceled/mcp",
+        "description": "US property data: 135M+ parcels with owners, roof permits, and hail history. Free tier + OAuth 2.1.",
+        "version": "1.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://parceled.ai/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-18T16:32:35.913953Z",
+          "publishedAt": "2026-04-18T16:32:35.913953Z",
+          "updatedAt": "2026-04-18T16:32:35.913953Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.parceled/mcp",
+        "description": "Real estate data for AI agents: US parcel boundaries (tiles), owners, sale history, permits, hail.",
+        "version": "1.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://parceled.ai/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-18T20:36:08.233242Z",
+          "publishedAt": "2026-04-18T20:36:08.233242Z",
+          "updatedAt": "2026-04-18T20:36:08.233242Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.perplexity/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.8.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.8.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-16T14:36:53.575623Z",
+          "publishedAt": "2026-02-16T14:36:53.575623Z",
+          "updatedAt": "2026-02-16T14:36:53.575623Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.perplexity/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.8.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.8.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-26T16:54:58.427121Z",
+          "publishedAt": "2026-02-26T16:54:58.427121Z",
+          "updatedAt": "2026-02-26T16:54:58.427121Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.perplexity/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.8.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.8.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-20T14:19:58.353374Z",
+          "publishedAt": "2026-03-20T14:19:58.353374Z",
+          "updatedAt": "2026-03-20T14:19:58.353374Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.perplexity/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.9.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.9.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-23T19:39:48.003259Z",
+          "publishedAt": "2026-03-23T19:39:48.003259Z",
+          "updatedAt": "2026-03-23T19:39:48.003259Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.pictomancer/image-processing",
+        "description": "Image processing for AI agents. Resize, convert, compress, and pipeline images.",
+        "repository": {
+          "url": "https://gitlab.com/pictomancer.ai/pig-gateway",
+          "source": "gitlab"
+        },
+        "version": "0.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pictomancer.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-07T22:28:43.413285Z",
+          "publishedAt": "2026-03-07T22:28:43.413285Z",
+          "updatedAt": "2026-03-07T22:28:43.413285Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.pictomancer/image-processing",
+        "description": "Image processing for AI agents. Resize, convert, compress, and pipeline images.",
+        "repository": {
+          "url": "https://gitlab.com/pictomancer.ai/pig-gateway",
+          "source": "gitlab"
+        },
+        "version": "0.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.pictomancer.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-28T14:06:38.232246Z",
+          "publishedAt": "2026-03-28T14:06:38.232246Z",
+          "updatedAt": "2026-03-28T14:06:38.232246Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+        "name": "ai.plith/plith",
+        "description": "AI agent infrastructure: dedup, cost prediction, validation, governance, failure intelligence.",
+        "repository": {
+          "url": "https://github.com/chicogonzales/plith",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://plith.ai/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-15T16:42:54.217435Z",
+          "publishedAt": "2026-04-15T16:42:54.217435Z",
+          "updatedAt": "2026-04-15T16:42:54.217435Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.ponlo/server",
+        "description": "Family calendar, tasks, meals, lists & rewards hub for AI assistants.",
+        "repository": {
+          "url": "https://github.com/ClaudioGodoyB/ponlo-ai",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.13.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "ponlo-ai",
+            "version": "1.13.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Ponlo.ai API URL (e.g., https://ponlo.ai)",
+                "isRequired": true,
+                "format": "string",
+                "name": "PONLO_API_URL"
+              },
+              {
+                "description": "Your Ponlo.ai API key (get it from Settings > API Keys)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "PONLO_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-04T21:01:15.992017Z",
+          "publishedAt": "2026-03-04T21:01:15.992017Z",
+          "updatedAt": "2026-03-04T21:01:15.992017Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.preclick/preclick-mcp",
+        "description": "PreClick scans links for threats and confirms intent match with high accuracy before agents click.",
+        "title": "PreClick — An MCP-native URL preflight scanning service for autonomous agents.",
+        "repository": {
+          "url": "https://github.com/cybrlab-ai/preclick-mcp",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "websiteUrl": "https://preclick.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://preclick.ai/mcp",
+            "headers": [
+              {
+                "description": "Optional for hosted trial access (up to 100 requests/day). Required for higher limits.",
+                "isSecret": true,
+                "placeholder": "<your-api-key>",
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-10T13:08:25.0298Z",
+          "publishedAt": "2026-03-10T13:08:25.0298Z",
+          "updatedAt": "2026-03-10T13:08:25.0298Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.preclick/preclick-mcp",
+        "description": "PreClick scans links for threats and confirms intent match with high accuracy before agents click.",
+        "title": "PreClick — An MCP-native URL preflight scanning service for autonomous agents.",
+        "repository": {
+          "url": "https://github.com/cybrlab-ai/preclick-mcp",
+          "source": "github"
+        },
+        "version": "0.3.2",
+        "websiteUrl": "https://preclick.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://preclick.ai/mcp",
+            "headers": [
+              {
+                "description": "Optional for hosted trial access (up to 100 requests/day). Required for higher limits.",
+                "isSecret": true,
+                "placeholder": "<your-api-key>",
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-29T14:49:00.252284Z",
+          "publishedAt": "2026-03-29T14:49:00.252284Z",
+          "updatedAt": "2026-03-29T14:49:00.252284Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.preclick/preclick-mcp",
+        "description": "PreClick scans links for threats and confirms intent match with high accuracy before agents click.",
+        "title": "PreClick — An MCP-native URL preflight scanning service for autonomous agents.",
+        "repository": {
+          "url": "https://github.com/cybrlab-ai/preclick-mcp",
+          "source": "github"
+        },
+        "version": "0.3.5",
+        "websiteUrl": "https://preclick.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://preclick.ai/mcp",
+            "headers": [
+              {
+                "description": "Optional for hosted trial access (up to 100 requests/day). Required for higher limits.",
+                "isSecret": true,
+                "placeholder": "<your-api-key>",
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-01T12:08:01.399072Z",
+          "publishedAt": "2026-04-01T12:08:01.399072Z",
+          "updatedAt": "2026-04-01T12:08:01.399072Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.preclick/preclick-mcp",
+        "description": "PreClick scans links for threats and confirms intent match with high accuracy before agents click.",
+        "title": "PreClick — An MCP-native URL preflight scanning service for autonomous agents.",
+        "repository": {
+          "url": "https://github.com/cybrlab-ai/preclick-mcp",
+          "source": "github"
+        },
+        "version": "0.3.6",
+        "websiteUrl": "https://preclick.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://preclick.ai/mcp",
+            "headers": [
+              {
+                "description": "Optional for hosted trial access (up to 100 requests/day). Required for higher limits.",
+                "isSecret": true,
+                "placeholder": "<your-api-key>",
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-03T15:48:04.727414Z",
+          "publishedAt": "2026-04-03T15:48:04.727414Z",
+          "updatedAt": "2026-04-03T15:48:04.727414Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.primeta/primeta",
+        "description": "Give your AI a face, a voice, and a personality. 3D avatars with custom personas.",
+        "title": "Primeta",
+        "repository": {
+          "url": "https://github.com/Primeta-AI/primeta",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://primeta.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://primeta.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T18:35:48.832001Z",
+          "publishedAt": "2026-04-24T18:35:48.832001Z",
+          "updatedAt": "2026-04-24T18:35:48.832001Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.primeta/primeta",
+        "description": "Give your AI a face, a voice, and a personality. 3D avatars with custom personas.",
+        "title": "Primeta",
+        "version": "1.0.1",
+        "websiteUrl": "https://primeta.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://primeta.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-24T18:39:30.210978Z",
+          "publishedAt": "2026-04-24T18:39:30.210978Z",
+          "updatedAt": "2026-04-24T18:39:30.210978Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.proofslip/mcp-server",
+        "description": "Receipt-based verification for AI agent workflows — create, verify, and poll ephemeral proof objects",
+        "title": "ProofSlip",
+        "repository": {
+          "url": "https://github.com/Johnny-Z13/proofslip",
+          "source": "github",
+          "subfolder": "packages/mcp-server"
+        },
+        "version": "0.2.3",
+        "websiteUrl": "https://proofslip.ai",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@proofslip/mcp-server",
+            "version": "0.2.3",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your ProofSlip API key (get one free at proofslip.ai)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "PROOFSLIP_API_KEY"
+              },
+              {
+                "description": "API base URL (defaults to https://proofslip.ai)",
+                "default": "https://proofslip.ai",
+                "name": "PROOFSLIP_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-05T07:54:11.612339Z",
+          "publishedAt": "2026-04-05T07:54:11.612339Z",
+          "updatedAt": "2026-04-05T07:54:11.612339Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.radiusos.www/crm",
+        "description": "34-tool CRM server — contacts, pipeline, quotes, invoices, scheduling, email, and AI scoring.",
+        "title": "RadiusOS CRM",
+        "repository": {
+          "url": "https://github.com/chadrnewell-hash/outreachos",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://www.radiusos.ai/mcp",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://www.radiusos.ai/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-22T19:14:38.551374Z",
+          "publishedAt": "2026-04-22T19:14:38.551374Z",
+          "updatedAt": "2026-04-22T19:14:38.551374Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.raisonn/connect",
+        "description": "AI-native art catalogue. Catalogue works, parse provenance, and generate signed RAIs.",
+        "repository": {
+          "url": "https://github.com/raisonnai/raisonnai",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.raisonn.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-01T21:37:52.119242Z",
+          "publishedAt": "2026-04-01T21:37:52.119242Z",
+          "updatedAt": "2026-04-01T21:37:52.119242Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.rapay/mcp-server",
+        "description": "Send fiat payments via MCP with two-step confirmation and Stripe Connect.",
+        "title": "Ra Pay",
+        "repository": {
+          "url": "https://github.com/Ra-Pay-AI/rapay",
+          "source": "github"
+        },
+        "version": "1.2.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@rapay/mcp-server",
+            "version": "1.2.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-09T18:54:17.964435Z",
+          "publishedAt": "2026-02-09T18:54:17.964435Z",
+          "updatedAt": "2026-02-09T18:54:17.964435Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.readypermit/geo",
+        "description": "Zoning, ADU eligibility, flood zone, setbacks, and buildability intelligence for U.S. parcels.",
+        "title": "ReadyPermit — Property Zoning & Buildability Intelligence",
+        "repository": {
+          "url": "https://github.com/Galax-ai/ReadyPermit.AI-v2",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "websiteUrl": "https://readypermit.ai",
+        "icons": [
+          {
+            "src": "https://readypermit.ai/icons/readypermit-icon-512.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://rnfonkwthefktfvfwypr.supabase.co/functions/v1/mcp-server",
+            "headers": [
+              {
+                "description": "Bearer token for ReadyPermit API access",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "categories": [
+              "real-estate",
+              "property-intelligence",
+              "zoning",
+              "flood-risk",
+              "environmental-data",
+              "proptech",
+              "buildability",
+              "feasibility",
+              "due-diligence"
+            ],
+            "dataSources": [
+              "FEMA National Flood Hazard Layer",
+              "EPA Envirofacts",
+              "USGS Seismic Hazards",
+              "Census Bureau (ACS, TIGER)",
+              "HUD Fair Market Rents",
+              "USDA Soil Survey",
+              "NOAA Wildfire Risk",
+              "Regrid Parcel Data",
+              "County GIS Records",
+              "RentCast Rental Comps"
+            ],
+            "keywords": [
+              "property",
+              "zoning",
+              "buildability",
+              "FEMA",
+              "flood zone",
+              "ADU",
+              "real estate",
+              "property intelligence",
+              "feasibility study",
+              "land use",
+              "development",
+              "due diligence",
+              "property analysis",
+              "EPA",
+              "environmental risk",
+              "lot analysis",
+              "FAR",
+              "setbacks",
+              "permitted uses",
+              "parcel data"
+            ],
+            "languages": [
+              "en"
+            ],
+            "pricing": {
+              "freeTier": true,
+              "model": "per-call",
+              "url": "https://readypermit.ai/pricing"
+            },
+            "privacyPolicy": "https://readypermit.ai/privacy",
+            "prompts": [
+              "investor_analysis",
+              "developer_feasibility",
+              "homeowner_guide",
+              "lender_risk_assessment"
+            ],
+            "regions": [
+              "US"
+            ],
+            "support": {
+              "email": "team@readypermit.ai",
+              "url": "https://readypermit.ai/help"
+            },
+            "termsOfService": "https://readypermit.ai/terms",
+            "tool": "readypermit-mcp",
+            "tools": [
+              "analyze_property",
+              "get_buildability_score",
+              "lookup_zoning",
+              "check_flood_zone",
+              "check_environmental_risks",
+              "search_comparable_sales",
+              "calculate_buildable_envelope"
+            ],
+            "version": "1.1.0"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-11T20:07:09.801361Z",
+          "publishedAt": "2026-04-11T20:07:09.801361Z",
+          "updatedAt": "2026-04-11T20:07:09.801361Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.rolli/mcp",
+        "description": "Social media search and analytics across X, Reddit, Bluesky, YouTube, and more",
+        "repository": {
+          "url": "https://github.com/rolliinc/rolli-mcp",
+          "source": "github"
+        },
+        "version": "1.1.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rolli/mcp",
+            "version": "1.1.4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Rolli API token (purchase at rolli.ai)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROLLI_API_TOKEN"
+              },
+              {
+                "description": "Rolli user ID",
+                "isRequired": true,
+                "format": "string",
+                "name": "ROLLI_USER_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-04T15:12:44.271447Z",
+          "publishedAt": "2026-03-04T15:12:44.271447Z",
+          "updatedAt": "2026-03-04T15:12:44.271447Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.rolli/mcp",
+        "description": "Social media search and analytics across X, Reddit, Bluesky, YouTube, and more",
+        "repository": {
+          "url": "https://github.com/rolliinc/rolli-mcp",
+          "source": "github"
+        },
+        "version": "1.1.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rolli/mcp",
+            "version": "1.1.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Rolli API token (purchase at rolli.ai)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROLLI_API_TOKEN"
+              },
+              {
+                "description": "Rolli user ID (optional, defaults to \"rolli-mcp\")",
+                "format": "string",
+                "name": "ROLLI_USER_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-05T15:19:24.872701Z",
+          "publishedAt": "2026-03-05T15:19:24.872701Z",
+          "updatedAt": "2026-03-05T15:19:24.872701Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.rolli/mcp",
+        "description": "Social media search and analytics across X, Reddit, Bluesky, YouTube, and more",
+        "repository": {
+          "url": "https://github.com/rolliinc/rolli-mcp",
+          "source": "github"
+        },
+        "version": "1.1.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rolli/mcp",
+            "version": "1.1.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Rolli API token (purchase at rolli.ai)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROLLI_API_TOKEN"
+              },
+              {
+                "description": "Rolli user ID (optional, defaults to \"rolli-mcp\")",
+                "format": "string",
+                "name": "ROLLI_USER_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-05T19:20:37.473267Z",
+          "publishedAt": "2026-03-05T19:20:37.473267Z",
+          "updatedAt": "2026-03-05T19:20:37.473267Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.rolli/mcp",
+        "description": "Social media search and analytics across X, Reddit, Bluesky, YouTube, and more",
+        "repository": {
+          "url": "https://github.com/rolliinc/rolli-mcp",
+          "source": "github"
+        },
+        "version": "1.1.7",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rolli/mcp",
+            "version": "1.1.7",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Rolli API token (purchase at rolli.ai)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROLLI_API_TOKEN"
+              },
+              {
+                "description": "Rolli user ID (optional, defaults to \"rolli-mcp\")",
+                "format": "string",
+                "name": "ROLLI_USER_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-13T12:54:13.259425Z",
+          "publishedAt": "2026-03-13T12:54:13.259425Z",
+          "updatedAt": "2026-03-13T12:54:13.259425Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.1.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T00:59:54.890995Z",
+          "publishedAt": "2026-04-08T00:59:54.890995Z",
+          "updatedAt": "2026-04-08T00:59:54.890995Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.2.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.2.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T04:50:35.370876Z",
+          "publishedAt": "2026-04-08T04:50:35.370876Z",
+          "updatedAt": "2026-04-08T04:50:35.370876Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.3.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.3.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T17:26:23.009389Z",
+          "publishedAt": "2026-04-08T17:26:23.009389Z",
+          "updatedAt": "2026-04-08T17:26:23.009389Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.4.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.4.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T18:52:42.118424Z",
+          "publishedAt": "2026-04-08T18:52:42.118424Z",
+          "updatedAt": "2026-04-08T18:52:42.118424Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.4.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.4.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T20:13:02.661301Z",
+          "publishedAt": "2026-04-08T20:13:02.661301Z",
+          "updatedAt": "2026-04-08T20:13:02.661301Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.4.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.4.2",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T20:46:52.895159Z",
+          "publishedAt": "2026-04-08T20:46:52.895159Z",
+          "updatedAt": "2026-04-08T20:46:52.895159Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.4.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.4.3",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T20:56:17.470036Z",
+          "publishedAt": "2026-04-08T20:56:17.470036Z",
+          "updatedAt": "2026-04-08T20:56:17.470036Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.5.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.5.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T20:59:00.80587Z",
+          "publishedAt": "2026-04-08T20:59:00.80587Z",
+          "updatedAt": "2026-04-08T20:59:00.80587Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.roxels/roxels-mcp",
+        "description": "Let AI agents create configurable voice agents via meeting rooms and return structured data.",
+        "title": "Roxels",
+        "repository": {
+          "url": "https://github.com/trebu-org/interviewer",
+          "source": "github",
+          "subfolder": "roxels_mcp"
+        },
+        "version": "0.5.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "roxels-mcp",
+            "version": "0.5.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Roxels API key (sk-...). Get one at https://app.roxels.ai, Settings, API Keys.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ROXELS_API_KEY"
+              },
+              {
+                "description": "API base URL. Override for self-hosted or development.",
+                "format": "string",
+                "name": "ROXELS_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-08T22:42:57.358698Z",
+          "publishedAt": "2026-04-08T22:42:57.358698Z",
+          "updatedAt": "2026-04-08T22:42:57.358698Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.scamverify/mcp",
+        "description": "AI-powered scam and threat verification for phone numbers, URLs, texts, and emails.",
+        "title": "ScamVerify Threat Verification",
+        "repository": {
+          "url": "https://github.com/scamverifyai/scamverify-ai",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://scamverify.ai/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-15T16:59:11.611467Z",
+          "publishedAt": "2026-03-15T16:59:11.611467Z",
+          "updatedAt": "2026-03-15T16:59:11.611467Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.scite/mcp",
+        "description": "Ground answers in scientific literature. Search full text, evaluate trust, access full-text articles",
+        "title": "Scite",
+        "version": "1.0.0",
+        "websiteUrl": "https://scite.ai/mcp",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.scite.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-02-27T19:54:43.430271Z",
+          "publishedAt": "2026-02-27T19:54:43.430271Z",
+          "updatedAt": "2026-02-27T19:54:43.430271Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.searchshop.www/la-luer",
+        "description": "Search, compare, and purchase La Luer microcurrent facial devices and skincare products.",
+        "title": "La Luer — AI Skincare Commerce",
+        "repository": {
+          "url": "https://github.com/nathangrotticelli/searchshopai",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://searchshopai-mcp.fly.dev/mcp/la-luer"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-04-16T08:07:51.642831Z",
+          "publishedAt": "2026-04-16T08:07:51.642831Z",
+          "updatedAt": "2026-04-16T08:07:51.642831Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.seltz/seltz-ai-seltz-mcp",
+        "description": "Provides AI assistants with access to Seltz's powerful Web Search capabilities.\n",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.seltz.ai/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-12-05T09:24:21.447908Z",
+          "publishedAt": "2025-12-05T09:24:21.447908Z",
+          "updatedAt": "2025-12-05T09:24:21.447908Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-merchant",
+        "description": "Search-only commerce MCP server backed by Stripe (test)",
+        "repository": {},
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-merchant",
+            "version": "0.1.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Stripe secret key (test mode)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "STRIPE_SECRET_KEY"
+              },
+              {
+                "description": "Max products to cache",
+                "default": "100",
+                "name": "PRODUCT_LIMIT"
+              },
+              {
+                "description": "Catalog refresh interval in seconds",
+                "default": "600",
+                "name": "REFRESH_INTERVAL_SEC"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-09T10:36:46.54185Z",
+          "publishedAt": "2025-09-09T10:36:46.54185Z",
+          "updatedAt": "2025-09-14T02:22:00.597355Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-merchant",
+        "description": "Search-only commerce MCP server backed by Stripe (test)",
+        "repository": {},
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-merchant",
+            "version": "0.1.1",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Stripe secret key (test mode)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "STRIPE_SECRET_KEY"
+              },
+              {
+                "description": "Max products to cache",
+                "default": "100",
+                "name": "PRODUCT_LIMIT"
+              },
+              {
+                "description": "Catalog refresh interval in seconds",
+                "default": "600",
+                "name": "REFRESH_INTERVAL_SEC"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T02:22:00.475571Z",
+          "publishedAt": "2025-09-14T02:22:00.475571Z",
+          "updatedAt": "2025-09-16T22:54:28.465114Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-merchant",
+        "description": "Search-only commerce MCP server backed by Stripe (test)",
+        "repository": {},
+        "version": "0.1.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-merchant",
+            "version": "0.1.3",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Stripe secret key (test mode)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "STRIPE_SECRET_KEY"
+              },
+              {
+                "description": "Max products to cache",
+                "default": "100",
+                "name": "PRODUCT_LIMIT"
+              },
+              {
+                "description": "Catalog refresh interval in seconds",
+                "default": "600",
+                "name": "REFRESH_INTERVAL_SEC"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T22:54:28.454307Z",
+          "publishedAt": "2025-09-16T22:54:28.454307Z",
+          "updatedAt": "2025-09-16T22:54:28.454307Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-registry",
+        "description": "Search the public MCP Registry; discover servers and copy SSE URLs.",
+        "repository": {},
+        "version": "0.1.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp-registry.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-15T03:11:16.637454Z",
+          "publishedAt": "2025-09-15T03:11:16.637454Z",
+          "updatedAt": "2025-09-15T04:01:11.068068Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-registry",
+        "description": "Search the public MCP Registry; discover servers and copy SSE URLs.",
+        "repository": {},
+        "version": "0.1.1",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp-registry.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-15T04:01:11.057921Z",
+          "publishedAt": "2025-09-15T04:01:11.057921Z",
+          "updatedAt": "2025-09-15T04:20:53.740529Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-registry",
+        "description": "Search the public MCP Registry; discover servers and copy SSE URLs.",
+        "repository": {},
+        "version": "0.1.2",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp-registry.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-15T04:20:53.726246Z",
+          "publishedAt": "2025-09-15T04:20:53.726246Z",
+          "updatedAt": "2025-09-16T23:02:09.747666Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.shawndurrani/mcp-registry",
+        "description": "Search the public MCP Registry; discover servers and copy SSE URLs.",
+        "repository": {},
+        "version": "0.1.3",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp-registry.shawndurrani.ai/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T23:02:09.738662Z",
+          "publishedAt": "2025-09-16T23:02:09.738662Z",
+          "updatedAt": "2025-09-16T23:02:09.738662Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.simsense/mcp",
+        "description": "Deploy sims to any screen. Control your displays with Claude.",
+        "title": "SimSense",
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://my.simsense.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-27T18:25:54.796415Z",
+          "publishedAt": "2026-03-27T18:25:54.796415Z",
+          "updatedAt": "2026-03-27T18:25:54.796415Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.simstim/mcp",
+        "description": "Ambient intelligence platform. Connect Claude to any screen via MCP.",
+        "title": "SimStim",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://my.simstim.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-24T19:14:54.122016Z",
+          "publishedAt": "2026-03-24T19:14:54.122016Z",
+          "updatedAt": "2026-03-24T19:14:54.122016Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "ai.simstim/mcp",
+        "description": "Deploy sims to any screen. Control your displays with Claude.",
+        "title": "SimStim",
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://my.simstim.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-03-24T19:17:16.584443Z",
+          "publishedAt": "2026-03-24T19:17:16.584443Z",
+          "updatedAt": "2026-03-24T19:17:16.584443Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/222wcnm-bilistalkermcp",
+        "description": "Track Bilibili creators and get the latest updates on videos, dynamics, and articles. Fetch user p…",
+        "repository": {
+          "url": "https://github.com/222wcnm/BiliStalkerMCP",
+          "source": "github"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@222wcnm/bilistalkermcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T06:57:33.936879Z",
+          "publishedAt": "2025-10-02T06:57:33.936879Z",
+          "updatedAt": "2025-10-02T06:57:33.936879Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/Aman-Amith-Shastry-scientific_computation_mcp",
+        "description": "This MCP server enables users to perform scientific computations regarding linear algebra and vect…",
+        "repository": {
+          "url": "https://github.com/Aman-Amith-Shastry/scientific_computation_mcp",
+          "source": "github"
+        },
+        "version": "1.13.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Aman-Amith-Shastry/scientific_computation_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T01:14:07.07827Z",
+          "publishedAt": "2025-09-12T01:14:07.07827Z",
+          "updatedAt": "2025-09-12T01:14:07.07827Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "0.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T17:47:25.005282Z",
+          "publishedAt": "2025-10-07T17:47:25.005282Z",
+          "updatedAt": "2025-10-07T17:47:25.005282Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-image-mcp-server",
+          "source": "github"
+        },
+        "version": "1.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T07:34:28.779387Z",
+          "publishedAt": "2025-10-06T07:34:28.779387Z",
+          "updatedAt": "2025-10-06T07:34:28.779387Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-image-mcp-server",
+          "source": "github"
+        },
+        "version": "1.3.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T11:18:15.765383Z",
+          "publishedAt": "2025-10-07T11:18:15.765383Z",
+          "updatedAt": "2025-10-07T11:18:15.765383Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.3.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T12:35:27.598218Z",
+          "publishedAt": "2025-10-07T12:35:27.598218Z",
+          "updatedAt": "2025-10-07T12:35:27.598218Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.3.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T15:23:03.987387Z",
+          "publishedAt": "2025-10-07T15:23:03.987387Z",
+          "updatedAt": "2025-10-07T15:23:03.987387Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.3.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T15:31:03.021495Z",
+          "publishedAt": "2025-10-07T15:31:03.021495Z",
+          "updatedAt": "2025-10-07T15:31:03.021495Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.3.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T15:57:33.366017Z",
+          "publishedAt": "2025-10-07T15:57:33.366017Z",
+          "updatedAt": "2025-10-07T15:57:33.366017Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.4.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T06:00:18.979771Z",
+          "publishedAt": "2025-10-08T06:00:18.979771Z",
+          "updatedAt": "2025-10-08T06:00:18.979771Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "description": "Analyze images and videos with Gemini to get fast, reliable visual insights. Handle content from U…",
+        "repository": {
+          "url": "https://github.com/Artin0123/gemini-vision-mcp",
+          "source": "github"
+        },
+        "version": "1.4.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Artin0123/gemini-image-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T06:18:22.754577Z",
+          "publishedAt": "2025-10-08T06:18:22.754577Z",
+          "updatedAt": "2025-10-08T06:18:22.754577Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BadRooBot-my_test_mcp",
+        "description": "Get current weather for any city and create images from your prompts. Streamline planning, reports…",
+        "repository": {
+          "url": "https://github.com/BadRooBot/python_mcp",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BadRooBot/my_test_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T14:25:46.094496Z",
+          "publishedAt": "2025-09-14T14:25:46.094496Z",
+          "updatedAt": "2025-09-14T14:25:46.094496Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BadRooBot-test_m",
+        "description": "Send quick greetings, scrape website content, and generate text or images on demand. Perform web s…",
+        "repository": {
+          "url": "https://github.com/BadRooBot/test_m",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BadRooBot/test_m/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-20T14:41:53.772797Z",
+          "publishedAt": "2025-09-20T14:41:53.772797Z",
+          "updatedAt": "2025-09-20T14:41:53.772797Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BigVik193-reddit-ads-mcp",
+        "description": "Manage Reddit advertising across accounts, campaigns, ad groups, posts, and ads. List accounts, fu…",
+        "repository": {
+          "url": "https://github.com/BigVik193/reddit-ads-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BigVik193/reddit-ads-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T22:00:51.726311Z",
+          "publishedAt": "2025-09-14T22:00:51.726311Z",
+          "updatedAt": "2025-09-14T22:00:51.726311Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BigVik193-reddit-ads-mcp-api",
+        "description": "Manage Reddit advertising end to end across accounts, funding methods, campaigns, ad groups, and a…",
+        "repository": {
+          "url": "https://github.com/BigVik193/reddit-ads-mcp-api",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BigVik193/reddit-ads-mcp-api/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T22:40:30.852738Z",
+          "publishedAt": "2025-09-14T22:40:30.852738Z",
+          "updatedAt": "2025-09-14T22:40:30.852738Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BigVik193-reddit-ads-mcp-test",
+        "description": "Manage Reddit advertising end-to-end: browse ad accounts and payment methods, and organize campaig…",
+        "repository": {
+          "url": "https://github.com/BigVik193/reddit-ads-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BigVik193/reddit-ads-mcp-test/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T21:38:57.984339Z",
+          "publishedAt": "2025-09-14T21:38:57.984339Z",
+          "updatedAt": "2025-09-14T21:38:57.984339Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/BigVik193-reddit-user-mcp",
+        "description": "Browse and manage Reddit posts, comments, and threads. Fetch user activity, explore hot/new/rising…",
+        "repository": {
+          "url": "https://github.com/BigVik193/reddit-user-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BigVik193/reddit-user-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T21:19:18.64908Z",
+          "publishedAt": "2025-09-14T21:19:18.64908Z",
+          "updatedAt": "2025-09-14T21:19:18.64908Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/BowenXU0126-aistudio_hw3",
+        "description": "Send personalized greetings with optional pirate flair. Compose friendly salutations for any name…",
+        "repository": {
+          "url": "https://github.com/BowenXU0126/aistudio_hw3",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@BowenXU0126/aistudio_hw3/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T00:54:01.690641Z",
+          "publishedAt": "2025-10-03T00:54:01.690641Z",
+          "updatedAt": "2025-10-03T00:54:01.690641Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/ChiR24-unreal_mcp",
+        "description": "Control Unreal Engine to browse assets, import content, and manage levels and sequences. Automate…",
+        "repository": {
+          "url": "https://github.com/ChiR24/Unreal_mcp",
+          "source": "github"
+        },
+        "version": "0.4.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@ChiR24/unreal_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T07:10:16.958159Z",
+          "publishedAt": "2025-10-03T07:10:16.958159Z",
+          "updatedAt": "2025-10-03T07:10:16.958159Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/ChiR24-unreal_mcp",
+        "description": "Control Unreal Engine to browse assets, import content, and manage levels and sequences. Automate…",
+        "repository": {
+          "url": "https://github.com/ChiR24/Unreal_mcp",
+          "source": "github"
+        },
+        "version": "0.4.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@ChiR24/unreal_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T09:43:19.045226Z",
+          "publishedAt": "2025-10-03T09:43:19.045226Z",
+          "updatedAt": "2025-10-03T09:43:19.045226Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/ChiR24-unreal_mcp",
+        "description": "Control Unreal Engine to browse assets, import content, and manage levels and sequences. Automate…",
+        "repository": {
+          "url": "https://github.com/ChiR24/Unreal_mcp",
+          "source": "github"
+        },
+        "version": "0.4.6",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@ChiR24/unreal_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-05T05:30:22.169534Z",
+          "publishedAt": "2025-10-05T05:30:22.169534Z",
+          "updatedAt": "2025-10-05T05:30:22.169534Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/ChiR24-unreal_mcp_server",
+        "description": "A comprehensive Model Context Protocol (MCP) server that enables AI assistants to control Unreal E…",
+        "repository": {
+          "url": "https://github.com/ChiR24/Unreal_mcp",
+          "source": "github"
+        },
+        "version": "0.4.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@ChiR24/unreal_mcp_server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T07:12:00.299485Z",
+          "publishedAt": "2025-10-03T07:12:00.299485Z",
+          "updatedAt": "2025-10-03T07:12:00.299485Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/CollectiveSpend-collectivespend-smithery-mcp",
+        "description": "Connect CollectiveSpend with Xero to manage contacts. Retrieve, create, and update contact records…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@CollectiveSpend/collectivespend-smithery-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-10T17:03:02.996325Z",
+          "publishedAt": "2025-09-10T17:03:02.996325Z",
+          "updatedAt": "2025-09-10T17:03:02.996325Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/CryptoCultCurt-appfolio-mcp-server",
+        "description": "Provide seamless access to Appfolio Property Manager Reporting API through a standardized MCP serv…",
+        "repository": {
+          "url": "https://github.com/CryptoCultCurt/appfolio-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@CryptoCultCurt/appfolio-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T00:42:54.555978Z",
+          "publishedAt": "2025-09-11T00:42:54.555978Z",
+          "updatedAt": "2025-09-11T00:42:54.555978Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/Danushkumar-V-mcp-discord",
+        "description": "An MCP server that integrates with Discord to provide AI-powered features.",
+        "repository": {
+          "url": "https://github.com/Danushkumar-V/mcp-discord",
+          "source": "github"
+        },
+        "version": "1.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Danushkumar-V/mcp-discord/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-13T22:54:39.805525Z",
+          "publishedAt": "2025-09-13T22:54:39.805525Z",
+          "updatedAt": "2025-09-13T22:54:39.805525Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/DynamicEndpoints-autogen_mcp",
+        "description": "Create and manage AI agents that collaborate and solve problems through natural language interacti…",
+        "repository": {
+          "url": "https://github.com/DynamicEndpoints/Autogen_MCP",
+          "source": "github"
+        },
+        "version": "0.3.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@DynamicEndpoints/autogen_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T13:57:38.18553Z",
+          "publishedAt": "2025-09-11T13:57:38.18553Z",
+          "updatedAt": "2025-09-11T13:57:38.18553Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/DynamicEndpoints-m365-core-mcp",
+        "description": "*Updated September 25th 2025** Manage your Microsoft 365 services effortlessly. Create and manage…",
+        "repository": {
+          "url": "https://github.com/DynamicEndpoints/m365-core-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@DynamicEndpoints/m365-core-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T04:00:42.356429Z",
+          "publishedAt": "2025-10-08T04:00:42.356429Z",
+          "updatedAt": "2025-10-08T04:00:42.356429Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/DynamicEndpoints-m365-core-mcp",
+        "description": "*Updated June 17th 2025** Manage your Microsoft 365 services effortlessly. Create and manage distr…",
+        "repository": {
+          "url": "https://github.com/DynamicEndpoints/m365-core-mcp",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@DynamicEndpoints/m365-core-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T13:58:16.278261Z",
+          "publishedAt": "2025-09-11T13:58:16.278261Z",
+          "updatedAt": "2025-09-11T13:58:16.278261Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/DynamicEndpoints-powershell-exec-mcp-server",
+        "description": "Execute PowerShell commands securely with controlled timeouts and input validation. Retrieve syste…",
+        "repository": {
+          "url": "https://github.com/DynamicEndpoints/PowerShell-Exec-MCP-Server",
+          "source": "github"
+        },
+        "version": "1.13.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@DynamicEndpoints/powershell-exec-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T13:54:30.703395Z",
+          "publishedAt": "2025-09-11T13:54:30.703395Z",
+          "updatedAt": "2025-09-11T13:54:30.703395Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/FelixYifeiWang-felix-mcp-smithery",
+        "description": "Streamline your workflow with Felix. Integrate it into your workspace and tailor its behavior to y…",
+        "repository": {
+          "url": "https://github.com/FelixYifeiWang/felix-mcp-smithery",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@FelixYifeiWang/felix-mcp-smithery/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T07:15:10.498525Z",
+          "publishedAt": "2025-10-02T07:15:10.498525Z",
+          "updatedAt": "2025-10-02T07:15:10.498525Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/Funding-Machine-ghl-mcp-fundingmachine",
+        "description": "Automate GoHighLevel across CRM, messaging, calendars, marketing, e-commerce, and billing. Manage…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@Funding-Machine/ghl-mcp-fundingmachine/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T21:20:15.688859Z",
+          "publishedAt": "2025-10-07T21:20:15.688859Z",
+          "updatedAt": "2025-10-07T21:20:15.688859Z",
+          "isLatest": true
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "nextCursor": "ai.smithery/Funding-Machine-ghl-mcp-fundingmachine:1.0.0",
+    "count": 100
+  }
+}

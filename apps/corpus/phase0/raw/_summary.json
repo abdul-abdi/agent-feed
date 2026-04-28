@@ -1,0 +1,29 @@
+{
+  "ranAt": "2026-04-27T21:07:29.694Z",
+  "durationMs": 4138,
+  "mcpRegistry": {
+    "count": 500
+  },
+  "awesomeMcpReadme": {
+    "bytes": 689544
+  },
+  "officialServersReadme": {
+    "bytes": 24561
+  },
+  "a2aRegistry": {
+    "tried": [
+      "https://a2aregistry.org/api/agents",
+      "https://a2aregistry.org/agents.json",
+      "https://www.a2a-registry.org/api/agents",
+      "https://a2a-registry.org/api/agents",
+      "https://raw.githubusercontent.com/prassanna-ravishankar/a2a-registry/main/README.md",
+      "https://raw.githubusercontent.com/prassanna-ravishankar/a2a-registry/main/agents/index.json"
+    ],
+    "ok": [
+      "https://a2aregistry.org/api/agents",
+      "https://a2aregistry.org/agents.json",
+      "https://a2a-registry.org/api/agents",
+      "https://raw.githubusercontent.com/prassanna-ravishankar/a2a-registry/main/README.md"
+    ]
+  }
+}

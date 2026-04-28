@@ -1,0 +1,3471 @@
+{
+  "servers": [
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.36",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T19:39:20.500533Z",
+          "publishedAt": "2025-10-06T19:39:20.500533Z",
+          "updatedAt": "2025-10-06T19:39:20.500533Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.37",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T19:56:07.70354Z",
+          "publishedAt": "2025-10-06T19:56:07.70354Z",
+          "updatedAt": "2025-10-06T19:56:07.70354Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.38",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T20:11:23.992588Z",
+          "publishedAt": "2025-10-06T20:11:23.992588Z",
+          "updatedAt": "2025-10-06T20:11:23.992588Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.39",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T20:30:34.706952Z",
+          "publishedAt": "2025-10-06T20:30:34.706952Z",
+          "updatedAt": "2025-10-06T20:30:34.706952Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T09:19:58.329764Z",
+          "publishedAt": "2025-09-19T09:19:58.329764Z",
+          "updatedAt": "2025-09-19T09:33:46.378866Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.40",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T21:00:58.525218Z",
+          "publishedAt": "2025-10-06T21:00:58.525218Z",
+          "updatedAt": "2025-10-06T21:00:58.525218Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.42",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T22:20:34.558495Z",
+          "publishedAt": "2025-10-06T22:20:34.558495Z",
+          "updatedAt": "2025-10-06T22:20:34.558495Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.43",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T22:32:12.781851Z",
+          "publishedAt": "2025-10-06T22:32:12.781851Z",
+          "updatedAt": "2025-10-06T22:32:12.781851Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.44",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T22:50:34.873751Z",
+          "publishedAt": "2025-10-06T22:50:34.873751Z",
+          "updatedAt": "2025-10-06T22:50:34.873751Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.45",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T23:16:00.32203Z",
+          "publishedAt": "2025-10-06T23:16:00.32203Z",
+          "updatedAt": "2025-10-06T23:16:00.32203Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.47",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T00:20:36.838282Z",
+          "publishedAt": "2025-10-07T00:20:36.838282Z",
+          "updatedAt": "2025-10-07T00:20:36.838282Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.48",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T00:22:49.183531Z",
+          "publishedAt": "2025-10-07T00:22:49.183531Z",
+          "updatedAt": "2025-10-07T00:22:49.183531Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.49",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T00:40:55.741227Z",
+          "publishedAt": "2025-10-07T00:40:55.741227Z",
+          "updatedAt": "2025-10-07T00:40:55.741227Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T09:33:46.34143Z",
+          "publishedAt": "2025-09-19T09:33:46.34143Z",
+          "updatedAt": "2025-09-19T09:40:01.090665Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.50",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T04:10:49.532129Z",
+          "publishedAt": "2025-10-08T04:10:49.532129Z",
+          "updatedAt": "2025-10-08T04:10:49.532129Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.52",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T04:30:38.743215Z",
+          "publishedAt": "2025-10-08T04:30:38.743215Z",
+          "updatedAt": "2025-10-08T04:30:38.743215Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.54",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-14T20:48:33.420391Z",
+          "publishedAt": "2025-10-14T20:48:33.420391Z",
+          "updatedAt": "2025-10-14T20:48:33.420391Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.58",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-25T09:09:32.842127Z",
+          "publishedAt": "2025-10-25T09:09:32.842127Z",
+          "updatedAt": "2025-10-25T09:09:32.842127Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.6",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T09:40:01.083926Z",
+          "publishedAt": "2025-09-19T09:40:01.083926Z",
+          "updatedAt": "2025-09-19T11:31:51.128069Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.7",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T11:31:50.983916Z",
+          "publishedAt": "2025-09-19T11:31:50.983916Z",
+          "updatedAt": "2025-09-19T11:38:30.021907Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.8",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T11:38:30.012332Z",
+          "publishedAt": "2025-09-19T11:38:30.012332Z",
+          "updatedAt": "2025-09-19T12:13:23.265367Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/brave",
+        "description": "Visit https://brave.com/search/api/ for a free API key. Search the web, local businesses, images,…",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.9",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/brave/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T12:13:23.217248Z",
+          "publishedAt": "2025-09-19T12:13:23.217248Z",
+          "updatedAt": "2025-09-19T13:27:13.291855Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/browserbasehq-mcp-browserbase",
+        "description": "Provides cloud browser automation capabilities using Stagehand and Browserbase, enabling LLMs to i…",
+        "repository": {
+          "url": "https://github.com/browserbase/mcp-server-browserbase",
+          "source": "github"
+        },
+        "version": "2.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@browserbasehq/mcp-browserbase/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T17:17:18.587292Z",
+          "publishedAt": "2025-09-16T17:17:18.587292Z",
+          "updatedAt": "2025-09-16T17:17:18.587292Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/browserbasehq-mcp-browserbase",
+        "description": "Provides cloud browser automation capabilities using Stagehand and Browserbase, enabling LLMs to i…",
+        "repository": {
+          "url": "https://github.com/browserbase/mcp-server-browserbase",
+          "source": "github"
+        },
+        "version": "2.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@browserbasehq/mcp-browserbase/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-16T21:51:16.500712Z",
+          "publishedAt": "2025-10-16T21:51:16.500712Z",
+          "updatedAt": "2025-10-16T21:51:16.500712Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/callmybot-cookbook-mcp-server",
+        "description": "Count occurrences of any character in your text instantly. Specify the character and get precise c…",
+        "repository": {
+          "url": "https://github.com/callmybot/cookbook-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@callmybot/cookbook-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T09:25:11.477139Z",
+          "publishedAt": "2025-09-18T09:25:11.477139Z",
+          "updatedAt": "2025-09-18T09:25:11.477139Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/callmybot-domoticz",
+        "description": "Greet anyone by name with a friendly hello. Explore the origin of 'Hello, World' for context in de…",
+        "repository": {
+          "url": "https://github.com/callmybot/domoticz",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@callmybot/domoticz/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T10:31:39.650923Z",
+          "publishedAt": "2025-09-18T10:31:39.650923Z",
+          "updatedAt": "2025-09-18T10:31:39.650923Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/callmybot-hello-mcp-server",
+        "description": "Generate quick, friendly greetings by name. Personalize salutations for any context. Explore the o…",
+        "repository": {
+          "url": "https://github.com/callmybot/hello-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@callmybot/hello-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T07:48:26.611267Z",
+          "publishedAt": "2025-09-18T07:48:26.611267Z",
+          "updatedAt": "2025-09-18T07:48:26.611267Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/cc25a-openai-api-agent-project123123123",
+        "description": "Look up the latest stock prices by ticker symbol across global markets. Get current price and esse…",
+        "repository": {
+          "url": "https://github.com/cc25a/openai-api-agent-project",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cc25a/openai-api-agent-project123123123/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T03:32:54.14302Z",
+          "publishedAt": "2025-09-17T03:32:54.14302Z",
+          "updatedAt": "2025-09-17T03:32:54.14302Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/cindyloo-dropbox-mcp-server",
+        "description": "Search, browse, and read your Dropbox files. Find documents by name or content, list folders, and…",
+        "repository": {
+          "url": "https://github.com/cindyloo/dropbox-mcp-server",
+          "source": "github"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cindyloo/dropbox-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T02:02:08.583268Z",
+          "publishedAt": "2025-09-30T02:02:08.583268Z",
+          "updatedAt": "2025-09-30T02:02:08.583268Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/clpi-clp-mcp",
+        "description": "Manage simple context workflows with quick init and add actions. Access the 'Hello, World' origin…",
+        "repository": {
+          "url": "https://github.com/clpi/clp-mcp",
+          "source": "github"
+        },
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@clpi/clp-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T00:23:04.174735Z",
+          "publishedAt": "2025-10-08T00:23:04.174735Z",
+          "updatedAt": "2025-10-08T00:23:04.174735Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/cpretzinger-ai-assistant-simple",
+        "description": "UPDATED 9/1/2025! NEW TOOLS! Use the Redis Stream tools with n8n MCP Client Node for use anywhere!…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cpretzinger/ai-assistant-simple/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-15T00:26:36.144736Z",
+          "publishedAt": "2025-09-15T00:26:36.144736Z",
+          "updatedAt": "2025-09-15T00:26:36.144736Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/cristianoaredes-mcp-dadosbr",
+        "description": "# MCP DadosBR Servidor MCP focado em dados públicos do Brasil. Oferece duas ferramentas simples e…",
+        "repository": {
+          "url": "https://github.com/cristianoaredes/mcp-dadosbr",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cristianoaredes/mcp-dadosbr/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T12:13:44.073155Z",
+          "publishedAt": "2025-10-03T12:13:44.073155Z",
+          "updatedAt": "2025-10-03T12:13:44.073155Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/ctaylor86-mcp-video-download-server",
+        "description": "Connect your video workflows to cloud storage. Organize and access video assets across projects wi…",
+        "repository": {
+          "url": "https://github.com/ctaylor86/mcp-video-download-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@ctaylor86/mcp-video-download-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-15T11:45:18.173946Z",
+          "publishedAt": "2025-09-15T11:45:18.173946Z",
+          "updatedAt": "2025-09-15T11:45:18.173946Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/cuongpo-coti-mcp",
+        "description": "Connect to the COTI blockchain to manage accounts, transfer native tokens, and deploy and operate…",
+        "repository": {
+          "url": "https://github.com/cuongpo/coti-mcp",
+          "source": "github"
+        },
+        "version": "0.2.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cuongpo/coti-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T07:26:17.819584Z",
+          "publishedAt": "2025-10-02T07:26:17.819584Z",
+          "updatedAt": "2025-10-02T07:26:17.819584Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/cuongpo-coti-mcp-1",
+        "description": "Manage COTI accounts, deploy private ERC20 and ERC721 contracts, and transfer tokens and NFTs with…",
+        "repository": {
+          "url": "https://github.com/cuongpo/coti-mcp",
+          "source": "github"
+        },
+        "version": "0.2.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@cuongpo/coti-mcp-1/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T15:24:18.456616Z",
+          "publishedAt": "2025-10-02T15:24:18.456616Z",
+          "updatedAt": "2025-10-02T15:24:18.456616Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/data-mindset-sts-google-forms-mcp",
+        "description": "Create and manage Google Forms to run surveys and collect data. Add text and multiple-choice quest…",
+        "repository": {
+          "url": "https://github.com/data-mindset/sts-google-forms-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@data-mindset/sts-google-forms-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-05T09:13:16.21757Z",
+          "publishedAt": "2025-10-05T09:13:16.21757Z",
+          "updatedAt": "2025-10-05T09:13:16.21757Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/demomagic-duckchain-mcp",
+        "description": "Explore blockchain data across addresses, tokens, blocks, and transactions. Investigate any transa…",
+        "repository": {
+          "url": "https://github.com/demomagic/duckchain-mcp",
+          "source": "github"
+        },
+        "version": "1.13.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@demomagic/duckchain-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T05:32:58.075994Z",
+          "publishedAt": "2025-09-14T05:32:58.075994Z",
+          "updatedAt": "2025-09-14T05:32:58.075994Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/devbrother2024-typescript-mcp-server-boilerplate",
+        "description": "Kickstart development with a customizable TypeScript template featuring sample tools for greeting,…",
+        "repository": {
+          "url": "https://github.com/devbrother2024/typescript-mcp-server-boilerplate",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@devbrother2024/typescript-mcp-server-boilerplate/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-20T16:12:55.711869Z",
+          "publishedAt": "2025-09-20T16:12:55.711869Z",
+          "updatedAt": "2025-09-20T16:12:55.711869Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/docfork-mcp",
+        "description": "@latest documentation and code examples to 9000+ libraries for LLMs and AI code editors in a singl…",
+        "repository": {
+          "url": "https://github.com/docfork/docfork-mcp",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@docfork/mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-10T21:06:07.509501Z",
+          "publishedAt": "2025-09-10T21:06:07.509501Z",
+          "updatedAt": "2025-09-12T18:25:16.14187Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/docfork-mcp",
+        "description": "@latest documentation and code examples to 9000+ libraries for LLMs and AI code editors in a singl…",
+        "repository": {
+          "url": "https://github.com/docfork/docfork-mcp",
+          "source": "github"
+        },
+        "version": "0.7.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@docfork/mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T18:25:16.049647Z",
+          "publishedAt": "2025-09-12T18:25:16.049647Z",
+          "updatedAt": "2025-09-12T18:25:16.049647Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/dsharipova-mcp-hw",
+        "description": "Create personalized greetings by name in the tone you choose. Get quick suggestions for friendly i…",
+        "repository": {
+          "url": "https://github.com/dsharipova/mcp-hw",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@dsharipova/mcp-hw/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T13:26:30.70555Z",
+          "publishedAt": "2025-10-03T13:26:30.70555Z",
+          "updatedAt": "2025-10-03T13:26:30.70555Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/duvomike-mcp",
+        "description": "Transform numbers by doubling them and adding 5. Get instant results with a clear breakdown of the…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@duvomike/mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-21T03:33:47.332418Z",
+          "publishedAt": "2025-09-21T03:33:47.332418Z",
+          "updatedAt": "2025-09-21T03:33:47.332418Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/eliu243-oura-mcp-server",
+        "description": "Connect your Oura Ring account and enable access to your wellness data in apps and automations. In…",
+        "repository": {
+          "url": "https://github.com/eliu243/oura-mcp-server",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@eliu243/oura-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T18:41:13.003678Z",
+          "publishedAt": "2025-10-02T18:41:13.003678Z",
+          "updatedAt": "2025-10-02T18:41:13.003678Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/eliu243-oura-mcp-server-2",
+        "description": "Connect your Oura Ring account to enable secure, authenticated access in your workflows. Generate…",
+        "repository": {
+          "url": "https://github.com/eliu243/oura-mcp-server",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@eliu243/oura-mcp-server-2/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T18:40:49.71696Z",
+          "publishedAt": "2025-10-02T18:40:49.71696Z",
+          "updatedAt": "2025-10-02T18:40:49.71696Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/eliu243-oura-mcp-server-eliu",
+        "description": "Connect your Oura Ring account securely in minutes. Enable authorized access to your sleep, activi…",
+        "repository": {
+          "url": "https://github.com/eliu243/oura-mcp-server",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@eliu243/oura-mcp-server-eliu/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T18:40:51.593152Z",
+          "publishedAt": "2025-10-02T18:40:51.593152Z",
+          "updatedAt": "2025-10-02T18:40:51.593152Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/exa-labs-exa-code-mcp",
+        "description": "Find open-source libraries and fetch contextual code snippets by version to accelerate development…",
+        "repository": {
+          "url": "https://github.com/exa-labs/exa-code-mcp",
+          "source": "github"
+        },
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@exa-labs/exa-code-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T20:44:09.235886Z",
+          "publishedAt": "2025-09-17T20:44:09.235886Z",
+          "updatedAt": "2025-09-17T20:44:09.235886Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/faithk7-gmail-mcp",
+        "description": "Manage Gmail messages, threads, labels, drafts, and settings from your workflows. Send and organiz…",
+        "repository": {
+          "url": "https://github.com/faithk7/gmail-mcp",
+          "source": "github"
+        },
+        "version": "1.7.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@faithk7/gmail-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-14T13:42:20.134258Z",
+          "publishedAt": "2025-09-14T13:42:20.134258Z",
+          "updatedAt": "2025-09-14T13:42:20.134258Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/feeefapp-mcp",
+        "description": "Enable AI assistants to interact seamlessly with Feeef e-commerce stores, products, and orders usi…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@feeefapp/mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T01:55:09.587519Z",
+          "publishedAt": "2025-10-03T01:55:09.587519Z",
+          "updatedAt": "2025-10-03T01:55:09.587519Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/fengyinxia-jimeng-mcp",
+        "description": "Create images and videos from prompts, with options for image mixing, reference images, and start/…",
+        "repository": {
+          "url": "https://github.com/fengyinxia/jimeng-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@fengyinxia/jimeng-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T13:13:51.711543Z",
+          "publishedAt": "2025-09-12T13:13:51.711543Z",
+          "updatedAt": "2025-09-12T13:13:51.711543Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/fitaf-ai-fitaf-ai-mcp",
+        "description": "Manage workouts, nutrition, goals, and progress across the FitAF platform. Connect wearables, sync…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@fitaf-ai/fitaf-ai-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T17:59:11.653728Z",
+          "publishedAt": "2025-09-12T17:59:11.653728Z",
+          "updatedAt": "2025-09-12T17:59:11.653728Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/fitaf-ai-fitaf-mcp",
+        "description": "Track workouts, nutrition, body metrics, habits, and SMART goals with insights and trends. Connect…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@fitaf-ai/fitaf-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-12T20:09:50.974663Z",
+          "publishedAt": "2025-09-12T20:09:50.974663Z",
+          "updatedAt": "2025-09-12T20:09:50.974663Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/flight505-mcp_dincoder",
+        "description": "Driven Intent Negotiation — Contract-Oriented Deterministic Executable Runtime DinCoder brings the…",
+        "repository": {
+          "url": "https://github.com/flight505/MCP_DinCoder",
+          "source": "github"
+        },
+        "version": "0.1.13",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@flight505/mcp_dincoder/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T21:41:25.261987Z",
+          "publishedAt": "2025-10-03T21:41:25.261987Z",
+          "updatedAt": "2025-10-03T21:41:25.261987Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/flight505-mcp_dincoder",
+        "description": "Driven Intent Negotiation — Contract-Oriented Deterministic Executable Runtime DinCoder brings the…",
+        "repository": {
+          "url": "https://github.com/flight505/MCP_DinCoder",
+          "source": "github"
+        },
+        "version": "0.1.15",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@flight505/mcp_dincoder/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T21:53:12.422748Z",
+          "publishedAt": "2025-10-03T21:53:12.422748Z",
+          "updatedAt": "2025-10-03T21:53:12.422748Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/hithereiamaliff-mcp-datagovmy",
+        "description": "This MCP server provides seamless access to Malaysia's government open data, including datasets, w…",
+        "repository": {
+          "url": "https://github.com/hithereiamaliff/mcp-datagovmy",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@hithereiamaliff/mcp-datagovmy/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T05:56:30.06684Z",
+          "publishedAt": "2025-09-11T05:56:30.06684Z",
+          "updatedAt": "2025-09-11T05:56:30.06684Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/hithereiamaliff-mcp-nextcloud",
+        "description": "A comprehensive Model Context Protocol (MCP) server that enables AI assistants to interact with yo…",
+        "repository": {
+          "url": "https://github.com/hithereiamaliff/mcp-nextcloud",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@hithereiamaliff/mcp-nextcloud/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T18:40:25.891252Z",
+          "publishedAt": "2025-09-11T18:40:25.891252Z",
+          "updatedAt": "2025-09-11T18:40:25.891252Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/hjsh200219-pharminfo-mcp",
+        "description": "Look up Korean drug ingredient and product data by HIRA component and product codes via Pilldoc. V…",
+        "repository": {
+          "url": "https://github.com/hjsh200219/pharminfo-mcp",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@hjsh200219/pharminfo-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-17T06:55:47.401979Z",
+          "publishedAt": "2025-09-17T06:55:47.401979Z",
+          "updatedAt": "2025-09-17T06:55:47.401979Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/hollaugo-financial-research-mcp-server",
+        "description": "Analyze stocks with summaries, price targets, and analyst recommendations. Track SEC filings, divi…",
+        "repository": {
+          "url": "https://github.com/hollaugo/tutorials",
+          "source": "github",
+          "subfolder": "smithery-example/financial-server"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@hollaugo/financial-research-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-29T16:56:54.604903Z",
+          "publishedAt": "2025-09-29T16:56:54.604903Z",
+          "updatedAt": "2025-09-29T16:56:54.604903Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/hustcc-mcp-mermaid",
+        "description": "Generate dynamic Mermaid diagrams and charts with AI assistance. Customize styles and export diagr…",
+        "repository": {
+          "url": "https://github.com/hustcc/mcp-mermaid",
+          "source": "github"
+        },
+        "version": "0.1.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@hustcc/mcp-mermaid/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-13T06:08:16.370383Z",
+          "publishedAt": "2025-09-13T06:08:16.370383Z",
+          "updatedAt": "2025-09-13T06:08:16.370383Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/huuthangntk-claude-vision-mcp-server",
+        "description": "Analyze images from multiple angles to extract detailed insights or quick summaries. Describe visu…",
+        "repository": {
+          "url": "https://github.com/huuthangntk/claude-vision-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@huuthangntk/claude-vision-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T23:20:55.125959Z",
+          "publishedAt": "2025-10-07T23:20:55.125959Z",
+          "updatedAt": "2025-10-07T23:20:55.125959Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/infranodus-mcp-server-infranodus",
+        "description": "Map text into knowledge graphs to create a structured representation of conceptual relations and t…",
+        "repository": {
+          "url": "https://github.com/infranodus/mcp-server-infranodus",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@infranodus/mcp-server-infranodus/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-04T08:08:11.981455Z",
+          "publishedAt": "2025-10-04T08:08:11.981455Z",
+          "updatedAt": "2025-10-04T08:08:11.981455Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/isnow890-data4library-mcp",
+        "description": "책 싫어하는 제가 책에 대해 아는척하고 싶어서 만들었습니다.. 내 주변 도서관 실시간 대출 확인 읽고 싶은 책을 검색하면 주변 도서관 대출 가능 여부를 즉시 확인 굳이 도서관…",
+        "repository": {
+          "url": "https://github.com/isnow890/data4library-mcp",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@isnow890/data4library-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-29T10:45:21.467985Z",
+          "publishedAt": "2025-09-29T10:45:21.467985Z",
+          "updatedAt": "2025-09-29T10:45:21.467985Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/jekakos-mcp-user-data-enrichment",
+        "description": "Enrich user data by adding social network links based on provided personal information. Integrate…",
+        "repository": {
+          "url": "https://github.com/jekakos/mcp-user-data-enrichment",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jekakos/mcp-user-data-enrichment/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T12:50:51.350056Z",
+          "publishedAt": "2025-10-02T12:50:51.350056Z",
+          "updatedAt": "2025-10-02T12:50:51.350056Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/jenniferjiang0511-mit-ai-studio-hw3",
+        "description": "Greet people by name and check local forecasts and weather alerts across the U.S. Switch to a play…",
+        "repository": {
+          "url": "https://github.com/jenniferjiang0511/MIT-AI-studio-HW3",
+          "source": "github"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jenniferjiang0511/mit-ai-studio-hw3/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T03:01:55.290688Z",
+          "publishedAt": "2025-10-03T03:01:55.290688Z",
+          "updatedAt": "2025-10-03T03:01:55.290688Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/jessicayanwang-test",
+        "description": "Fetch latest and historical currency exchange rates from Frankfurter. Convert amounts between curr…",
+        "repository": {
+          "url": "https://github.com/jessicayanwang/frankfurtermcp",
+          "source": "github"
+        },
+        "version": "1.13.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jessicayanwang/test/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T02:03:00.046026Z",
+          "publishedAt": "2025-09-30T02:03:00.046026Z",
+          "updatedAt": "2025-09-30T02:03:00.046026Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/jirispilka-actors-mcp-server",
+        "description": "Greet anyone by name with friendly, personalized messages. Explore the origin of Hello, World thro…",
+        "repository": {
+          "url": "https://github.com/jirispilka/actors-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jirispilka/actors-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-11T11:59:13.452963Z",
+          "publishedAt": "2025-09-11T11:59:13.452963Z",
+          "updatedAt": "2025-09-11T11:59:13.452963Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/jjlabsio-korea-stock-mcp",
+        "description": "Search company disclosures and financial statements from the Korean market. Retrieve stock profile…",
+        "repository": {
+          "url": "https://github.com/jjlabsio/korea-stock-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jjlabsio/korea-stock-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-19T09:01:49.012754Z",
+          "publishedAt": "2025-09-19T09:01:49.012754Z",
+          "updatedAt": "2025-09-19T09:01:49.012754Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/jweingardt12-mlb_mcp",
+        "description": "Provides easy access to MLB, Baseball Savant, Statcast, and Fangraphs baseball data. Query detaile…",
+        "repository": {},
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@jweingardt12/mlb_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T14:52:36.727607Z",
+          "publishedAt": "2025-10-06T14:52:36.727607Z",
+          "updatedAt": "2025-10-06T14:52:36.727607Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/kaszek-kaszek-attio-mcp",
+        "description": "Automate Attio CRM workflows with fast search and bulk operations across companies, people, deals,…",
+        "repository": {},
+        "version": "0.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kaszek/kaszek-attio-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-20T23:26:13.627724Z",
+          "publishedAt": "2025-09-20T23:26:13.627724Z",
+          "updatedAt": "2025-09-20T23:26:13.627724Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/keithah-hostex-mcp",
+        "description": "Manage your Hostex vacation rentals—properties, reservations, availability, listings, and guest me…",
+        "repository": {
+          "url": "https://github.com/keithah/hostex-mcp",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@keithah/hostex-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T04:10:38.519183Z",
+          "publishedAt": "2025-09-30T04:10:38.519183Z",
+          "updatedAt": "2025-09-30T04:10:38.519183Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/keithah-tessie-mcp",
+        "description": "Unofficial integration! ## ✨ Key Features ### 💰 Financial Intelligence - **Smart Charging Cost An…",
+        "repository": {
+          "url": "https://github.com/keithah/tessie-mcp",
+          "source": "github"
+        },
+        "version": "1.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@keithah/tessie-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T04:22:17.289426Z",
+          "publishedAt": "2025-09-30T04:22:17.289426Z",
+          "updatedAt": "2025-09-30T04:22:17.289426Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/keremurat-json",
+        "description": "Compare two JSON files deeply without worrying about key or array order. Detect missing, extra, an…",
+        "repository": {
+          "url": "https://github.com/keremurat/mcp",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@keremurat/json/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T13:28:40.425657Z",
+          "publishedAt": "2025-10-03T13:28:40.425657Z",
+          "updatedAt": "2025-10-03T13:28:40.425657Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/keremurat-jsonmcp",
+        "description": "Compare two JSON files deeply, ignoring order, to surface every difference. Get a clear, structure…",
+        "repository": {
+          "url": "https://github.com/keremurat/mcp",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@keremurat/jsonmcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T13:28:42.90749Z",
+          "publishedAt": "2025-10-03T13:28:42.90749Z",
+          "updatedAt": "2025-10-03T13:28:42.90749Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/keremurat-mcp",
+        "description": "Compare two JSON files deeply, regardless of order. Get a detailed difference report highlighting…",
+        "repository": {
+          "url": "https://github.com/keremurat/mcp",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@keremurat/mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-03T13:28:45.319778Z",
+          "publishedAt": "2025-10-03T13:28:45.319778Z",
+          "updatedAt": "2025-10-03T13:28:45.319778Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/kesslerio-attio-mcp-server",
+        "description": "Enable AI assistants to interact directly with your Attio CRM data through natural language querie…",
+        "repository": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kesslerio/attio-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-10T17:52:23.110358Z",
+          "publishedAt": "2025-09-10T17:52:23.110358Z",
+          "updatedAt": "2025-09-10T17:52:23.110358Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kesslerio-attio-mcp-server",
+        "description": "Enable AI assistants to interact directly with your Attio CRM data through natural language querie…",
+        "repository": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kesslerio/attio-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T18:05:45.305934Z",
+          "publishedAt": "2025-10-06T18:05:45.305934Z",
+          "updatedAt": "2025-10-06T18:05:45.305934Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kesslerio-attio-mcp-server",
+        "description": "Connect AI to your Attio CRM. Manage contacts, companies, deals, and sales pipelines. Create tasks…",
+        "repository": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kesslerio/attio-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T01:00:35.437419Z",
+          "publishedAt": "2025-10-07T01:00:35.437419Z",
+          "updatedAt": "2025-10-07T01:00:35.437419Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kesslerio-attio-mcp-server",
+        "description": "Connect AI to your Attio CRM. Manage contacts, companies, deals, and sales pipelines. Create tasks…",
+        "repository": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.1-fallback",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kesslerio/attio-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T01:33:38.174012Z",
+          "publishedAt": "2025-10-07T01:33:38.174012Z",
+          "updatedAt": "2025-10-07T01:33:38.174012Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kesslerio-attio-mcp-server-beta",
+        "description": "Streamline your Attio workflows using natural language to search, create, update, and organize com…",
+        "repository": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kesslerio/attio-mcp-server-beta/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T04:36:42.08064Z",
+          "publishedAt": "2025-10-07T04:36:42.08064Z",
+          "updatedAt": "2025-10-07T04:36:42.08064Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kirbah-mcp-youtube",
+        "description": "Provide token-optimized, structured YouTube data to enhance your LLM applications. Access efficien…",
+        "repository": {
+          "url": "https://github.com/kirbah/mcp-youtube",
+          "source": "github"
+        },
+        "version": "0.2.6",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kirbah/mcp-youtube/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-04T16:31:58.771823Z",
+          "publishedAt": "2025-10-04T16:31:58.771823Z",
+          "updatedAt": "2025-10-04T16:31:58.771823Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/kkjdaniel-bgg-mcp",
+        "description": "BGG MCP provides access to the BoardGameGeek API through the Model Context Protocol, enabling retr…",
+        "repository": {
+          "url": "https://github.com/kkjdaniel/bgg-mcp",
+          "source": "github"
+        },
+        "version": "1.3.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kkjdaniel/bgg-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T00:14:29.642756Z",
+          "publishedAt": "2025-09-16T00:14:29.642756Z",
+          "updatedAt": "2025-09-16T00:14:29.642756Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/kodey-ai-mapwise-mcp",
+        "description": "Send friendly, personalized greetings on demand. Generate quick salutations with a simple prompt.…",
+        "repository": {},
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kodey-ai/mapwise-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T21:55:01.522892Z",
+          "publishedAt": "2025-09-18T21:55:01.522892Z",
+          "updatedAt": "2025-09-18T21:55:01.522892Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kodey-ai-salesforce-mcp",
+        "description": "Run SOQL queries to explore and retrieve Salesforce data. Inspect records, fields, and relationshi…",
+        "repository": {
+          "url": "https://github.com/kodey-ai/salesforce-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kodey-ai/salesforce-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T03:10:49.227357Z",
+          "publishedAt": "2025-10-08T03:10:49.227357Z",
+          "updatedAt": "2025-10-08T03:10:49.227357Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kodey-ai-salesforce-mcp-kodey",
+        "description": "Run SOQL queries against your Salesforce org to explore and retrieve data. Quickly iterate on filt…",
+        "repository": {
+          "url": "https://github.com/kodey-ai/salesforce-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kodey-ai/salesforce-mcp-kodey/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T03:10:47.790579Z",
+          "publishedAt": "2025-10-08T03:10:47.790579Z",
+          "updatedAt": "2025-10-08T03:10:47.790579Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kodey-ai-salesforce-mcp-minimal",
+        "description": "Run SOQL queries to explore and retrieve Salesforce data. Access accounts, contacts, opportunities…",
+        "repository": {
+          "url": "https://github.com/kodey-ai/salesforce-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kodey-ai/salesforce-mcp-minimal/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T03:10:50.179693Z",
+          "publishedAt": "2025-10-08T03:10:50.179693Z",
+          "updatedAt": "2025-10-08T03:10:50.179693Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/kodey-ai-salesforce-mcp-server",
+        "description": "Run SOQL queries against your Salesforce org to retrieve records and insights. Explore objects, fi…",
+        "repository": {
+          "url": "https://github.com/kodey-ai/salesforce-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kodey-ai/salesforce-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-08T03:10:46.917883Z",
+          "publishedAt": "2025-10-08T03:10:46.917883Z",
+          "updatedAt": "2025-10-08T03:10:46.917883Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/kwp-lab-rss-reader-mcp",
+        "description": "Track and browse RSS feeds with ease. Fetch the latest entries from any feed URL and extract full…",
+        "repository": {
+          "url": "https://github.com/kwp-lab/rss-reader-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@kwp-lab/rss-reader-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-10T17:02:25.896522Z",
+          "publishedAt": "2025-09-10T17:02:25.896522Z",
+          "updatedAt": "2025-09-10T17:02:25.896522Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/leandrogavidia-vechain-mcp-server",
+        "description": "Search VeChain documentation, query on-chain data, and fetch fee suggestions with direct links to…",
+        "repository": {
+          "url": "https://github.com/leandrogavidia/vechain-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@leandrogavidia/vechain-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-02T18:35:25.040994Z",
+          "publishedAt": "2025-10-02T18:35:25.040994Z",
+          "updatedAt": "2025-10-02T18:35:25.040994Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/lineex-pubmed-mcp-smithery",
+        "description": "Search PubMed with precision using keyword and journal filters and smart sorting. Uncover MeSH ter…",
+        "repository": {
+          "url": "https://github.com/lineex/pubmed-mcp-smithery",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@lineex/pubmed-mcp-smithery/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T01:10:37.458959Z",
+          "publishedAt": "2025-09-16T01:10:37.458959Z",
+          "updatedAt": "2025-09-16T01:10:37.458959Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/lukaskostka99-marketing-miner-mcp",
+        "description": "Discover high-impact keyword ideas across Central and Eastern European and English markets. Analyz…",
+        "repository": {
+          "url": "https://github.com/lukaskostka99/marketing-miner-mcp",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@lukaskostka99/marketing-miner-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-16T19:53:18.718565Z",
+          "publishedAt": "2025-09-16T19:53:18.718565Z",
+          "updatedAt": "2025-09-16T19:53:18.718565Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/luminati-io-brightdata-mcp",
+        "description": "One MCP for the Web. Easily search, crawl, navigate, and extract websites without getting blocked.…",
+        "repository": {
+          "url": "https://github.com/brightdata/brightdata-mcp-sse",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@luminati-io/brightdata-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-06T11:04:51.228096Z",
+          "publishedAt": "2025-10-06T11:04:51.228096Z",
+          "updatedAt": "2025-10-06T11:04:51.228096Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/magenie33-quality-dimension-generator",
+        "description": "Generate tailored quality criteria and scoring guides from your task descriptions. Refine objectiv…",
+        "repository": {
+          "url": "https://github.com/magenie33/quality-dimension-generator",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@magenie33/quality-dimension-generator/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-20T15:11:34.739058Z",
+          "publishedAt": "2025-09-20T15:11:34.739058Z",
+          "updatedAt": "2025-09-20T15:11:34.739058Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/mayla-debug-mcp-google-calendar2",
+        "description": "Schedule and manage Google Calendar events directly from your workspace. Check availability, view…",
+        "repository": {
+          "url": "https://github.com/mayla-debug/mcp-google-calendar2",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@mayla-debug/mcp-google-calendar2/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T11:08:53.670394Z",
+          "publishedAt": "2025-10-07T11:08:53.670394Z",
+          "updatedAt": "2025-10-07T11:08:53.670394Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/mfukushim-map-traveler-mcp",
+        "description": "Create immersive travel experiences by instructing an avatar to navigate Google Maps. Report on th…",
+        "repository": {
+          "url": "https://github.com/mfukushim/map-traveler-mcp",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@mfukushim/map-traveler-mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-29T15:14:24.853367Z",
+          "publishedAt": "2025-09-29T15:14:24.853367Z",
+          "updatedAt": "2025-09-29T15:14:24.853367Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/miguelgarzons-mcp-cun",
+        "description": "Greet people by name with friendly, personalized messages. Add a warm touch to onboarding, demos,…",
+        "repository": {
+          "url": "https://github.com/miguelgarzons/mcp-cun",
+          "source": "github"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@miguelgarzons/mcp-cun/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T03:30:01.02979Z",
+          "publishedAt": "2025-09-30T03:30:01.02979Z",
+          "updatedAt": "2025-09-30T03:30:01.02979Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/minionszyw-bazi",
+        "description": "Generate BaZi charts from birth details. Explore Four Pillars, solar terms, and Luck Pillars for d…",
+        "repository": {
+          "url": "https://github.com/minionszyw/bazi",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@minionszyw/bazi/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-18T08:13:10.601278Z",
+          "publishedAt": "2025-09-18T08:13:10.601278Z",
+          "updatedAt": "2025-09-18T08:13:10.601278Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/mjucius-cozi_mcp",
+        "description": "Manage your family's calendars and lists in Cozi. View, create, and update appointments; organize…",
+        "repository": {
+          "url": "https://github.com/mjucius/cozi_mcp",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@mjucius/cozi_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-13T23:46:02.266315Z",
+          "publishedAt": "2025-09-13T23:46:02.266315Z",
+          "updatedAt": "2025-09-13T23:46:02.266315Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/morosss-sdfsdf",
+        "description": "Find academic papers across major sources like arXiv, PubMed, bioRxiv, and more. Download PDFs whe…",
+        "repository": {
+          "url": "https://github.com/morosss/sdfsdf",
+          "source": "github"
+        },
+        "version": "1.14.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@morosss/sdfsdf/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-13T17:26:11.859Z",
+          "publishedAt": "2025-09-13T17:26:11.859Z",
+          "updatedAt": "2025-09-13T17:26:11.859Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/motorboy1-my-mcp-server",
+        "description": "Send friendly greetings by name. Discover the origin story of 'Hello, World' for quick context.",
+        "repository": {
+          "url": "https://github.com/motorboy1/my-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@motorboy1/my-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-05T06:36:24.851605Z",
+          "publishedAt": "2025-10-05T06:36:24.851605Z",
+          "updatedAt": "2025-10-05T06:36:24.851605Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+        "name": "ai.smithery/mrugankpednekar-bill_splitter_mcp",
+        "description": "Track and split shared expenses across trips, events, and groups. Create groups, add expenses, and…",
+        "repository": {
+          "url": "https://github.com/mrugankpednekar/bill_splitter_mcp",
+          "source": "github"
+        },
+        "version": "1.15.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@mrugankpednekar/bill_splitter_mcp/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-09-30T06:59:08.923806Z",
+          "publishedAt": "2025-09-30T06:59:08.923806Z",
+          "updatedAt": "2025-09-30T06:59:08.923806Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+        "name": "ai.smithery/mrugankpednekar-mcp-optimizer",
+        "description": "Optimize crew and workforce schedules, resource allocation, and routing with linear and mixed-inte…",
+        "repository": {
+          "url": "https://github.com/mrugankpednekar/mcp-optimizer",
+          "source": "github"
+        },
+        "version": "1.16.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@mrugankpednekar/mcp-optimizer/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "value": "Bearer {smithery_api_key}",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2025-10-07T21:15:31.815401Z",
+          "publishedAt": "2025-10-07T21:15:31.815401Z",
+          "updatedAt": "2025-10-07T21:15:31.815401Z",
+          "isLatest": true
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "nextCursor": "ai.smithery/mrugankpednekar-mcp-optimizer:1.16.0",
+    "count": 100
+  }
+}
