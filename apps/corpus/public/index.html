@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>agent-corpus · drift dashboard</title>
+    <style>
+      :root {
+        --bg: #0b0d10;
+        --fg: #e6e6e6;
+        --muted: #888;
+        --accent: #7ee787;
+        --warn: #f0b232;
+        --diverge: #ff6b6b;
+        --signed: #58a6ff;
+        --card: #14181d;
+        --card-2: #1a2026;
+        --border: #232a31;
+      }
+      * { box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font: 14px/1.5 ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+        margin: 0;
+        padding: 32px;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      h1 { font-size: 18px; font-weight: 500; margin: 0 0 4px; }
+      h1 .accent { color: var(--accent); }
+      .sub { color: var(--muted); margin-bottom: 8px; }
+      .pitch { color: var(--muted); font-size: 13px; max-width: 640px; margin-bottom: 24px; }
+      .pitch b { color: var(--fg); }
+      input, button, select, textarea {
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        font-family: inherit;
+        font-size: 13px;
+        padding: 8px 10px;
+        border-radius: 4px;
+      }
+      input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+      button { cursor: pointer; }
+      button:hover { background: var(--card-2); }
+      button.primary { background: #1f3a26; color: var(--accent); border-color: #2d5536; }
+      button.primary:hover { background: #2a4a2f; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; }
+      .grow { flex: 1 1 280px; }
+      .pill {
+        display: inline-block; padding: 2px 8px; border-radius: 3px;
+        font-size: 11px; margin-right: 6px; vertical-align: middle;
+      }
+      .pill-mcp { background: #1f3a26; color: var(--accent); }
+      .pill-a2a { background: #1f2c3a; color: var(--signed); }
+      .pill-readme { background: #2a2820; color: var(--warn); }
+      .pill-unsigned { background: #3a1414; color: var(--diverge); font-weight: 600; }
+      .pill-confidence-high { background: #1f3a26; color: var(--accent); }
+      .pill-confidence-medium { background: #2a2820; color: var(--warn); }
+      .pill-confidence-low { background: #3a1414; color: var(--diverge); }
+      .card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 14px; margin-top: 12px; }
+      .card.diverge { border-color: var(--diverge); background: linear-gradient(180deg, #1d1517 0%, var(--card) 60%); }
+      .card h3 { margin: 0 0 8px; font-size: 14px; font-weight: 500; }
+      .meta { color: var(--muted); font-size: 12px; }
+      pre { background: #08090b; padding: 10px; border-radius: 3px; overflow-x: auto; margin: 8px 0 0; font-size: 12px; line-height: 1.4; }
+      .empty { color: var(--muted); font-style: italic; padding: 20px; text-align: center; }
+      .diverge-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; margin: 6px 0; }
+      .diverge-row .field { color: var(--diverge); font-weight: 600; }
+      .diverge-row .vals { display: flex; flex-direction: column; gap: 4px; }
+      .diverge-row .val { padding: 6px 8px; background: #08090b; border-radius: 3px; border-left: 2px solid var(--border); font-size: 12px; }
+      .diverge-row .val .src { color: var(--muted); margin-right: 8px; }
+      .cta { background: linear-gradient(180deg, #1d2820, var(--card)); border-color: #2d5536; padding: 18px; }
+      .cta h3 { color: var(--accent); margin-top: 0; }
+      .cta-step { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0; }
+      .cta-step .num { background: #2d5536; color: var(--accent); border-radius: 50%; width: 22px; height: 22px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+      .examples { margin-top: 8px; font-size: 12px; color: var(--muted); }
+      .examples a { color: var(--accent); cursor: pointer; margin-right: 8px; text-decoration: none; }
+      .examples a:hover { text-decoration: underline; }
+      .copy { float: right; font-size: 11px; opacity: 0.7; }
+      .copy:hover { opacity: 1; }
+      .grid-counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 8px; }
+      .stat { background: var(--card); padding: 10px; border-radius: 4px; border: 1px solid var(--border); }
+      .stat .n { font-size: 20px; color: var(--accent); }
+      .stat .lbl { color: var(--muted); font-size: 11px; }
+      details { margin-top: 6px; }
+      summary { cursor: pointer; color: var(--muted); font-size: 12px; user-select: none; }
+      summary:hover { color: var(--fg); }
+    </style>
+  </head>
+  <body>
+    <h1><span class="accent">agent-corpus</span> · drift dashboard</h1>
+    <div class="sub">What N public sources say about an agent endpoint, and where they disagree.</div>
+    <div class="pitch">
+      Paste a GitHub repo URL or any agent host. We'll show you every observation we have across the
+      MCP registry, A2A registry, and public README catalogs — and <b>highlight where they disagree.</b>
+      The disagreements are the headline. They're what nobody else sees, including (often) the publisher.
+      If you operate the origin, we'll generate a draft signed feed entry you can publish to make
+      your own version authoritative.
+    </div>
+
+    <div id="counts-strip"></div>
+
+    <div class="row" style="margin-top: 20px;">
+      <input
+        id="origin-input"
+        class="grow"
+        placeholder="https://github.com/owner/repo  ·  https://example.com  ·  https://x.agents.example.com/.well-known/agent-card.json"
+      />
+      <button id="lookup-btn" class="primary">drift check</button>
+    </div>
+    <div class="examples">
+      try:
+      <a data-ex="https://github.com/Auctalis/nocturnusai">github.com/Auctalis/nocturnusai (live divergence)</a>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+
+      function pillForSource(src) {
+        if (src === "mcp-registry") return '<span class="pill pill-mcp">mcp-registry</span>';
+        if (src === "a2a-registry") return '<span class="pill pill-a2a">a2a-registry</span>';
+        if (src === "github-readme") return '<span class="pill pill-readme">github-readme</span>';
+        return `<span class="pill">${esc(src)}</span>`;
+      }
+
+      function esc(s) {
+        return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+      }
+
+      function copyButton(text) {
+        const id = `c${Math.random().toString(36).slice(2, 8)}`;
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener("click", () => navigator.clipboard.writeText(text).then(() => (el.textContent = "✓ copied")));
+        }, 0);
+        return `<a class="copy" id="${id}">copy</a>`;
+      }
+
+      async function loadCounts() {
+        const r = await fetch("/api/corpus/counts");
+        const { counts } = await r.json();
+        const total = Object.values(counts).reduce((a, b) => a + b, 0);
+        $("#counts-strip").innerHTML = `
+          <div class="grid-counts">
+            <div class="stat"><div class="n">${total.toLocaleString()}</div><div class="lbl">total observations</div></div>
+            ${Object.entries(counts)
+              .map(([src, n]) => `<div class="stat"><div class="n">${n.toLocaleString()}</div><div class="lbl">${esc(src)}</div></div>`)
+              .join("")}
+          </div>`;
+      }
+
+      async function lookup(rawInput) {
+        const input = (rawInput ?? $("#origin-input").value).trim();
+        if (!input) return;
+        $("#origin-input").value = input;
+        $("#results").innerHTML = '<div class="empty">looking up…</div>';
+
+        // Normalize first
+        const normRes = await fetch(`/api/corpus/normalize?input=${encodeURIComponent(input)}`);
+        const { origin } = await normRes.json();
+
+        const [originRes, draftRes] = await Promise.all([
+          fetch(`/api/corpus/origin?origin=${encodeURIComponent(origin)}`).then((r) => r.json()),
+          fetch(`/api/corpus/draft?origin=${encodeURIComponent(origin)}`).then((r) => r.json()),
+        ]);
+
+        render(origin, originRes.observations || [], originRes.divergences || [], draftRes);
+      }
+
+      function render(origin, observations, divergences, draft) {
+        const out = [];
+        out.push(`<div class="card"><h3>${esc(origin)}</h3>
+          <div class="meta">${observations.length} observation(s) across ${new Set(observations.map((o) => o.source)).size} source(s)</div></div>`);
+
+        if (observations.length === 0) {
+          out.push(`<div class="empty">no observations indexed for this origin yet.<br/>
+            try crawling — <code>POST /api/corpus/crawl</code> — or pick the example link above.</div>`);
+          $("#results").innerHTML = out.join("");
+          return;
+        }
+
+        // Divergences first — the headline
+        if (divergences.length) {
+          out.push('<div class="card diverge"><h3>⚠ cross-source divergence</h3>');
+          out.push('<div class="meta">these are the disagreements between sources. they are the dataset value.</div>');
+          for (const d of divergences) {
+            const sources = d.sources;
+            const values = d.values;
+            const pairs = sources.map((s, i) => ({ src: s, val: values[i] ?? values[Math.min(i, values.length - 1)] }));
+            // Best-effort: align values to sources by collecting per-source values from observations
+            const bySource = new Map();
+            for (const o of observations) {
+              const v = o[d.field];
+              if (typeof v === "string" && !bySource.has(o.source)) bySource.set(o.source, v);
+            }
+            out.push(`<div class="diverge-row">
+              <div class="field">${esc(d.field)}</div>
+              <div class="vals">
+                ${[...bySource.entries()].map(([src, val]) => `<div class="val">${pillForSource(src)} <span>${esc(val)}</span></div>`).join("")}
+              </div>
+            </div>`);
+          }
+          out.push("</div>");
+        }
+
+        // Per-source observations
+        for (const o of observations) {
+          out.push(`<div class="card">
+            <h3>${pillForSource(o.source)}<span class="pill pill-unsigned">UNSIGNED</span> ${esc(o.name ?? o.sourceRecordId)}</h3>
+            <div class="meta">observed ${esc(o.observedAt)} · resolution ${esc(o.originResolution)} · from ${esc(o.sourceFetchedFrom)}</div>
+            ${o.description ? `<div style="margin-top:8px;color:var(--fg)">${esc(o.description)}</div>` : ""}
+            <div class="meta" style="margin-top:6px">
+              ${o.version ? `version <b>${esc(o.version)}</b> · ` : ""}
+              ${o.protocolVersion ? `protocolVersion <b>${esc(o.protocolVersion)}</b> · ` : ""}
+              ${o.endpoints?.length ? `${o.endpoints.length} endpoint(s)` : ""}
+            </div>
+            <details><summary>raw record</summary><pre>${esc(JSON.stringify(o, null, 2))}</pre></details>
+          </div>`);
+        }
+
+        // Draft signed entry CTA
+        if (draft && !draft.error) {
+          const json = JSON.stringify(draft.entry.payload, null, 2);
+          const cmd = `bun src/cli.ts sign -d ./public/.well-known -t endpoint-announcement -p '${JSON.stringify(draft.entry.payload).replace(/'/g, "'\\''")}'`;
+          out.push(`<div class="card cta">
+            <h3>operate this origin? make it authoritative.</h3>
+            <div class="meta">we generated a draft signed entry for you, based on ${draft.basedOn.join(" + ")}.
+              <span class="pill pill-confidence-${draft.confidence}">confidence ${draft.confidence}</span>
+            </div>
+            <div style="margin-top:10px;color:var(--fg);font-size:13px">${esc(draft.hint)}</div>
+            <div class="cta-step"><div class="num">1</div>
+              <div><b>review the payload</b> ${copyButton(json)}<pre>${esc(json)}</pre></div>
+            </div>
+            <div class="cta-step"><div class="num">2</div>
+              <div><b>generate keys + scaffold the feed</b> (one-time)
+                <pre>bun src/cli.ts init -o ${esc(origin)} -d ./public/.well-known</pre>
+              </div>
+            </div>
+            <div class="cta-step"><div class="num">3</div>
+              <div><b>sign and append the entry</b> ${copyButton(cmd)}<pre>${esc(cmd)}</pre></div>
+            </div>
+            <div class="cta-step"><div class="num">4</div>
+              <div><b>publish</b> the resulting <code>did.json</code> + <code>agent-feed.xml</code> at <code>${esc(origin)}/.well-known/</code>.
+                signed entries supersede observations for this origin.
+              </div>
+            </div>
+          </div>`);
+        }
+
+        $("#results").innerHTML = out.join("");
+      }
+
+      $("#lookup-btn").addEventListener("click", () => lookup());
+      $("#origin-input").addEventListener("keydown", (e) => e.key === "Enter" && lookup());
+      document.querySelectorAll("[data-ex]").forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          lookup(a.getAttribute("data-ex"));
+        }),
+      );
+
+      loadCounts();
+    </script>
+  </body>
+</html>

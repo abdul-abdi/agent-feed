@@ -1,12 +1,18 @@
 #!/usr/bin/env bun
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { Corpus, type Source } from "./corpus.ts";
 import { crawlAll } from "./crawl.ts";
 import { divergencesForOrigin } from "./divergence.ts";
+import { draftEndpointAnnouncement } from "./draft.ts";
 
 const PORT = Number(process.env.PORT ?? 4300);
 const DB_PATH = process.env.DB_PATH ?? "agent-corpus.sqlite";
 
 const corpus = new Corpus(DB_PATH);
+
+const PUBLIC = join(import.meta.dir, "..", "public");
+const indexHtml = readFileSync(join(PUBLIC, "index.html"));
 
 if (process.env.SEED === "1") {
   console.log("Seeding corpus from real sources...");
@@ -25,10 +31,51 @@ function json(data: unknown, status = 200): Response {
   });
 }
 
+function normalizeOrigin(input: string): string {
+  const s = input.trim();
+  if (!s) return "";
+  // GitHub repo URL: keep /<owner>/<repo>
+  const ghMatch = s.match(/^https?:\/\/github\.com\/([^/\s]+)\/([^/#?\s]+)/);
+  if (ghMatch)
+    return `https://github.com/${ghMatch[1]}/${ghMatch[2]!.replace(/\.git$/, "")}`;
+  // Otherwise: take origin (protocol + host)
+  try {
+    const u = new URL(s.startsWith("http") ? s : `https://${s}`);
+    return `${u.protocol}//${u.host}`;
+  } catch {
+    return s;
+  }
+}
+
 Bun.serve({
   port: PORT,
   async fetch(req) {
     const url = new URL(req.url);
+
+    // ----- web UI -----
+    if (
+      req.method === "GET" &&
+      (url.pathname === "/" || url.pathname === "/index.html")
+    ) {
+      return new Response(indexHtml, {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+
+    // ----- normalize a user-supplied URL into a canonical origin -----
+    if (req.method === "GET" && url.pathname === "/api/corpus/normalize") {
+      const input = url.searchParams.get("input") ?? "";
+      return json({ input, origin: normalizeOrigin(input) });
+    }
+
+    // ----- draft an endpoint-announcement from the corpus -----
+    if (req.method === "GET" && url.pathname === "/api/corpus/draft") {
+      const origin = url.searchParams.get("origin");
+      if (!origin) return json({ error: "missing origin" }, 400);
+      const draft = draftEndpointAnnouncement(corpus, origin);
+      if (!draft) return json({ error: "no observations for origin" }, 404);
+      return json(draft);
+    }
 
     // ----- corpus search -----
     if (req.method === "GET" && url.pathname === "/api/corpus/search") {
