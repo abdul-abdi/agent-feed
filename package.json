@@ -9,8 +9,12 @@
   },
   "scripts": {
     "test": "bun test",
+    "build": "bun scripts/build-site.ts",
     "demo": "bun examples/consumer-demo.ts",
-    "fixture": "bun examples/publisher-fixture.ts"
+    "fixture": "bun examples/publisher-fixture.ts",
+    "web": "bun apps/web/src/server.ts",
+    "corpus": "bun apps/corpus/src/server.ts",
+    "aggregator": "bun apps/aggregator/src/server.ts"
   },
   "dependencies": {
     "@noble/ed25519": "^2.1.0",
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "marked": "^18.0.2",
     "typescript": "^5.4.0"
   }
 }

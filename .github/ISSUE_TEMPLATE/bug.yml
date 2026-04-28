@@ -1,0 +1,42 @@
+name: Bug
+description: Something doesn't work the way the spec or docs say it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: re-read the relevant section of [SPEC.md](https://github.com/abdul-abdi/agent-feed/blob/main/SPEC.md). If the bug contradicts the spec, this is the right place. If the bug *is* the spec, file a Spec Clarification instead.
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Bun 1.3.x · macOS 14 · agent-feed @ <commit>"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: A minimal command sequence or code snippet.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+      description: What the spec or docs say should happen, with a section reference.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+      description: What you observed.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else.

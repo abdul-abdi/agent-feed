@@ -1,0 +1,33 @@
+# fly.io deploy config for the corpus app.
+# Deploy: fly launch --no-deploy --copy-config && fly volumes create corpus_data --size 1 && fly deploy
+#
+# After deploy, configure the public web app to point at this URL:
+#   open apps/web/public/dashboard.html
+#   set window.__CORPUS_ORIGIN__ = "https://<app>.fly.dev" before the existing inline script
+
+app = "agent-feed-corpus"
+primary_region = "iad"
+
+[build]
+  dockerfile = "apps/corpus/Dockerfile"
+
+[env]
+  PORT = "4300"
+  DB_PATH = "/data/agent-corpus.sqlite"
+  SEED = "1"
+
+[[mounts]]
+  source = "corpus_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 4300
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512

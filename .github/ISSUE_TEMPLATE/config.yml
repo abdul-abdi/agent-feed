@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the spec
+    url: https://abdul-abdi.github.io/agent-feed/spec.html
+    about: SPEC.md v0 — reader contract first, producer schema second
+  - name: Roadmap (with kill-criteria)
+    url: https://abdul-abdi.github.io/agent-feed/roadmap.html
+    about: What's deferred, what's shipped, why
+  - name: IETF draft
+    url: https://abdul-abdi.github.io/agent-feed/ietf-draft.html
+    about: draft-abdi-agent-feed-00

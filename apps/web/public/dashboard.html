@@ -475,6 +475,24 @@
     const results = $("#results");
     if (!form || !input || !results) return;
 
+    // Probe the corpus once on load. If it's unreachable (typical on the public
+    // GitHub Pages deploy where there's no backend), pin a banner explaining how
+    // to run the corpus locally — and keep the static demo card as the result.
+    if (!CORPUS) {
+      injectBanner("This page is shipped without a configured backend. The static demo above shows what live data looks like; to run drift-check against real origins, start the corpus app locally and reload.", "static");
+    } else {
+      fetch(`${CORPUS}/api/corpus/counts`, { mode: "cors" })
+        .then((r) => { if (!r.ok) throw new Error(String(r.status)); })
+        .catch(() => injectBanner(`Corpus backend at <code class="inline">${esc(CORPUS)}</code> is unreachable. The static demo below is preserved; for live data, start the corpus app and configure <code class="inline">window.__CORPUS_ORIGIN__</code>.`, "warn"));
+    }
+
+    function injectBanner(html, kind) {
+      const banner = document.createElement("div");
+      banner.style.cssText = "border:1px solid var(--diverge); background: var(--diverge-bg); padding: var(--s-3) var(--s-4); margin-bottom: var(--s-4); font-size: var(--fs-sm); color: var(--fg-2);";
+      banner.innerHTML = `<strong style="color: var(--diverge);">[${kind === "static" ? "STATIC DEMO" : "OFFLINE"}]</strong> ${html}`;
+      results.insertBefore(banner, results.firstChild);
+    }
+
     const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 

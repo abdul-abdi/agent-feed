@@ -1,0 +1,35 @@
+name: Feature / Spec clarification
+description: A new capability, a deferred item that's now justified, or a spec gap.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: read [ROADMAP.md](https://github.com/abdul-abdi/agent-feed/blob/main/ROADMAP.md) — your idea may already be deferred with a kill-criterion. If it is, this issue should explain why the kill-criterion no longer holds.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's broken, missing, or ambiguous? Concrete, with a real-world example if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should change. If this is a spec change, cite the section.
+    validations:
+      required: true
+  - type: textarea
+    id: kill-criterion
+    attributes:
+      label: Kill criterion
+      description: What measurable outcome would tell us we should remove this addition? "Every addition pays interest, default is no, removals compound."
+      placeholder: "If <X> after <Y> months, this should be removed."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else did you think about, and why is this proposal better?
