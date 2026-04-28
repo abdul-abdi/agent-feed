@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPEC.md v0 — agent-feed</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .spec-shell {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--s-7);
+    padding: var(--s-6) 0 var(--s-9);
+  }
+  @media (max-width: 1000px) { .spec-shell { grid-template-columns: 1fr; gap: var(--s-5); } }
+
+  .toc {
+    position: sticky; top: 64px; align-self: start;
+    border-left: 1px solid var(--border);
+    padding-left: var(--s-4);
+    font-size: var(--fs-sm);
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+  }
+  .toc .group {
+    color: var(--muted); font-size: var(--fs-xs);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin: var(--s-4) 0 var(--s-2);
+  }
+  .toc .group:first-child { margin-top: 0; }
+  .toc a { display: block; color: var(--fg-2); padding: 3px 0; border-bottom: 0; }
+  .toc a:hover { color: var(--fg); }
+  .toc a.active { color: var(--good); }
+  .toc .num { color: var(--dim); margin-right: 6px; }
+
+  .spec-meta {
+    display: flex; gap: var(--s-2); flex-wrap: wrap;
+    margin-bottom: var(--s-5);
+  }
+  .spec h1 {
+    font-size: var(--fs-2xl);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin: 0 0 var(--s-3);
+  }
+  .spec .abstract {
+    color: var(--fg-2);
+    font-size: var(--fs-md);
+    max-width: 680px;
+    margin-bottom: var(--s-7);
+    border-left: 2px solid var(--good);
+    padding-left: var(--s-4);
+  }
+  .spec h2 {
+    font-size: var(--fs-lg);
+    margin: var(--s-7) 0 var(--s-3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .spec h2 .num {
+    color: var(--muted); font-weight: 400; margin-right: var(--s-3);
+  }
+  .spec h3 { font-size: var(--fs-md); margin: var(--s-5) 0 var(--s-2); font-weight: 600; }
+  .spec p { color: var(--fg-2); max-width: 680px; }
+  .spec ul { color: var(--fg-2); padding-left: 20px; max-width: 680px; }
+  .spec li + li { margin-top: 4px; }
+  .spec .rfc-mustword {
+    color: var(--diverge);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .spec .rfc-shouldword {
+    color: var(--warn);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .spec pre.block { max-width: 720px; }
+
+  .spec-status {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: var(--s-4);
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 4px var(--s-4);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--s-6);
+    max-width: 680px;
+  }
+  .spec-status dt { color: var(--muted); }
+  .spec-status dd { margin: 0; color: var(--fg); }
+</style>
+</head>
+<body data-density="default">
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>agent-feed</a>
+    <nav class="nav">
+      <a href="index.html">overview</a>
+      <a href="dashboard.html">drift dashboard</a>
+      <a href="search.html" class="nav-extra">aggregator</a>
+      <a href="spec.html" class="active">spec</a>
+      <a href="docs.html" class="nav-extra">docs</a>
+      <a href="https://github.com" style="color: var(--muted)">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell spec-shell">
+
+  <!-- ─── TOC ────────────────────────────────────────────── -->
+  <aside class="toc" aria-label="Table of contents">
+    <div class="group">consumer contract</div>
+    <a href="#abstract"><span class="num">§0</span>Abstract</a>
+    <a href="#consumer"><span class="num">§1</span>Consumer behavior</a>
+    <a href="#trust" class="active"><span class="num">§2</span>Trust planes</a>
+
+    <div class="group">artifacts</div>
+    <a href="#artifacts"><span class="num">§3</span>Two artifacts</a>
+    <a href="#snapshot"><span class="num">§3.1</span>agent-card.json</a>
+    <a href="#feed"><span class="num">§3.2</span>agent-feed.xml</a>
+
+    <div class="group">producer</div>
+    <a href="#publish"><span class="num">§4</span>Publishing</a>
+    <a href="#signing"><span class="num">§5</span>Signing (did:web)</a>
+    <a href="#entries"><span class="num">§6</span>Entry types</a>
+
+    <div class="group">interop</div>
+    <a href="#mcp"><span class="num">§7</span>Composes with MCP</a>
+    <a href="#a2a"><span class="num">§8</span>Composes with A2A</a>
+
+    <div class="group">conformance</div>
+    <a href="#mustwords"><span class="num">§9</span>Requirements</a>
+    <a href="#changelog"><span class="num">§10</span>Changelog</a>
+  </aside>
+
+  <!-- ─── BODY ───────────────────────────────────────────── -->
+  <article class="spec">
+
+    <div class="spec-meta">
+      <span class="stamp">spec</span>
+      <span class="pill pill-good">v0</span>
+      <span class="pill pill-source">SPEC.md · 1190 lines</span>
+      <span class="pill pill-source">draft-abdi-agent-feed-00</span>
+      <span class="pill pill-signed">MCP SEP filed</span>
+    </div>
+
+    <h1>agent-feed v0</h1>
+    <p class="muted" style="font-size: var(--fs-md); letter-spacing: -0.005em;">
+      A signed, machine-readable announcement layer for changes to agent-facing
+      surfaces. <span class="fg-2">robots.txt + DKIM + RSS, designed for autonomous agents.</span>
+    </p>
+
+    <dl class="spec-status">
+      <dt>status</dt>          <dd>v0 · shipped 2026-04-27</dd>
+      <dt>license</dt>          <dd>MIT</dd>
+      <dt>IETF</dt>             <dd><code class="inline">draft-abdi-agent-feed-00</code></dd>
+      <dt>MCP</dt>              <dd>SEP filed — snapshot ≠ stream</dd>
+      <dt>reference impl</dt>   <dd>TypeScript + Python · 78 tests</dd>
+    </dl>
+
+    <p class="abstract" id="abstract">
+      This document specifies <strong>agent-feed</strong>, a protocol by which an
+      origin signs and publishes a stream of changes to its machine-readable
+      agent surface. agent-feed is <em>protocol-agnostic</em>: it composes
+      beneath MCP, A2A, ANP, and OpenAPI, and announces changes orthogonal to
+      what each of those standards describes. The reader contract is specified
+      before the producer schema; this is deliberate.
+    </p>
+
+    <h2 id="consumer"><span class="num">§1</span>Consumer behavior</h2>
+    <p>
+      A consumer (an autonomous agent, an agent operator's CI, an aggregator)
+      <span class="rfc-mustword">MUST</span> fetch
+      <code class="inline">/.well-known/agent-feed.xml</code> over HTTPS and
+      <span class="rfc-mustword">MUST</span> verify the Ed25519 signature against
+      the origin's <code class="inline">did:web</code> document before treating
+      any entry as authoritative. Unverified entries
+      <span class="rfc-mustword">MUST NOT</span> be used to invalidate a pin.
+    </p>
+    <p>
+      A consumer <span class="rfc-shouldword">SHOULD</span> additionally fetch
+      <code class="inline">/.well-known/agent-card.json</code> for the current
+      snapshot, but <span class="rfc-mustword">MUST</span> distinguish snapshot
+      from stream when surfacing facts to humans or downstream agents.
+    </p>
+
+    <h2 id="trust"><span class="num">§2</span>Trust planes</h2>
+    <p>
+      This specification distinguishes two trust planes that
+      <span class="rfc-mustword">MUST NOT</span> be conflated:
+    </p>
+    <ul>
+      <li>
+        <strong style="color: var(--signed);">Signed</strong> — first-party,
+        Ed25519-attested, did:web-rooted. Testimony.
+      </li>
+      <li>
+        <strong style="color: var(--diverge);">Observed</strong> — third-party,
+        possibly stale, <em>always</em> tagged UNSIGNED in any rendering.
+        A photograph.
+      </li>
+    </ul>
+    <p>
+      Implementations <span class="rfc-mustword">MUST NOT</span> render observed
+      entries in a way that suggests signed-grade trust, including but not
+      limited to: omitting the UNSIGNED tag, color-coding observed and signed
+      identically, or sorting them in a single mixed list.
+    </p>
+
+    <h2 id="artifacts"><span class="num">§3</span>Two artifacts, two URLs</h2>
+    <p>
+      An origin <span class="rfc-mustword">MUST</span> publish two distinct
+      well-known artifacts:
+    </p>
+
+    <h3 id="snapshot">§3.1 — <code class="inline">/.well-known/agent-card.json</code></h3>
+    <p>
+      The current state. Versioned. Fetched on first contact. Answers <em>what
+      is true now</em>.
+    </p>
+
+    <h3 id="feed">§3.2 — <code class="inline">/.well-known/agent-feed.xml</code></h3>
+    <p>
+      The history. Append-only. Answers <em>how did we get here, and what's
+      ahead</em>.
+    </p>
+
+<pre class="block"><span class="c-key">&lt;feed</span> <span class="c-key">xmlns</span>=<span class="c-str">"https://agent-feed.dev/v0"</span>
+      <span class="c-key">origin</span>=<span class="c-str">"did:web:example.com"</span><span class="c-key">&gt;</span>
+  <span class="c-key">&lt;entry</span> <span class="c-key">type</span>=<span class="c-str">"deprecated"</span> <span class="c-key">since</span>=<span class="c-str">"2026-04-12"</span><span class="c-key">&gt;</span>
+    <span class="c-key">&lt;ref&gt;</span>/v1/orders<span class="c-key">&lt;/ref&gt;</span>
+    <span class="c-key">&lt;successor&gt;</span>/v2/orders<span class="c-key">&lt;/successor&gt;</span>
+    <span class="c-key">&lt;sunset&gt;</span>2026-10-01<span class="c-key">&lt;/sunset&gt;</span>
+  <span class="c-key">&lt;/entry&gt;</span>
+  <span class="c-key">&lt;sig</span> <span class="c-key">alg</span>=<span class="c-str">"Ed25519"</span> <span class="c-key">key</span>=<span class="c-str">"did:web:example.com#k0"</span><span class="c-key">&gt;</span>…<span class="c-key">&lt;/sig&gt;</span>
+<span class="c-key">&lt;/feed&gt;</span></pre>
+
+    <h2 id="signing"><span class="num">§5</span>Signing</h2>
+    <p>
+      Every entry <span class="rfc-mustword">MUST</span> be signed with an
+      Ed25519 key referenced from the origin's
+      <code class="inline">did:web</code> document. Key rotation is described
+      in §5.2 of the full spec; this stub omits it.
+    </p>
+
+    <h2 id="mustwords"><span class="num">§9</span>Conformance</h2>
+    <p>
+      Requirement keywords (<span class="rfc-mustword">MUST</span>,
+      <span class="rfc-mustword">MUST NOT</span>,
+      <span class="rfc-shouldword">SHOULD</span>,
+      <span class="rfc-shouldword">SHOULD NOT</span>) follow RFC 2119 / 8174
+      when, and only when, they appear in capitals.
+    </p>
+
+    <p style="margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border); color: var(--muted); font-size: var(--fs-sm);">
+      <em>This page is a stub rendering of <code class="inline">SPEC.md</code> (1190 lines).
+      Full text, the IETF draft (<code class="inline">docs/IETF-DRAFT.md</code>, 2691 lines),
+      and the MCP SEP are in the repo.</em>
+    </p>
+
+  </article>
+</main>
+
+<script>
+  // TOC scrollspy — updates the active section link as the reader scrolls.
+  (() => {
+    const links = [...document.querySelectorAll(".toc a[href^='#']")];
+    if (!links.length) return;
+    const targets = links
+      .map((a) => ({ a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
+      .filter((x) => x.el);
+    if (!targets.length) return;
+    const setActive = (a) => links.forEach((l) => l.classList.toggle("active", l === a));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting)
+          .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top)[0];
+        if (visible) {
+          const match = targets.find((t) => t.el === visible.target);
+          if (match) setActive(match.a);
+        }
+      },
+      { rootMargin: "-72px 0px -60% 0px", threshold: 0 },
+    );
+    for (const t of targets) obs.observe(t.el);
+  })();
+</script>
+
+</body>
+</html>

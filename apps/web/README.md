@@ -27,16 +27,17 @@ PORT=4100                              bun apps/web/src/server.ts
 | `public/index.html` | Homepage. Hero with divergence-as-headline + counters + doctrine + composition + conversion path + scenarios + status + skeptical FAQ. |
 | `src/server.ts`     | Tiny static host. No build step.                                                                                                       |
 
-## Sibling pages (not yet built — planned per design handoff)
+## Sibling pages — all live
 
-The homepage links to:
+| Path              | What it is                                                                                                | Live?                           |
+| ----------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `/`               | Homepage. Hero with divergence-as-headline, counter strip, doctrine, conversion path, FAQ.                | ✓ live counters from corpus     |
+| `/dashboard.html` | Drift dashboard. Paste an origin → cross-source observations + divergence panel + draft signed entry CTA. | ✓ wired to corpus API           |
+| `/search.html`    | Signed-feed aggregator — honest empty state, by design.                                                   | static (deliberate empty state) |
+| `/spec.html`      | RFC-style SPEC.md viewer with sticky TOC.                                                                 | ✓ scrollspy on TOC              |
+| `/docs.html`      | CLI + library + adapter quickstart, 7 sections, sidebar TOC.                                              | ✓ scrollspy on TOC              |
 
-- `dashboard.html` — drift dashboard (already implemented at `apps/corpus/public/index.html` on port 4300; the web app's `/dashboard.html` link will 404 here for now).
-- `search.html` — aggregator empty state (planned).
-- `spec.html` — RFC-style SPEC.md viewer (planned).
-- `docs.html` — CLI / library quickstart (planned).
-
-When you're ready to redesign or implement the sibling pages, the design package has them as siblings in the same handoff — copy them into `apps/web/public/` and they'll just work alongside the homepage.
+All five pages share `tokens.css` (the design system) and respect `data-density` for the three density modes. The dashboard's input is wired to the corpus app's API at `:4300` — initial render is the static Auctalis demo (preserving the design); first submission replaces the result section with live data using the same CSS classes.
 
 ## Notes
 

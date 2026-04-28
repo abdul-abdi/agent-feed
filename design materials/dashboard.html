@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>drift dashboard — agent-feed</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .dash-hero {
+    padding: var(--s-6) 0 var(--s-5);
+  }
+  .dash-hero h1 {
+    font-size: var(--fs-xl);
+    margin: 0 0 var(--s-2);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .dash-hero p { color: var(--fg-2); max-width: 640px; margin: 0; }
+
+  .input-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: var(--s-4);
+    margin: var(--s-4) 0 var(--s-2);
+  }
+  .input-label {
+    color: var(--muted);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--s-2);
+  }
+  .input-examples {
+    display: flex; gap: var(--s-3); flex-wrap: wrap;
+    margin-top: var(--s-3); font-size: var(--fs-xs);
+  }
+  .input-examples a { font-size: var(--fs-xs); }
+
+  /* result panel */
+  .origin-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: var(--s-4); margin: var(--s-6) 0 var(--s-4);
+    flex-wrap: wrap;
+  }
+  .origin-head h2 {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--fg);
+  }
+  .origin-head h2 .scheme { color: var(--muted); font-weight: 400; }
+  .origin-meta { display: flex; gap: var(--s-2); flex-wrap: wrap; align-items: center; }
+
+  .panel-label {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: var(--s-6) 0 var(--s-3);
+    gap: var(--s-3);
+  }
+  .panel-label .l {
+    font-size: var(--fs-sm);
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .panel-label .r { font-size: var(--fs-xs); color: var(--dim); }
+
+  .obs-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);
+  }
+  @media (max-width: 900px) { .obs-grid { grid-template-columns: 1fr; } }
+
+  .obs.obs-quiet { border-color: var(--border); }
+  .obs.obs-quiet::before { display: none; }
+
+  .obs .raw {
+    border-top: 1px solid var(--border);
+    padding-top: var(--s-3);
+    margin-top: var(--s-3);
+  }
+  .obs .raw summary {
+    cursor: pointer; color: var(--muted);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.06em;
+    list-style: none;
+    text-transform: uppercase;
+  }
+  .obs .raw summary::before { content: "▸ "; }
+  .obs .raw[open] summary::before { content: "▾ "; }
+  .obs .raw pre { margin-top: var(--s-2); }
+
+  /* convert CTA card */
+  .convert {
+    border: 1px solid var(--good);
+    background:
+      linear-gradient(180deg, var(--good-bg) 0%, var(--card) 70%);
+    padding: var(--s-5);
+    position: relative;
+  }
+  .convert .head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: var(--s-3); margin-bottom: var(--s-3);
+  }
+  .convert h3 {
+    font-size: var(--fs-md); font-weight: 600; margin: 0;
+    color: var(--fg);
+  }
+  .convert .lead { color: var(--fg-2); margin: 0 0 var(--s-4); max-width: 720px; }
+  .convert-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    margin-bottom: var(--s-4);
+  }
+  .convert-steps .s {
+    padding: var(--s-3) var(--s-4);
+    border-right: 1px solid var(--border);
+    font-size: var(--fs-sm);
+  }
+  .convert-steps .s:last-child { border-right: 0; }
+  .convert-steps .num { color: var(--muted); font-size: var(--fs-xs); letter-spacing: 0.08em; }
+  .convert-steps .t { color: var(--fg); font-weight: 600; margin-top: 2px; }
+  @media (max-width: 900px) {
+    .convert-steps { grid-template-columns: 1fr; }
+    .convert-steps .s { border-right: 0; border-bottom: 1px solid var(--border); }
+    .convert-steps .s:last-child { border-bottom: 0; }
+  }
+
+  .source-pulse { display: inline-block; width: 6px; height: 6px; background: var(--good); margin-right: 6px; vertical-align: middle; }
+
+  /* trust-plane legend */
+  .legend {
+    display: flex; gap: var(--s-4); padding: var(--s-3) var(--s-4);
+    border: 1px dashed var(--border); background: var(--bg-2);
+    font-size: var(--fs-xs); color: var(--muted);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend .item { display: flex; gap: 6px; align-items: center; }
+  .legend .swatch {
+    width: 12px; height: 12px;
+    border: 1px solid var(--border-2);
+  }
+  .legend .swatch-signed   { background: var(--signed); border-color: var(--signed); }
+  .legend .swatch-unsigned { background: var(--diverge-bg); border-color: var(--diverge); }
+  .legend .swatch-diverge  { background: var(--diverge); border-color: var(--diverge); }
+
+</style>
+</head>
+<body data-density="default">
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>agent-feed</a>
+    <nav class="nav">
+      <a href="index.html">overview</a>
+      <a href="dashboard.html" class="active">drift dashboard</a>
+      <a href="search.html" class="nav-extra">aggregator</a>
+      <a href="spec.html">spec</a>
+      <a href="docs.html" class="nav-extra">docs</a>
+      <a href="https://github.com" style="color: var(--muted)">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- ─── HERO STRIP ─────────────────────────────────────── -->
+  <section class="dash-hero">
+    <div class="row gap-3" style="align-items:center; margin-bottom: var(--s-2);">
+      <span class="stamp">drift dashboard</span>
+      <span class="muted" style="font-size: var(--fs-xs);">last full crawl 12m ago · next in 48m</span>
+    </div>
+    <h1>How does the world describe this origin?</h1>
+    <p>
+      Paste a GitHub repo, an A2A <code class="inline">wellKnownURI</code>, or any
+      origin. We fan out across every adapter, surface disagreements, and tell
+      you whether anyone is authoritative.
+    </p>
+
+    <div class="counters" style="margin-top: var(--s-5);">
+      <div class="counter">
+        <div class="l"><span class="pulse"></span>observations</div>
+        <div class="n">2,787</div>
+      </div>
+      <div class="counter">
+        <div class="l">mcp-registry</div>
+        <div class="n">500</div>
+      </div>
+      <div class="counter">
+        <div class="l">a2a-registry</div>
+        <div class="n">50</div>
+      </div>
+      <div class="counter">
+        <div class="l">github-readme</div>
+        <div class="n">2,237</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── INPUT ──────────────────────────────────────────── -->
+  <section>
+    <div class="input-block">
+      <div class="input-label">paste an origin</div>
+      <div class="input-row">
+        <input class="input" type="text"
+               value="github.com/Auctalis/nocturnusai"
+               placeholder="https://api.example.com  ·  github.com/owner/repo  ·  https://example.com/.well-known/agent-card.json">
+        <button class="btn btn-primary">drift-check <span class="arrow">→</span></button>
+      </div>
+      <div class="input-examples muted">
+        try:
+        <a href="#">github.com/Auctalis/nocturnusai</a>
+        <a href="#">api.linear.app</a>
+        <a href="#">mcp://reference/filesystem</a>
+        <span style="margin-left:auto;">corpus search · <a href="#">/search</a></span>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="mono-caps" style="color: var(--fg-2);">trust planes</span>
+      <span class="item"><span class="swatch swatch-signed"></span><span class="pill pill-signed" style="border:0; background:transparent; padding:0;">SIGNED</span> first-party · did:web · cryptographically attested</span>
+      <span class="item"><span class="swatch swatch-unsigned"></span><span class="pill pill-unsigned" style="border:0; background:transparent; padding:0;">UNSIGNED</span> third-party observation · always tagged</span>
+      <span class="item"><span class="swatch swatch-diverge"></span><span class="pill pill-diverge" style="border:0; background:transparent; padding:0;">≠ DIVERGES</span> sources disagree on a field</span>
+    </div>
+  </section>
+
+  <!-- ─── RESULT — ORIGIN HEADER ─────────────────────────── -->
+  <section>
+    <div class="origin-head">
+      <h2><span class="scheme">github.com/</span>Auctalis/nocturnusai</h2>
+      <div class="origin-meta">
+        <span class="pill pill-source">2 observations · 2 sources</span>
+        <span class="pill pill-unsigned">UNSIGNED · NO FEED</span>
+        <span class="pill pill-diverge">≠ 2 FIELDS DIVERGE</span>
+      </div>
+    </div>
+    <div class="muted" style="font-size: var(--fs-sm); margin-top: calc(-1 * var(--s-3));">
+      no <code class="inline">/.well-known/agent-feed.xml</code> · no
+      <code class="inline">did:web</code> · last seen across sources <span class="fg-2">12m ago</span>
+    </div>
+  </section>
+
+  <!-- ─── DIVERGENCE PANEL — HEADLINE ────────────────────── -->
+  <section>
+    <div class="panel-label">
+      <span class="l">≠ cross-source divergence — 2 fields</span>
+      <span class="r">field-level · per-source values · all rows UNSIGNED</span>
+    </div>
+
+    <article class="divergence">
+      <header class="divergence-head">
+        <span class="glyph">≠</span>
+        <div class="col gap-1" style="flex:1;">
+          <div style="font-weight:600;">2 fields disagree across 2 sources</div>
+          <div class="muted" style="font-size: var(--fs-xs); letter-spacing: 0.04em;">
+            no signed feed exists — there is no authoritative answer here, only photographs
+          </div>
+        </div>
+        <span class="pill pill-unsigned">all rows UNSIGNED</span>
+      </header>
+
+      <div class="diff-row">
+        <div class="diff-field">≠ name</div>
+        <div class="diff-value">
+          <div class="src">
+            <span class="pill pill-source">github-readme</span>
+          </div>
+          <div class="val">Auctalis/nocturnusai</div>
+        </div>
+        <div class="diff-value">
+          <div class="src">
+            <span class="pill pill-source">mcp-registry</span>
+          </div>
+          <div class="val">ai.nocturnus/logic-server</div>
+        </div>
+      </div>
+
+      <div class="diff-row">
+        <div class="diff-field">≠ description</div>
+        <div class="diff-value">
+          <div class="src"><span class="pill pill-source">github-readme</span></div>
+          <div class="val">Deterministic reasoning engine for AI agent context compression. Extracts structured facts with logical inference, proof chains, and truth maintenance.</div>
+        </div>
+        <div class="diff-value">
+          <div class="src"><span class="pill pill-source">mcp-registry</span></div>
+          <div class="val">Agent reasoning, memory, and token-optimized context for AI applications.</div>
+        </div>
+      </div>
+
+      <div class="diff-row" style="border-top: 1px dashed color-mix(in oklab, var(--good) 40%, var(--border));">
+        <div class="diff-field" style="color: var(--good);">= protocolVersion</div>
+        <div class="diff-value muted-row">
+          <div class="src"><span class="pill pill-source">both sources</span></div>
+          <div class="val">2024-11-05 — agreed</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ─── PER-SOURCE OBSERVATIONS ─────────────────────────── -->
+  <section>
+    <div class="panel-label">
+      <span class="l">per-source observations — 2</span>
+      <span class="r">photographs · third-party · always UNSIGNED</span>
+    </div>
+
+    <div class="obs-grid">
+
+      <article class="obs">
+        <header class="obs-head">
+          <span class="pill pill-source"><span class="source-pulse"></span>github-readme</span>
+          <span class="pill pill-unsigned">UNSIGNED</span>
+          <span class="pill pill-warn">CONFIDENCE · MEDIUM</span>
+          <span class="muted" style="margin-left:auto; font-size: var(--fs-xs);">crawled 12m ago</span>
+        </header>
+        <div class="obs-body">
+          <dl class="kv">
+            <dt>name</dt>           <dd>Auctalis/nocturnusai</dd>
+            <dt>description</dt>    <dd>Deterministic reasoning engine for AI agent context compression. Extracts structured facts with logical inference, proof chains, and truth maintenance.</dd>
+            <dt>version</dt>        <dd class="muted">— not declared —</dd>
+            <dt>protocolVersion</dt><dd>2024-11-05</dd>
+            <dt>endpoints</dt>      <dd class="muted">— not declared —</dd>
+            <dt>source</dt>         <dd><a href="#">punkpeye/awesome-mcp-servers#L1842</a></dd>
+          </dl>
+          <details class="raw">
+            <summary>raw record</summary>
+            <pre class="block" style="font-size:11px;"><span class="c-key">{</span>
+  <span class="c-key">"adapter"</span>: <span class="c-str">"github-readme"</span>,
+  <span class="c-key">"observed_at"</span>: <span class="c-str">"2026-04-28T11:18:42Z"</span>,
+  <span class="c-key">"source_url"</span>: <span class="c-str">"github.com/punkpeye/awesome-mcp-servers"</span>,
+  <span class="c-key">"line"</span>: <span class="c-str">1842</span>,
+  <span class="c-key">"signed"</span>: <span class="c-del">false</span>
+<span class="c-key">}</span></pre>
+          </details>
+        </div>
+      </article>
+
+      <article class="obs">
+        <header class="obs-head">
+          <span class="pill pill-source"><span class="source-pulse"></span>mcp-registry</span>
+          <span class="pill pill-unsigned">UNSIGNED</span>
+          <span class="pill pill-good">CONFIDENCE · HIGH</span>
+          <span class="muted" style="margin-left:auto; font-size: var(--fs-xs);">crawled 12m ago</span>
+        </header>
+        <div class="obs-body">
+          <dl class="kv">
+            <dt>name</dt>           <dd>ai.nocturnus/logic-server</dd>
+            <dt>description</dt>    <dd>Agent reasoning, memory, and token-optimized context for AI applications.</dd>
+            <dt>version</dt>        <dd>0.4.2</dd>
+            <dt>protocolVersion</dt><dd>2024-11-05</dd>
+            <dt>endpoints</dt>      <dd><code class="inline">mcp/stdio</code> · <code class="inline">mcp/sse</code></dd>
+            <dt>source</dt>         <dd><a href="#">registry.modelcontextprotocol.io/ai.nocturnus</a></dd>
+          </dl>
+          <details class="raw">
+            <summary>raw record</summary>
+            <pre class="block" style="font-size:11px;"><span class="c-key">{</span>
+  <span class="c-key">"adapter"</span>: <span class="c-str">"mcp-registry"</span>,
+  <span class="c-key">"observed_at"</span>: <span class="c-str">"2026-04-28T11:18:51Z"</span>,
+  <span class="c-key">"source_url"</span>: <span class="c-str">"registry.modelcontextprotocol.io/ai.nocturnus"</span>,
+  <span class="c-key">"signed"</span>: <span class="c-del">false</span>
+<span class="c-key">}</span></pre>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── CONVERSION CTA ─────────────────────────────────── -->
+  <section style="margin-top: var(--s-6);">
+    <div class="panel-label">
+      <span class="l">↟ for the operator of this origin</span>
+      <span class="r">draft pre-filled from highest-confidence observation</span>
+    </div>
+
+    <article class="convert">
+      <header class="head">
+        <h3>Operate this origin? Make it authoritative.</h3>
+        <span class="pill pill-good">DRAFT · HIGH CONFIDENCE</span>
+      </header>
+      <p class="lead">
+        We pre-filled <code class="inline">agent-feed.xml</code> from the
+        mcp-registry observation. Review the draft, sign with your
+        <code class="inline">did:web</code> key, drop the file at
+        <code class="inline">/.well-known/</code>. From the next crawl,
+        all unsigned observations of this origin defer to your feed.
+      </p>
+
+      <div class="convert-steps">
+        <div class="s">
+          <div class="num">01 · install</div>
+          <div class="t">bun add agent-feed</div>
+        </div>
+        <div class="s">
+          <div class="num">02 · init from corpus</div>
+          <div class="t">--from-corpus pre-fills draft</div>
+        </div>
+        <div class="s">
+          <div class="num">03 · sign</div>
+          <div class="t">did:web + Ed25519</div>
+        </div>
+        <div class="s">
+          <div class="num">04 · publish</div>
+          <div class="t">drop in /.well-known/</div>
+        </div>
+      </div>
+
+      <pre class="block"><span class="c-cmt"># pre-filled from your highest-confidence observation
+# review fields before signing</span>
+<span class="c-cmd">$</span> bunx agent-feed init <span class="c-str">--from-corpus github.com/Auctalis/nocturnusai</span>
+
+<span class="c-cmt"># draft agent-feed.xml — review and edit:</span>
+<span class="c-key">&lt;feed</span> <span class="c-key">xmlns</span>=<span class="c-str">"https://agent-feed.dev/v0"</span> <span class="c-key">origin</span>=<span class="c-str">"did:web:nocturnus.ai"</span><span class="c-key">&gt;</span>
+  <span class="c-key">&lt;name&gt;</span><span class="c-add">ai.nocturnus/logic-server</span><span class="c-key">&lt;/name&gt;</span>      <span class="c-cmt">// from mcp-registry</span>
+  <span class="c-key">&lt;description&gt;</span><span class="c-add">Agent reasoning, memory…</span><span class="c-key">&lt;/description&gt;</span>
+  <span class="c-key">&lt;protocolVersion&gt;</span>2024-11-05<span class="c-key">&lt;/protocolVersion&gt;</span>
+  <span class="c-key">&lt;entry</span> <span class="c-key">type</span>=<span class="c-str">"established"</span> <span class="c-key">since</span>=<span class="c-str">"2026-04-28"</span><span class="c-key"> /&gt;</span>
+<span class="c-key">&lt;/feed&gt;</span>
+
+<span class="c-cmd">$</span> bunx agent-feed sign <span class="c-str">--key did:web:nocturnus.ai#k0</span>
+<span class="c-cmd">$</span> cp agent-feed.xml ./public/.well-known/
+
+<span class="c-cmt"># on next crawl: this origin becomes authoritative.
+# the github-readme name `Auctalis/nocturnusai` resolves to your declared name.</span></pre>
+
+      <div class="row gap-2" style="margin-top: var(--s-4); flex-wrap: wrap;">
+        <a class="btn btn-primary" href="#">copy draft as agent-feed.xml <span class="arrow">↓</span></a>
+        <a class="btn" href="docs.html">CLI reference <span class="arrow">→</span></a>
+        <a class="btn" href="spec.html#signing">signing flow <span class="arrow">→</span></a>
+        <span style="margin-left:auto; align-self:center; font-size: var(--fs-xs); color: var(--muted);">
+          not the operator? <a href="#" style="font-size: inherit;">file an issue against this repo →</a>
+        </span>
+      </div>
+    </article>
+  </section>
+
+  <!-- ─── FOOTER NOTE ────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="row gap-5" style="flex-wrap:wrap; align-items:flex-start;">
+      <div class="col gap-2" style="flex: 1; min-width: 220px;">
+        <div class="brand"><span class="brand-mark"></span>agent-feed · drift dashboard</div>
+        <div>
+          The corpus is unsigned by design. We index third-party descriptions of
+          your origin so you can see them and out-publish them.
+        </div>
+      </div>
+      <div class="col gap-2" style="min-width: 200px;">
+        <div class="mono-caps">corpus</div>
+        <span>2,787 observations · 3 adapters</span>
+        <span>schemas-only · respects robots.txt</span>
+        <a href="#"><code class="inline">/api/corpus/optout</code></a>
+      </div>
+      <div class="col gap-2" style="min-width: 200px;">
+        <div class="mono-caps">protocol</div>
+        <a href="spec.html">SPEC.md (v0)</a>
+        <a href="index.html">overview</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+
+</body>
+</html>

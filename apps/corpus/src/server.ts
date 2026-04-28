@@ -27,7 +27,12 @@ if (process.env.SEED === "1") {
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data, null, 2), {
     status,
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      "access-control-allow-origin": "*",
+      "access-control-allow-headers": "content-type",
+      "access-control-allow-methods": "GET, POST, OPTIONS",
+    },
   });
 }
 
@@ -51,6 +56,19 @@ Bun.serve({
   port: PORT,
   async fetch(req) {
     const url = new URL(req.url);
+
+    // ----- CORS preflight -----
+    if (req.method === "OPTIONS") {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          "access-control-allow-origin": "*",
+          "access-control-allow-headers": "content-type",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-max-age": "86400",
+        },
+      });
+    }
 
     // ----- web UI -----
     if (

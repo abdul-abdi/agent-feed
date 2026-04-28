@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>docs — agent-feed</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .docs-shell {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--s-7);
+    padding: var(--s-6) 0 var(--s-9);
+  }
+  @media (max-width: 1000px) { .docs-shell { grid-template-columns: 1fr; gap: var(--s-5); } }
+
+  .docs-toc {
+    position: sticky; top: 64px; align-self: start;
+    border-left: 1px solid var(--border);
+    padding-left: var(--s-4);
+    font-size: var(--fs-sm);
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+  }
+  .docs-toc .group {
+    color: var(--muted); font-size: var(--fs-xs);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin: var(--s-4) 0 var(--s-2);
+  }
+  .docs-toc .group:first-child { margin-top: 0; }
+  .docs-toc a {
+    display: block; color: var(--fg-2); padding: 3px 0; border-bottom: 0;
+  }
+  .docs-toc a:hover { color: var(--fg); }
+  .docs-toc a.active { color: var(--good); }
+
+  .docs-meta {
+    display: flex; gap: var(--s-2); flex-wrap: wrap;
+    margin-bottom: var(--s-5);
+  }
+  .docs h1 {
+    font-size: var(--fs-2xl);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin: 0 0 var(--s-3);
+  }
+  .docs .lead {
+    color: var(--fg-2);
+    max-width: 680px;
+    font-size: var(--fs-md);
+    margin-bottom: var(--s-7);
+    border-left: 2px solid var(--good);
+    padding-left: var(--s-4);
+  }
+  .docs h2 {
+    font-size: var(--fs-lg);
+    margin: var(--s-7) 0 var(--s-3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: var(--s-3);
+  }
+  .docs h2 .num {
+    color: var(--muted); font-weight: 400;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.12em;
+  }
+  .docs h3 {
+    font-size: var(--fs-md);
+    margin: var(--s-5) 0 var(--s-2);
+    font-weight: 600;
+  }
+  .docs p { color: var(--fg-2); max-width: 680px; }
+  .docs pre.block { max-width: 720px; }
+
+  /* CLI table */
+  .cli {
+    border: 1px solid var(--border);
+    background: var(--card);
+    margin: var(--s-3) 0 var(--s-4);
+    max-width: 720px;
+  }
+  .cli-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--s-4);
+    padding: var(--s-3) var(--s-4);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+    align-items: baseline;
+  }
+  .cli-row:last-child { border-bottom: 0; }
+  .cli-row code { color: var(--good); font-weight: 600; }
+  .cli-row .desc { color: var(--fg-2); }
+  .cli-row .ex { color: var(--muted); font-size: var(--fs-xs); margin-top: 2px; display: block; }
+
+  /* API table */
+  .api {
+    border: 1px solid var(--border);
+    background: var(--card);
+    margin: var(--s-3) 0 var(--s-4);
+    max-width: 720px;
+  }
+  .api-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: var(--s-3) var(--s-4);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+  }
+  .api-row:last-child { border-bottom: 0; }
+  .api-row .sig {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .api-row .sig .ret { color: var(--signed); }
+  .api-row .sig .arg { color: var(--warn); }
+  .api-row .desc { color: var(--fg-2); margin-top: 4px; }
+
+  .adapters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: var(--s-3) 0;
+    max-width: 720px;
+  }
+  .adapter {
+    padding: var(--s-4);
+    border-right: 1px solid var(--border);
+    background: var(--card);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
+  .adapter:last-child { border-right: 0; }
+  .adapter .name { font-weight: 600; color: var(--fg); }
+  .adapter .stack { color: var(--muted); font-size: var(--fs-xs); letter-spacing: 0.04em; }
+  .adapter .desc { color: var(--fg-2); font-size: var(--fs-sm); }
+  @media (max-width: 800px) {
+    .adapters { grid-template-columns: 1fr; }
+    .adapter { border-right: 0; border-bottom: 1px solid var(--border); }
+    .adapter:last-child { border-bottom: 0; }
+  }
+
+  .cb {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 2px 8px; font-size: 11px;
+    color: var(--muted); border: 1px solid var(--border-2);
+    background: var(--card-2);
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .cb:hover { color: var(--fg); }
+  .pre-wrap { position: relative; max-width: 720px; }
+  .pre-wrap .cb { position: absolute; top: 8px; right: 8px; }
+</style>
+</head>
+<body data-density="default">
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>agent-feed</a>
+    <nav class="nav">
+      <a href="index.html">overview</a>
+      <a href="dashboard.html">drift dashboard</a>
+      <a href="search.html" class="nav-extra">aggregator</a>
+      <a href="spec.html">spec</a>
+      <a href="docs.html" class="active">docs</a>
+      <a href="https://github.com" style="color: var(--muted)">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell docs-shell">
+
+  <!-- ─── TOC ────────────────────────────────────────────── -->
+  <aside class="docs-toc" aria-label="On this page">
+    <div class="group">setup</div>
+    <a href="#install" class="active">install</a>
+    <a href="#first-feed">your first feed</a>
+
+    <div class="group">cli</div>
+    <a href="#cli-init">init</a>
+    <a href="#cli-sign">sign</a>
+    <a href="#cli-verify">verify</a>
+    <a href="#cli-lint">lint</a>
+    <a href="#cli-snapshot">snapshot</a>
+
+    <div class="group">library</div>
+    <a href="#lib-ts">TypeScript</a>
+    <a href="#lib-py">Python</a>
+
+    <div class="group">adapters</div>
+    <a href="#adapters">three publisher adapters</a>
+    <a href="#adapter-next">Next.js</a>
+    <a href="#adapter-fastapi">FastAPI</a>
+    <a href="#adapter-cf">Cloudflare Worker</a>
+
+    <div class="group">corpus api</div>
+    <a href="#corpus">/api/corpus/*</a>
+    <a href="#optout">opt-out</a>
+  </aside>
+
+  <!-- ─── BODY ───────────────────────────────────────────── -->
+  <article class="docs">
+
+    <div class="docs-meta">
+      <span class="stamp">docs</span>
+      <span class="pill pill-good">v0</span>
+      <span class="pill pill-source">TypeScript · Python</span>
+      <span class="pill pill-source">3 publisher adapters</span>
+      <span class="pill pill-signed">MIT</span>
+    </div>
+
+    <h1>Quickstart</h1>
+    <p class="lead">
+      A dense one-pager. Install. Five CLI commands. Two library shapes. Three
+      publisher adapters. No tutorial — copy what you need, the names are
+      stable across v0.
+    </p>
+
+    <!-- ─── INSTALL ──────────────────────────────────────── -->
+    <h2 id="install"><span class="num">§ 01</span>Install</h2>
+    <pre class="block"><span class="c-cmt"># bun (preferred — runtime + bundler in one)</span>
+<span class="c-cmd">$</span> bun add agent-feed
+
+<span class="c-cmt"># or with npm / pnpm / yarn</span>
+<span class="c-cmd">$</span> npm  i  agent-feed
+<span class="c-cmd">$</span> pnpm add agent-feed
+<span class="c-cmd">$</span> yarn add agent-feed
+
+<span class="c-cmt"># python</span>
+<span class="c-cmd">$</span> pip install agent-feed
+<span class="c-cmd">$</span> uv  add agent-feed</pre>
+
+    <!-- ─── FIRST FEED ───────────────────────────────────── -->
+    <h2 id="first-feed"><span class="num">§ 02</span>Your first feed, in three commands</h2>
+    <p>
+      The shortest path from "i run a thing" to a signed, well-known
+      <code class="inline">agent-feed.xml</code>. <code class="inline">--from-corpus</code>
+      pre-fills from whatever the public world already says about you.
+    </p>
+    <pre class="block"><span class="c-cmd">$</span> bunx agent-feed init <span class="c-str">--from-corpus example.com</span>
+<span class="c-cmt"># reviewing 3 observations · drafting agent-feed.xml</span>
+
+<span class="c-cmd">$</span> bunx agent-feed sign <span class="c-str">--key did:web:example.com#k0</span>
+<span class="c-cmt"># wrote agent-feed.xml · sig Ed25519 · 1 entry</span>
+
+<span class="c-cmd">$</span> cp agent-feed.xml ./public/.well-known/
+<span class="c-cmt"># done. on next crawl, your origin is authoritative.</span></pre>
+
+    <!-- ─── CLI ──────────────────────────────────────────── -->
+    <h2 id="cli-init"><span class="num">§ 03</span>CLI</h2>
+    <p>
+      Five commands. All accept <code class="inline">--feed PATH</code>
+      (default <code class="inline">./agent-feed.xml</code>) and
+      <code class="inline">--quiet</code>.
+    </p>
+
+    <div class="cli">
+      <div class="cli-row" id="cli-init-row">
+        <code>init [--from-corpus]</code>
+        <div>
+          <div class="desc">Scaffold an <code class="inline">agent-feed.xml</code> with the v0 schema. <code class="inline">--from-corpus &lt;origin&gt;</code> pre-fills from the highest-confidence observation.</div>
+          <span class="ex">$ agent-feed init --from-corpus github.com/me/server</span>
+        </div>
+      </div>
+
+      <div class="cli-row" id="cli-sign-row">
+        <code>sign --key &lt;did&gt;</code>
+        <div>
+          <div class="desc">Sign every entry with an Ed25519 key referenced from your <code class="inline">did:web</code> document. Idempotent — re-signs only changed entries.</div>
+          <span class="ex">$ agent-feed sign --key did:web:example.com#k0</span>
+        </div>
+      </div>
+
+      <div class="cli-row" id="cli-verify-row">
+        <code>verify &lt;origin&gt;</code>
+        <div>
+          <div class="desc">Fetch a remote feed, verify signatures against the origin's <code class="inline">did:web</code>, exit 0 if valid + entries do not break a pin you supply with <code class="inline">--since</code>.</div>
+          <span class="ex">$ agent-feed verify api.example.com --since 2026-03-01</span>
+        </div>
+      </div>
+
+      <div class="cli-row" id="cli-lint-row">
+        <code>lint</code>
+        <div>
+          <div class="desc">Schema check + RFC 2119 keyword check. Refuses non-monotonic entry timestamps. Refuses unsigned entries.</div>
+          <span class="ex">$ agent-feed lint --strict</span>
+        </div>
+      </div>
+
+      <div class="cli-row" id="cli-snapshot-row">
+        <code>snapshot</code>
+        <div>
+          <div class="desc">Generate a fresh <code class="inline">agent-card.json</code> snapshot from the current feed head. Snapshots are derived; the feed is the source of truth.</div>
+          <span class="ex">$ agent-feed snapshot &gt; agent-card.json</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size: var(--fs-sm);">
+      Exit codes: <code class="inline">0</code> ok ·
+      <code class="inline">1</code> validation failed ·
+      <code class="inline">2</code> signature failed ·
+      <code class="inline">3</code> network/IO ·
+      <code class="inline">64</code> usage error.
+    </p>
+
+    <!-- ─── LIBRARY ──────────────────────────────────────── -->
+    <h2 id="lib-ts"><span class="num">§ 04</span>Library — TypeScript</h2>
+    <p>
+      The TS package mirrors the CLI. All async; all return discriminated unions
+      (<code class="inline">{ ok: true, … } | { ok: false, error }</code>) — we
+      do not throw on validation failure.
+    </p>
+
+    <div class="api">
+      <div class="api-row">
+        <div class="sig"><span class="ret">load</span>(<span class="arg">path</span>: string): Promise&lt;Feed&gt;</div>
+        <div class="desc">Parse an <code class="inline">agent-feed.xml</code> from disk. No verification — pair with <code class="inline">verify()</code>.</div>
+      </div>
+      <div class="api-row">
+        <div class="sig"><span class="ret">verify</span>(<span class="arg">feed</span>: Feed, <span class="arg">opts</span>?: VerifyOpts): Promise&lt;Result&gt;</div>
+        <div class="desc">Fetch the origin's <code class="inline">did:web</code> document, verify every entry signature, return per-entry results.</div>
+      </div>
+      <div class="api-row">
+        <div class="sig"><span class="ret">sign</span>(<span class="arg">feed</span>: Feed, <span class="arg">key</span>: KeyRef): Promise&lt;Feed&gt;</div>
+        <div class="desc">Append Ed25519 signatures to unsigned entries. Pure — returns a new <code class="inline">Feed</code>.</div>
+      </div>
+      <div class="api-row">
+        <div class="sig"><span class="ret">diff</span>(<span class="arg">a</span>: Feed, <span class="arg">b</span>: Feed): Diff[]</div>
+        <div class="desc">What changed between two feed states. Used by the dashboard to render per-source disagreement.</div>
+      </div>
+      <div class="api-row">
+        <div class="sig"><span class="ret">snapshot</span>(<span class="arg">feed</span>: Feed): AgentCard</div>
+        <div class="desc">Project the feed head into an <code class="inline">agent-card.json</code> snapshot.</div>
+      </div>
+    </div>
+
+    <pre class="block"><span class="c-key">import</span> { load, verify, sign } <span class="c-key">from</span> <span class="c-str">"agent-feed"</span>;
+
+<span class="c-key">const</span> feed   = <span class="c-key">await</span> load(<span class="c-str">"./agent-feed.xml"</span>);
+<span class="c-key">const</span> result = <span class="c-key">await</span> verify(feed);
+
+<span class="c-key">if</span> (!result.ok) {
+  console.error(result.error);  <span class="c-cmt">// signed: false, reason: "did-not-resolve"</span>
+  process.exit(<span class="c-add">2</span>);
+}
+
+<span class="c-cmt">// add a deprecation, sign, write</span>
+<span class="c-key">const</span> next = <span class="c-key">await</span> sign(
+  { ...feed, entries: [...feed.entries, {
+    type: <span class="c-str">"deprecated"</span>,
+    ref:  <span class="c-str">"/v1/orders"</span>,
+    successor: <span class="c-str">"/v2/orders"</span>,
+    since: <span class="c-str">"2026-04-12"</span>,
+  }] },
+  <span class="c-str">"did:web:example.com#k0"</span>
+);</pre>
+
+    <h2 id="lib-py"><span class="num">§ 05</span>Library — Python</h2>
+    <pre class="block"><span class="c-key">from</span> agent_feed <span class="c-key">import</span> load, verify, sign, Entry
+
+feed   = load(<span class="c-str">"./agent-feed.xml"</span>)
+result = verify(feed)
+<span class="c-key">if not</span> result.ok:
+    <span class="c-key">raise</span> SystemExit(result.error)
+
+next_feed = sign(
+    feed.with_entry(Entry.deprecated(
+        ref=<span class="c-str">"/v1/orders"</span>,
+        successor=<span class="c-str">"/v2/orders"</span>,
+        since=<span class="c-str">"2026-04-12"</span>,
+    )),
+    key=<span class="c-str">"did:web:example.com#k0"</span>,
+)
+next_feed.write(<span class="c-str">"./public/.well-known/agent-feed.xml"</span>)</pre>
+
+    <!-- ─── ADAPTERS ─────────────────────────────────────── -->
+    <h2 id="adapters"><span class="num">§ 06</span>Three publisher adapters</h2>
+    <p>
+      Drop-in middleware for the runtimes most agent-facing services already
+      run. Each one serves <code class="inline">/.well-known/agent-feed.xml</code>
+      and <code class="inline">/.well-known/agent-card.json</code> with correct
+      caching headers.
+    </p>
+
+    <div class="adapters">
+      <div class="adapter" id="adapter-next">
+        <div class="stack">NEXT.JS · APP ROUTER</div>
+        <div class="name">@agent-feed/next</div>
+        <div class="desc">A <code class="inline">route.ts</code> handler under <code class="inline">/.well-known/</code>. ISR-friendly; revalidates when your feed source file changes.</div>
+      </div>
+      <div class="adapter" id="adapter-fastapi">
+        <div class="stack">FASTAPI · STARLETTE</div>
+        <div class="name">agent-feed.fastapi</div>
+        <div class="desc">A router you mount at <code class="inline">app.include_router(agent_feed_router)</code>. Reads the feed once at startup, watches the file for changes.</div>
+      </div>
+      <div class="adapter" id="adapter-cf">
+        <div class="stack">CLOUDFLARE WORKER</div>
+        <div class="name">@agent-feed/cf-worker</div>
+        <div class="desc">A <code class="inline">fetch</code> handler bound to two routes. Stores feed bytes in Workers KV; signs on the worker, never at the edge.</div>
+      </div>
+    </div>
+
+    <h3>Next.js · <code class="inline">app/.well-known/agent-feed.xml/route.ts</code></h3>
+<pre class="block"><span class="c-key">import</span> { handler } <span class="c-key">from</span> <span class="c-str">"@agent-feed/next"</span>;
+<span class="c-key">export const</span> GET = handler({ source: <span class="c-str">"./agent-feed.xml"</span> });
+<span class="c-key">export const</span> revalidate = <span class="c-add">60</span>;</pre>
+
+    <h3>FastAPI</h3>
+<pre class="block"><span class="c-key">from</span> fastapi <span class="c-key">import</span> FastAPI
+<span class="c-key">from</span> agent_feed.fastapi <span class="c-key">import</span> agent_feed_router
+
+app = FastAPI()
+app.include_router(agent_feed_router(source=<span class="c-str">"./agent-feed.xml"</span>))</pre>
+
+    <h3>Cloudflare Worker</h3>
+<pre class="block"><span class="c-key">import</span> { workerHandler } <span class="c-key">from</span> <span class="c-str">"@agent-feed/cf-worker"</span>;
+
+<span class="c-key">export default</span> {
+  fetch: workerHandler({
+    kv:  env.AGENT_FEED_KV,
+    key: <span class="c-str">"agent-feed.xml"</span>,
+  }),
+};</pre>
+
+    <!-- ─── CORPUS API ───────────────────────────────────── -->
+    <h2 id="corpus"><span class="num">§ 07</span>Corpus API</h2>
+    <p>
+      The dashboard is backed by a small public read API. Schemas-only, no prose;
+      respects robots.txt at crawl time.
+    </p>
+
+    <div class="cli">
+      <div class="cli-row">
+        <code>GET /api/corpus/counts</code>
+        <div>
+          <div class="desc">Live counters by adapter. Powers the homepage strip.</div>
+          <span class="ex">{ "observations": 2787, "adapters": { "mcp-registry": 500, … } }</span>
+        </div>
+      </div>
+      <div class="cli-row">
+        <code>GET /api/corpus/origin/:o</code>
+        <div>
+          <div class="desc">All observations + diffs for an origin. Powers the dashboard result panel.</div>
+          <span class="ex">/api/corpus/origin/github.com%2FAuctalis%2Fnocturnusai</span>
+        </div>
+      </div>
+      <div class="cli-row">
+        <code>GET /api/corpus/divergences</code>
+        <div>
+          <div class="desc">Live cross-source disagreements. Optional <code class="inline">?since=</code>.</div>
+          <span class="ex">[{ "origin": "…", "fields": ["name","description"] }]</span>
+        </div>
+      </div>
+      <div class="cli-row" id="optout">
+        <code>POST /api/corpus/optout</code>
+        <div>
+          <div class="desc">Remove an origin from the corpus. Verified via DNS TXT or did:web. Disappears on next crawl, latest 24h.</div>
+          <span class="ex">curl -X POST … -d '{"origin":"example.com","proof":"…"}'</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border); color: var(--muted); font-size: var(--fs-sm);">
+      Names are stable across v0. Anything that breaks before v1 will be listed
+      in <a href="#">CHANGELOG.md</a> with a kill-criterion. Issues and PRs:
+      <a href="#">github.com/agent-feed/agent-feed</a>.
+    </p>
+
+  </article>
+</main>
+
+<script>
+  // TOC scrollspy — same enhancement as the spec page.
+  (() => {
+    const links = [...document.querySelectorAll("aside a[href^='#'], .toc a[href^='#']")];
+    if (!links.length) return;
+    const targets = links
+      .map((a) => ({ a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
+      .filter((x) => x.el);
+    if (!targets.length) return;
+    const setActive = (a) => links.forEach((l) => l.classList.toggle("active", l === a));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting)
+          .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top)[0];
+        if (visible) {
+          const match = targets.find((t) => t.el === visible.target);
+          if (match) setActive(match.a);
+        }
+      },
+      { rootMargin: "-72px 0px -60% 0px", threshold: 0 },
+    );
+    for (const t of targets) obs.observe(t.el);
+  })();
+</script>
+
+</body>
+</html>

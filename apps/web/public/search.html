@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>aggregator — agent-feed</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .empty {
+    border: 1px dashed var(--border-2);
+    background:
+      repeating-linear-gradient(
+        135deg,
+        var(--card) 0 14px,
+        var(--bg-2) 14px 28px
+      );
+    padding: var(--s-7) var(--s-6);
+    text-align: left;
+    margin: var(--s-6) 0;
+    position: relative;
+  }
+  .empty .stamp-big {
+    display: inline-block;
+    border: 1px solid var(--border-2);
+    color: var(--muted);
+    padding: 4px 10px;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--bg-2);
+  }
+  .empty h2 {
+    margin: var(--s-4) 0 var(--s-3);
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    max-width: 640px;
+    color: var(--fg);
+  }
+  .empty p { color: var(--fg-2); max-width: 640px; margin: 0 0 var(--s-3); }
+  .progress {
+    display: grid; grid-template-columns: 220px 1fr; gap: var(--s-3);
+    margin-top: var(--s-5); max-width: 720px;
+    font-size: var(--fs-sm);
+  }
+  .progress dt { color: var(--muted); }
+  .progress dd { margin: 0; color: var(--fg-2); }
+  .progress dd strong { color: var(--good); }
+
+  .timeline {
+    border: 1px solid var(--border);
+    background: var(--card);
+    margin: var(--s-6) 0;
+  }
+  .timeline-row {
+    display: grid; grid-template-columns: 200px 1fr;
+    padding: var(--s-3) var(--s-4);
+    gap: var(--s-3);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+  }
+  .timeline-row:last-child { border-bottom: 0; }
+  .timeline-row .when { color: var(--muted); }
+</style>
+</head>
+<body data-density="default">
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>agent-feed</a>
+    <nav class="nav">
+      <a href="index.html">overview</a>
+      <a href="dashboard.html">drift dashboard</a>
+      <a href="search.html" class="active">aggregator</a>
+      <a href="spec.html">spec</a>
+      <a href="docs.html" class="nav-extra">docs</a>
+      <a href="https://github.com" style="color: var(--muted)">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+
+  <section class="dash-hero" style="padding: var(--s-6) 0 var(--s-4);">
+    <div class="row gap-3" style="align-items:center; margin-bottom: var(--s-2);">
+      <span class="stamp">aggregator</span>
+      <span class="muted" style="font-size: var(--fs-xs);">full-text search across signed agent-feeds</span>
+    </div>
+    <h1 style="font-size: var(--fs-xl); margin:0 0 var(--s-2); font-weight: 600; letter-spacing: -0.01em;">
+      Search the signed feeds.
+    </h1>
+    <p style="color: var(--fg-2); max-width: 640px; margin:0;">
+      First-party, did:web-rooted, cryptographically attested. When origin
+      operators publish, this is the index. Right now: nobody has.
+    </p>
+
+    <div class="input-block" style="margin-top: var(--s-5);">
+      <div class="input-label">query the index</div>
+      <div class="input-row">
+        <input class="input" type="text" disabled
+               placeholder="search signed feeds — disabled until ≥1 publisher">
+        <button class="btn" disabled style="opacity: 0.55; cursor: not-allowed;">search <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EMPTY STATE ────────────────────────────────────── -->
+  <section>
+    <div class="empty">
+      <span class="stamp-big">0 SIGNED FEEDS · 0 PUBLISHERS</span>
+      <h2>The aggregator is empty. By design — for now.</h2>
+      <p>
+        We will not pad this index with observations. <strong style="color: var(--signed);">Signed</strong>
+        is testimony. <strong style="color: var(--diverge);">Observed</strong> is a
+        photograph. Different kinds of facts. Mixing them in a search index would
+        be the exact mistake this whole project is here to refuse.
+      </p>
+      <p>
+        The aggregator becomes meaningful as origin operators start publishing.
+        Until then, the interesting surface is the
+        <a href="dashboard.html">drift dashboard</a> — that's where the cross-source
+        disagreement lives.
+      </p>
+
+      <dl class="progress">
+        <dt>v0 protocol shipped</dt>           <dd><strong>2026-04-27</strong> — 1 day ago</dd>
+        <dt>signed publishers known</dt>       <dd><strong>0</strong> · IETF draft circulating</dd>
+        <dt>conversion targets indexed</dt>    <dd>500 mcp-registry · 50 a2a-registry · 2,237 readme entries</dd>
+        <dt>aggregator's first entry</dt>      <dd>will be the first origin to publish a signed feed</dd>
+      </dl>
+
+      <div class="row gap-2" style="margin-top: var(--s-5); flex-wrap: wrap;">
+        <a class="btn btn-primary" href="dashboard.html">open the drift dashboard <span class="arrow">→</span></a>
+        <a class="btn" href="docs.html">publish a feed <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT WILL APPEAR HERE ──────────────────────────── -->
+  <section>
+    <div class="panel-label">
+      <span class="l">what will appear here, when publishers exist</span>
+      <span class="r">preview · not real · greyed</span>
+    </div>
+
+    <div class="timeline" style="opacity: 0.55;">
+      <div class="timeline-row">
+        <div class="when">— · —</div>
+        <div>
+          <span class="pill pill-signed">SIGNED</span>
+          <code class="inline" style="margin-left: 6px;">did:web:example.com</code>
+          <span class="muted"> · /v1/orders deprecated → /v2/orders canonical</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">— · —</div>
+        <div>
+          <span class="pill pill-signed">SIGNED</span>
+          <code class="inline" style="margin-left: 6px;">did:web:another.example</code>
+          <span class="muted"> · protocolVersion 2024-11-05 → 2026-03-15</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">— · —</div>
+        <div>
+          <span class="pill pill-signed">SIGNED</span>
+          <span class="muted"> · the aggregator's first entry will live here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="row gap-5" style="flex-wrap: wrap;">
+      <div class="col gap-2" style="flex: 1; min-width: 220px;">
+        <div class="brand"><span class="brand-mark"></span>agent-feed · aggregator</div>
+        <div>Empty until ≥1 origin publishes. We won't fake the count.</div>
+      </div>
+      <div class="col gap-2"><a href="dashboard.html">drift dashboard →</a></div>
+      <div class="col gap-2"><a href="spec.html">spec →</a></div>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
